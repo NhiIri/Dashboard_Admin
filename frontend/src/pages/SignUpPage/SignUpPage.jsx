@@ -2,7 +2,7 @@ import React from 'react'
 import ButtonComponent from '../../components/ButtonComponent/ButtonComponent'
 import InputForm from '../../components/InputForm/InputForm'
 import { WrapperContainerLeft, WrapperContainerRight, WrapperTextLight } from './style'
-import imageLogo from '../../assets/images/logo-login.png'
+import imageLogo from '../../assets/images/signup.jpg'
 import { Image } from 'antd'
 import { useState } from 'react'
 import { EyeFilled, EyeInvisibleFilled } from '@ant-design/icons'
@@ -58,12 +58,12 @@ const SignUpPage = () => {
   }
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0, 0, 0, 0.53)', height: '100vh' }}>
-      <div style={{ width: '800px', height: '445px', borderRadius: '6px', background: '#fff', display: 'flex' }}>
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center',  background:'#5a5a5a95', height: '100vh' }}>
+      <div style={{ width: '70%', height: '80%' ,border: '4px solid #E57098',boxShadow:'0px 0px 10px 6px #0000005d',borderRadius: '6px', background:'#fff', display: 'flex' }}>
         <WrapperContainerLeft>
-          <h1>Xin chào</h1>
-          <p>Đăng nhập vào tạo tài khoản</p>
-          <InputForm style={{ marginBottom: '10px' }} placeholder="abc@gmail.com" value={email} onChange={handleOnchangeEmail} />
+          <h1 style={{fontFamily:'Garamond', fontSize:'40px', fontWeight:'700', borderBottom:'3px dashed #E57098',textAlign:'center'}}>Welcome to WindyIris!!!</h1>
+          <p style={{fontFamily:'Garamond', fontSize:'30px', fontWeight:'600', textAlign:'center', color:'#E57098'}}>Signup</p>
+          <InputForm style={{ marginBottom: '10px',fontSize:'17px' }} placeholder="abc@gmail.com" value={email} onChange={handleOnchangeEmail} />
           <div style={{ position: 'relative' }}>
             <span
               onClick={() => setIsShowPassword(!isShowPassword)}
@@ -81,7 +81,7 @@ const SignUpPage = () => {
                 )
               }
             </span>
-            <InputForm placeholder="password" style={{ marginBottom: '10px' }} type={isShowPassword ? "text" : "password"}
+            <InputForm placeholder="password" style={{ marginBottom: '10px',fontSize:'17px' }} type={isShowPassword ? "text" : "password"}
               value={password} onChange={handleOnchangePassword} />
           </div>
           <div style={{ position: 'relative' }}>
@@ -101,7 +101,7 @@ const SignUpPage = () => {
                 )
               }
             </span>
-            <InputForm placeholder="comfirm password" type={isShowConfirmPassword ? "text" : "password"}
+            <InputForm style={{fontSize:'17px'}} placeholder="comfirm password" type={isShowConfirmPassword ? "text" : "password"}
               value={confirmPassword} onChange={handleOnchangeConfirmPassword}
             />
           </div>
@@ -112,22 +112,21 @@ const SignUpPage = () => {
               onClick={handleSignUp}
               size={40}
               styleButton={{
-                background: 'rgb(255, 57, 69)',
+                background: '#E57098',
                 height: '48px',
                 width: '100%',
                 border: 'none',
                 borderRadius: '4px',
                 margin: '26px 0 10px'
               }}
-              textbutton={'Đăng ký'}
-              styleTextButton={{ color: '#fff', fontSize: '15px', fontWeight: '700' }}
+              textbutton={'Signup'}
+              styleTextButton={{ color: '#fff', fontSize: '17px', fontWeight: '700' }}
             ></ButtonComponent>
           </Loading>
-          <p>Bạn đã có tài khoản? <WrapperTextLight onClick={handleNavigateSignIn}> Đăng nhập</WrapperTextLight></p>
+          <p>Already have an account? <WrapperTextLight onClick={handleNavigateSignIn}>Login</WrapperTextLight></p>
         </WrapperContainerLeft>
         <WrapperContainerRight>
-          <Image src={imageLogo} preview={false} alt="iamge-logo" height="203px" width="203px" />
-          <h4>Mua sắm tại LTTD</h4>
+          <Image src={imageLogo} preview={false} alt="iamge-logo" height="98%" width="98%" />
         </WrapperContainerRight>
       </div>
     </div >

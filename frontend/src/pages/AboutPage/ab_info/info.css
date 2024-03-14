@@ -1,0 +1,109 @@
+ .info-container{
+  margin-top: 2rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.73), rgba(0, 0, 0, 0.73)), url(../../../assets/images/fl5.jpg);
+  padding: 15px;
+    .info-banner-container{
+      display: flex;
+      justify-items: center;
+      align-items: center;
+      .info-text-section{
+        padding-left: 15px;
+
+        h1{
+          color: white;
+          font-weight: 700;
+          padding-bottom: 1rem;
+        }
+        p{
+          color: white;
+          opacity: .7;
+          font-size: 20px;
+          font-weight: 400;
+          padding-bottom: 1rem;
+        }
+        button{
+          padding: 1rem 2rem;
+          background-color: #ffffff;
+          outline: none;
+          border: none;
+          border-radius: 50px;
+          font-size: 15px;
+          font-weight: 600;
+          color: rgb(0, 0, 0);
+          transition: 0.2s;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+      }
+      .info-bannerImage-container{
+        border: 2px solid rgb(255, 255, 255);
+        height: 300px;
+        width: 100%;
+        border-radius: 10px;
+        overflow: hidden;
+        img{
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+
+      }
+    }
+    
+  }
+
+  @media screen and (min-width: 769px){
+    .info-container{
+        .info-banner-container{
+          .info-text-section{
+            padding: 30px;
+    
+            h1{
+              font-size: 35px;
+              color: white;
+              font-weight: 700;
+              padding-bottom: 1rem;
+            }
+            p{
+              color: white;
+              opacity: .7;
+              font-size: 25px;
+              font-weight: 400;
+              letter-spacing: 1px;
+            }
+            button{
+              padding: 1rem 2rem;
+              background-color: #ffffff;
+              outline: none;
+              border: none;
+              border-radius: 50px;
+              font-size: 15px;
+              font-weight: 600;
+              color: rgb(0, 0, 0);
+              transition: 0.2s;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+    
+          }
+          .info-bannerImage-container{
+            border: 2px solid rgb(255, 255, 255);
+            height: 500px;
+            width: 50%;
+            border-radius: 10px;
+            overflow: hidden;
+            img{
+              height: 100%;
+              width: 100%;
+              object-fit: cover;
+            }
+    
+          }
+        }
+        
+      }
+
+  }

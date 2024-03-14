@@ -12,6 +12,8 @@ import ProfilePage from "../pages/Profile/ProfilePage";
 import SignInPage from "../pages/SignInPage/SignInPage";
 import SignUpPage from "../pages/SignUpPage/SignUpPage";
 import TypeProductPage from "../pages/TypeProductPage/TypeProductPage";
+import AboutPage from "../pages/AboutPage/AboutPage";
+import ContactPage from "../pages/ContactPage/ContactPage";
 
 export const routes = [
     {
@@ -79,6 +81,16 @@ export const routes = [
         page: AdminPage,
         isShowHeader: false,
         isPrivated: true
+    },
+    {
+        path: '/about',
+        page: AboutPage,
+        isShowHeader: true
+    },
+    {
+        path: '/contact',
+        page: ContactPage,
+        isShowHeader: true
     },
     {
         path: '*',

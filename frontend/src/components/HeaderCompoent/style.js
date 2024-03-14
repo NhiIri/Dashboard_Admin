@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const WrapperHeader = styled(Row)`
-    background-color: var(--primary-color);
+    background-color:#FBD6E3;
     align-items: center;
     gap: 16px;
     flex-wrap: nowrap;
-    width: 1270px;
-    padding: 10px 0;
+    width: 100%;
+    padding: 100px 0 10px;
 `
 
 export const WrapperTextHeader = styled(Link)`
@@ -18,7 +18,7 @@ export const WrapperTextHeader = styled(Link)`
     text-align: left;
     &:hover {
         font-size: 18px;
-        color: #fff;
+        color: #fb6f92;
     }
 `
 
@@ -31,8 +31,10 @@ export const WrapperHeaderAccout = styled.div`
 `
 
 export const WrapperTextHeaderSmall = styled.span`
-    font-size: 12px;
-    color: #fff;
+    font-size: 15px;
+    color: #fb6f92;
+    font-weight:700;
+    text-shadow: 0px 0px 6px #ffffff;
     white-space: nowrap;
 `
 

@@ -1,10 +1,8 @@
 import React from 'react'
-import SliderComponent from '../../components/SliderComponent/SliderComponent'
+import SliderComponent from '../../components/Slider/Slide'
+import Footer from '../../components/Footer/Footer'
 import TypeProduct from '../../components/TypeProduct/TypeProduct'
 import { WrapperButtonMore, WrapperProducts, WrapperTypeProduct } from './style'
-import slider1 from '../../assets/images/slider1.webp'
-import slider2 from '../../assets/images/slider2.webp'
-import slider3 from '../../assets/images/slider3.webp'
 import CardComponent from '../../components/CardComponent/CardComponent'
 import { useQuery } from '@tanstack/react-query'
 import * as ProductService from '../../services/ProductService'
@@ -17,7 +15,7 @@ import { useEffect } from 'react'
 const HomePage = () => {
   const searchProduct = useSelector((state) => state?.product?.search)
   const searchDebounce = useDebounce(searchProduct, 500)
-  const [loading, setLoading] = useState(false)
+  const [loading] = useState(false)
   const [limit, setLimit] = useState(6)
   const [typeProducts, setTypeProducts] = useState([])
   
@@ -54,9 +52,10 @@ const HomePage = () => {
           })}
         </WrapperTypeProduct>
       </div>
-      <div className='body' style={{ width: '100%', backgroundColor: '#efefef', }}>
-        <div id="container" style={{ height: '1000px', width: '1270px', margin: '0 auto' }}>
-          <SliderComponent arrImages={[slider1, slider2, slider3]} />
+      <div className='body' style={{ width: '100%', backgroundColor: '#ffffff', }}>
+        <div id="container" style={{ height: '80%', width: '90%', margin: '0 auto' }}>   
+
+          <SliderComponent/>
           <WrapperProducts>
             {products?.data?.map((product) => {
               return (
@@ -79,7 +78,7 @@ const HomePage = () => {
           <div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
             <WrapperButtonMore
               textbutton={isPreviousData ? 'Load more' : "Xem thêm"} type="outline" styleButton={{
-                border: `1px solid ${products?.total === products?.data?.length ? '#f5f5f5' : '#9255FD'}`, color: `${products?.total === products?.data?.length ? '#f5f5f5' : '#9255FD'}`,
+                border: `1px solid ${products?.total === products?.data?.length ? '#f5f5f5' : '#E57098'}`, color: `${products?.total === products?.data?.length ? '#f5f5f5' : '#E57098'}`,
                 width: '240px', height: '38px', borderRadius: '4px'
               }}
               disabled={products?.total === products?.data?.length || products?.totalPage === 1}
@@ -88,6 +87,9 @@ const HomePage = () => {
             />
           </div>
         </div>
+      </div>
+      <div>
+        <Footer/>       
       </div>
     </Loading>
   )

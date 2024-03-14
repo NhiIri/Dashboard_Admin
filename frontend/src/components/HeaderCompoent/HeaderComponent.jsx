@@ -80,10 +80,10 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
   }
 
   return (
-    <div style={{  heiht: '100%', width: '100%', display: 'flex',background: '#9255FD', justifyContent: 'center' }}>
+    <div style={{  heiht: '100%', width: '100%', display: 'flex',background: '#A9EDE9', justifyContent: 'center' }}>
       <WrapperHeader style={{ justifyContent: isHiddenSearch && isHiddenSearch ? 'space-between' : 'unset' }}>
-        <Col span={5}>
-          <WrapperTextHeader to='/'>SHOP</WrapperTextHeader>
+        <Col span={3}>
+          <WrapperTextHeader to='/'></WrapperTextHeader>
         </Col>
         {!isHiddenSearch && (
           <Col span={13}>
@@ -91,9 +91,9 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
               size="large"
               bordered={false}
               textbutton="Tìm kiếm"
-              placeholder="input search text"
+              placeholder="Nhập tên sản phẩm"
               onChange={onSearch}
-              backgroundColorButton="#5a20c1"
+              backgroundColorButton="#fb6f92"
             />
           </Col>
         )}
@@ -102,18 +102,18 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
             <WrapperHeaderAccout>
               {userAvatar ? (
                 <img src={userAvatar} alt="avatar" style={{
-                  height: '30px',
-                  width: '30px',
+                  height: '35px',
+                  width: '35px',           
                   borderRadius: '50%',
                   objectFit: 'cover'
                 }} />
               ) : (
-                <UserOutlined style={{ fontSize: '30px' }} />
+                <UserOutlined style={{ fontSize: '25px',color: '#fb6f92', textShadow:'0px 0px 5px #fff', background:'#fff', borderRadius:'50%', padding:'5px'}} />
               )}
               {user?.access_token ? (
                 <>
                   <Popover content={content} trigger="click" open={isOpenPopup}>
-                    <div style={{ cursor: 'pointer',maxWidth: 100, overflow: 'hidden', textOverflow: 'ellipsis' }} onClick={() => setIsOpenPopup((prev) => !prev)}>{userName?.length ? userName : user?.email}</div>
+                    <div style={{ color:"#fb6f92",textShadow:" 0px 0px 5px #ffffff", cursor: 'pointer',maxWidth: 100, overflow: 'hidden', textOverflow: 'ellipsis',fontWeight:700 }} onClick={() => setIsOpenPopup((prev) => !prev)}>{userName?.length ? userName : user?.email}</div>
                   </Popover>
                 </>
               ) : (
@@ -130,7 +130,7 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
           {!isHiddenCart && (
             <div onClick={() => navigate('/order')} style={{cursor: 'pointer'}}>
               <Badge count={order?.orderItems?.length} size="small">
-                <ShoppingCartOutlined style={{ fontSize: '30px', color: '#fff' }} />
+                <ShoppingCartOutlined style={{ fontSize: '30px', color: '#fb6f92', }} />
               </Badge>
               <WrapperTextHeaderSmall>Giỏ hàng</WrapperTextHeaderSmall>
             </div>

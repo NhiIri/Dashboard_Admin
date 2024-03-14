@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import ButtonComponent from '../../components/ButtonComponent/ButtonComponent'
 import InputForm from '../../components/InputForm/InputForm'
 import { WrapperContainerLeft, WrapperContainerRight, WrapperTextLight } from './style'
-import imageLogo from '../../assets/images/logo-login.png'
+import imageLogo from '../../assets/images/signin.jpg'
 import { Image } from 'antd'
 import { EyeFilled, EyeInvisibleFilled } from '@ant-design/icons'
 import { useState } from 'react'
@@ -76,12 +76,12 @@ const SignInPage = () => {
   }
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0, 0, 0, 0.53)', height: '100vh' }}>
-      <div style={{ width: '800px', height: '445px', borderRadius: '6px', background: '#fff', display: 'flex' }}>
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center',  background:'#5a5a5a95', height: '100vh' }}>
+      <div style={{ width: '70%', height: '80%' ,border: '4px solid #E57098',boxShadow:'0px 0px 10px 6px #0000005d',borderRadius: '6px', background:'#fff', display: 'flex' }}>
         <WrapperContainerLeft>
-          <h1>Xin chào</h1>
-          <p>Đăng nhập vào tạo tài khoản</p>
-          <InputForm style={{ marginBottom: '10px' }} placeholder="abc@gmail.com" value={email} onChange={handleOnchangeEmail} />
+          <h1 style={{fontFamily:'Garamond', fontSize:'40px', fontWeight:'700', borderBottom:'3px dashed #E57098',textAlign:'center'}}>Welcome to WindyIris!!!</h1>
+          <p style={{fontFamily:'Garamond', fontSize:'30px', fontWeight:'600', textAlign:'center',color:'#E57098'}}>Login</p>
+          <InputForm style={{ marginBottom: '15px', fontSize:'17px'}} placeholder="abc@gmail.com" value={email} onChange={handleOnchangeEmail} />
           <div style={{ position: 'relative' }}>
             <span
               onClick={() => setIsShowPassword(!isShowPassword)}
@@ -100,6 +100,7 @@ const SignInPage = () => {
               }
             </span>
             <InputForm
+              style={{fontSize:'17px'}}
               placeholder="password"
               type={isShowPassword ? "text" : "password"}
               value={password}
@@ -113,23 +114,22 @@ const SignInPage = () => {
               onClick={handleSignIn}
               size={40}
               styleButton={{
-                background: 'rgb(255, 57, 69)',
+                background: '#E57098',
                 height: '48px',
                 width: '100%',
                 border: 'none',
                 borderRadius: '4px',
                 margin: '26px 0 10px'
               }}
-              textbutton={'Đăng nhập'}
-              styleTextButton={{ color: '#fff', fontSize: '15px', fontWeight: '700' }}
+              textbutton={'Login'}
+              styleTextButton={{ color: '#fff', fontSize: '17px', fontWeight: '700' }}
             ></ButtonComponent>
           </Loading>
-          <p><WrapperTextLight>Quên mật khẩu?</WrapperTextLight></p>
-          <p>Chưa có tài khoản? <WrapperTextLight onClick={handleNavigateSignUp}> Tạo tài khoản</WrapperTextLight></p>
+          <p><WrapperTextLight>Forgot password?</WrapperTextLight></p>
+          <p>Don't have an account? <WrapperTextLight onClick={handleNavigateSignUp}> Signup</WrapperTextLight></p>
         </WrapperContainerLeft>
         <WrapperContainerRight>
-          <Image src={imageLogo} preview={false} alt="iamge-logo" height="203px" width="203px" />
-          <h4>Mua sắm tại LTTD</h4>
+          <Image src={imageLogo} preview={false} alt="iamge-logo" height="98%" width="98%" />        
         </WrapperContainerRight>
       </div>
     </div >
