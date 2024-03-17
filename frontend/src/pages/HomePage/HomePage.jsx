@@ -11,12 +11,13 @@ import { useState } from 'react'
 import Loading from '../../components/LoadingComponent/Loading'
 import { useDebounce } from '../../hooks/useDebounce'
 import { useEffect } from 'react'
+import Gallery from '../../components/Gallery/Gallery'
 
 const HomePage = () => {
   const searchProduct = useSelector((state) => state?.product?.search)
   const searchDebounce = useDebounce(searchProduct, 500)
   const [loading] = useState(false)
-  const [limit, setLimit] = useState(6)
+  const [limit, setLimit] = useState(7)
   const [typeProducts, setTypeProducts] = useState([])
   
   const fetchProductAll = async (context) => {
@@ -43,7 +44,7 @@ const HomePage = () => {
 
   return (
     <Loading isLoading={isLoading || loading}>
-      <div style={{ width: '1270px', margin: '0 auto' }}>
+      {/* <div style={{ width: '1270px', margin: '0 auto' }}>
         <WrapperTypeProduct>
           {typeProducts.map((item) => {
             return (
@@ -51,11 +52,13 @@ const HomePage = () => {
             )
           })}
         </WrapperTypeProduct>
-      </div>
+      </div> */}
       <div className='body' style={{ width: '100%', backgroundColor: '#ffffff', }}>
         <div id="container" style={{ height: '80%', width: '90%', margin: '0 auto' }}>   
 
-          <SliderComponent/>
+          <div style={{marginTop:'20px'}}>
+            <SliderComponent/>
+          </div>
           <WrapperProducts>
             {products?.data?.map((product) => {
               return (
@@ -75,7 +78,7 @@ const HomePage = () => {
               )
             })}
           </WrapperProducts>
-          <div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
+          <div style={{ width: '100%', display: 'flex', justifyContent: 'center', margin: '10px 0 20px' }}>
             <WrapperButtonMore
               textbutton={isPreviousData ? 'Load more' : "Xem thêm"} type="outline" styleButton={{
                 border: `1px solid ${products?.total === products?.data?.length ? '#f5f5f5' : '#E57098'}`, color: `${products?.total === products?.data?.length ? '#f5f5f5' : '#E57098'}`,
@@ -86,8 +89,9 @@ const HomePage = () => {
               onClick={() => setLimit((prev) => prev + 6)}
             />
           </div>
-        </div>
-      </div>
+          <Gallery/>
+        </div> 
+      </div>      
       <div>
         <Footer/>       
       </div>

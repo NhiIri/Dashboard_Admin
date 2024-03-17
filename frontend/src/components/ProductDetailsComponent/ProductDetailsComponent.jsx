@@ -110,10 +110,10 @@ const ProductDetailsComponent = ({idProduct}) => {
 
     return (
         <Loading isLoading={isLoading}>
-            <Row style={{ padding: '16px', background: '#fff', borderRadius: '4px', height:'100%' }}>
+            <Row style={{ padding: '16px', background: '#fff', borderRadius: '4px', height:'100%', border: "3px solid #E57098" }}>
                 <Col span={10} style={{ borderRight: '1px solid #e5e5e5', paddingRight: '8px' }}>
                     <Image src={productDetails?.image} alt="image prodcut" preview={false} />
-                    <Row style={{ paddingTop: '10px', justifyContent: 'space-between' }}>
+                    {/* <Row style={{ paddingTop: '10px', justifyContent: 'space-between' }}>
                         <WrapperStyleColImage span={4} sty>
                             <WrapperStyleImageSmall src={imageProductSmall} alt="image small" preview={false} />
                         </WrapperStyleColImage>
@@ -137,21 +137,21 @@ const ProductDetailsComponent = ({idProduct}) => {
                             <WrapperStyleImageSmall src={imageProductSmall} alt="image small" preview={false} />
                         </WrapperStyleColImage>
 
-                    </Row>
+                    </Row> */}
                 </Col>
                 <Col span={14} style={{ paddingLeft: '10px' }}>
                     <WrapperStyleNameProduct>{productDetails?.name}</WrapperStyleNameProduct>
                     <div>
                         <Rate allowHalf defaultValue={productDetails?.rating} value={productDetails?.rating} />
-                        <WrapperStyleTextSell> | Da ban 1000+</WrapperStyleTextSell>
+                        <WrapperStyleTextSell> | Sold: 100+</WrapperStyleTextSell>
                     </div>
                     <WrapperPriceProduct>
                         <WrapperPriceTextProduct>{convertPrice(productDetails?.price)}</WrapperPriceTextProduct>
                     </WrapperPriceProduct>
                     <WrapperAddressProduct>
-                        <span>Giao đến </span>
+                        <span>Delivery address:  </span>
                         <span className='address'>{user?.address}</span> -
-                        <span className='change-address'>Đổi địa chỉ</span>
+                        {/* <span className='change-address'>Đổi địa chỉ</span> */}
                     </WrapperAddressProduct>
                     <LikeButtonComponent
                      dataHref={ process.env.REACT_APP_IS_LOCAL 
@@ -160,7 +160,7 @@ const ProductDetailsComponent = ({idProduct}) => {
                             } 
                     />
                     <div style={{ margin: '10px 0 20px', padding: '10px 0', borderTop: '1px solid #e5e5e5', borderBottom: '1px solid #e5e5e5' }}>
-                        <div style={{ marginBottom: '10px' }}>Số lượng</div>
+                        <div style={{ marginBottom: '10px' }}>Quantity</div>
                         <WrapperQualityProduct>
                             <button style={{ border: 'none', background: 'transparent', cursor: 'pointer' }} onClick={() => handleChangeCount('decrease',numProduct === 1)}>
                                 <MinusOutlined style={{ color: '#000', fontSize: '20px' }} />
@@ -176,7 +176,7 @@ const ProductDetailsComponent = ({idProduct}) => {
                             <ButtonComponent
                                 size={40}
                                 styleButton={{
-                                    background: 'rgb(255, 57, 69)',
+                                    background: '#E57098',
                                     height: '48px',
                                     width: '220px',
                                     border: 'none',
@@ -188,7 +188,7 @@ const ProductDetailsComponent = ({idProduct}) => {
                             ></ButtonComponent>
                             {errorLimitOrder && <div style={{color: 'red'}}>San pham het hang</div>}
                         </div>
-                        <ButtonComponent
+                        {/* <ButtonComponent
                             size={40}
                             styleButton={{
                                 background: '#fff',
@@ -199,7 +199,7 @@ const ProductDetailsComponent = ({idProduct}) => {
                             }}
                             textbutton={'Mua trả sau'}
                             styleTextButton={{ color: 'rgb(13, 92, 182)', fontSize: '15px' }}
-                        ></ButtonComponent>
+                        ></ButtonComponent> */}
                     </div>
                 </Col>
                 <CommentComponent 

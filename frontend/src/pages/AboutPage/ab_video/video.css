@@ -5,6 +5,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     margin-bottom: 2rem;
+    border-radius: 10px;
 
     .cardContent{
         gap: 2rem;

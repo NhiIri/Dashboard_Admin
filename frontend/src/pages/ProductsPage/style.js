@@ -4,9 +4,11 @@ import ButtonComponent from "../../components/ButtonComponent/ButtonComponent";
 export const WrapperTypeProduct = styled.div`
     display: flex;
     align-items: center;
-    gap: 24px;
-    justify-content: flex-start;
-    height: 44px;
+    gap: 26px;
+    justify-content: center;
+    height: 60px;
+    border-bottom: 2px solid #E57098;
+    border-top: 2px solid #E57098;
 `
 
 export const WrapperButtonMore = styled(ButtonComponent)`

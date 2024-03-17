@@ -8,12 +8,16 @@ import Footer from '../../components/Footer/Footer'
 function AboutPage() {
   return (
     <div>
+      <div style={{ height: '80%', width: '90%', margin: '20px auto' }}>
       <Video/>
       <Intro/>
       <Info/>
       <Advantage/>
-      <Footer/>     
+          
     </div>
+    <Footer/> 
+    </div>
+    
   )
 }
 

@@ -12,10 +12,10 @@ export const WrapperStyleColImage = styled(Col)`
 `
 
 export const WrapperStyleNameProduct = styled.h1`
-    color: rgb(36, 36, 36);
-    font-size: 24px;
-    font-weight: 300;
-    line-height: 32px;
+    font-size: 25px;
+    font-weight: 700;
+    color: #e75089;
+    /* line-height: 32px; */
     word-break: break-word;
 `
 
@@ -47,7 +47,8 @@ export const WrapperAddressProduct = styled.div`
         font-weight: 500;
         white-space: nowrap;
         overflow: hidden;
-        text-overflow: ellipsisl
+        text-overflow: ellipsis;
+        
     };
     span.change-address {
         color: rgb(11, 116, 229);

@@ -10,12 +10,15 @@ import { useState } from 'react'
 import Loading from '../../components/LoadingComponent/Loading'
 import { useDebounce } from '../../hooks/useDebounce'
 import { useEffect } from 'react'
+import Footer from '../../components/Footer/Footer'
+import SearchComponent from '../../components/SearchComponent/SearchComponent'
+
 
 const ProductsPage = () => {
   const searchProduct = useSelector((state) => state?.product?.search)
   const searchDebounce = useDebounce(searchProduct, 500)
   const [loading] = useState(false)
-  const [limit, setLimit] = useState(6)
+  const [limit, setLimit] = useState()
   const [typeProducts, setTypeProducts] = useState([])
   
   const fetchProductAll = async (context) => {
@@ -42,17 +45,21 @@ const ProductsPage = () => {
 
   return (
     <Loading isLoading={isLoading || loading}>
-      <div style={{ width: '1270px', margin: '0 auto' }}>
-        <WrapperTypeProduct>
-          {typeProducts.map((item) => {
-            return (
-              <TypeProduct name={item} key={item}/>
-            )
-          })}
-        </WrapperTypeProduct>
-      </div>
+
+      <SearchComponent/>
+      
       <div className='body' style={{ width: '100%', backgroundColor: '#ffffff', }}>
-        <div id="container" style={{ height: '1000px', width: '95%', margin: '0 auto' }}>   
+        <div id="container" style={{ height: '80%', width: '90%', margin: '0 auto' }}>
+        
+          <div style={{ width: '100%'}}>
+          <WrapperTypeProduct>
+           {typeProducts.map((item) => {
+             return (
+               <TypeProduct name={item} key={item}/>
+             )
+           })}
+           </WrapperTypeProduct>
+         </div>   
 
           <WrapperProducts>
             {products?.data?.map((product) => {
@@ -73,8 +80,8 @@ const ProductsPage = () => {
               )
             })}
           </WrapperProducts>
-          <div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
-            {/* <WrapperButtonMore
+          {/* <div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
+            <WrapperButtonMore
               textbutton={isPreviousData ? 'Load more' : "Xem thêm"} type="outline" styleButton={{
                 border: `1px solid ${products?.total === products?.data?.length ? '#f5f5f5' : '#9255FD'}`, color: `${products?.total === products?.data?.length ? '#f5f5f5' : '#9255FD'}`,
                 width: '240px', height: '38px', borderRadius: '4px'
@@ -82,9 +89,10 @@ const ProductsPage = () => {
               disabled={products?.total === products?.data?.length || products?.totalPage === 1}
               styleTextButton={{ fontWeight: 500, color: products?.total === products?.data?.length && '#fff' }}
               onClick={() => setLimit((prev) => prev + 6)}
-            /> */}
-          </div>
+            /> 
+          </div> */}
         </div>
+        <Footer/>
       </div>
     </Loading>
   )

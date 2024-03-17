@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleNameProduct, WrapperCardStyle, WrapperDiscountText, WrapperPriceText, WrapperReportText, WrapperStyleTextSell } from './style'
 import { StarFilled } from '@ant-design/icons'
-import logo from '../../assets/images/logo.png'
+// import logo from '../../assets/images/logo.png'
 import { useNavigate } from 'react-router-dom'
 import { convertPrice } from '../../utils'
 
@@ -20,7 +20,7 @@ const CardComponent = (props) => {
             cover={<img alt="example" src={image} />}
             onClick={() =>  handleDetailsProduct(id)}
         >
-            <img
+            {/* <img
                 src={logo}
                 style={{
                     width: '68px',
@@ -30,7 +30,7 @@ const CardComponent = (props) => {
                     left: -1,
                     borderTopLeftRadius: '3px'
                 }}
-            />
+            /> */}
             <StyleNameProduct>{name}</StyleNameProduct>
             <WrapperReportText>
                 <span style={{ marginRight: '4px' }}>

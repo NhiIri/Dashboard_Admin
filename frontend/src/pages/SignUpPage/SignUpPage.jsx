@@ -101,7 +101,7 @@ const SignUpPage = () => {
                 )
               }
             </span>
-            <InputForm style={{fontSize:'17px'}} placeholder="comfirm password" type={isShowConfirmPassword ? "text" : "password"}
+            <InputForm status={{fontSize:'17px'}} placeholder="comfirm password" type={isShowConfirmPassword ? "text" : "password"}
               value={confirmPassword} onChange={handleOnchangeConfirmPassword}
             />
           </div>
