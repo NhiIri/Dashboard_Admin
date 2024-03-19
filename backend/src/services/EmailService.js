@@ -10,7 +10,7 @@ const sendEmailCreateOrder = async (email,orderItems) => {
     secure: true, // true for 465, false for other ports
     auth: {
       user: process.env.MAIL_ACCOUNT, // generated ethereal user
-      pass: process.env.MAIL_PASSWORD, // generated ethereal password
+      pass: process.env.MAIL_PASSWORD, 
     },
   });
   transporter.use('compile', inlineBase64({cidPrefix: 'somePrefix_'}));
@@ -30,9 +30,9 @@ const sendEmailCreateOrder = async (email,orderItems) => {
   let info = await transporter.sendMail({
     from: process.env.MAIL_ACCOUNT, // sender address
     to: email, // list of receivers
-    subject: "Bạn đã đặt hàng tại shop LẬP trình thật dễ", // Subject line
+    subject: "Bạn đã đặt hàng tại WindyIris", // Subject line
     text: "Hello world?", // plain text body
-    html: `<div><b>Bạn đã đặt hàng thành công tại shop Lập trình thật dễ</b></div> ${listItem}`,
+    html: `<div><b>Bạn đã đặt hàng thành công tại WindyIris</b></div> ${listItem}`,
     attachments: attachImage,
   });
 }

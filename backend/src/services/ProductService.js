@@ -1,8 +1,9 @@
 const Product = require("../models/ProductModel")
+const Category = require("../models/CategoryModel")
 
 const createProduct = (newProduct) => {
     return new Promise(async (resolve, reject) => {
-        const { name, image, type, countInStock, price, rating, description,discount } = newProduct
+        const { name, image, type, countInStock, price, rating, description,discount,category } = newProduct
         try {
             const checkProduct = await Product.findOne({
                 name: name
@@ -16,7 +17,8 @@ const createProduct = (newProduct) => {
             const newProduct = await Product.create({
                 name, 
                 image, 
-                type, 
+                type,
+                category : category, 
                 countInStock: Number(countInStock), 
                 price, 
                 rating, 
@@ -187,6 +189,34 @@ const getAllType = () => {
     })
 }
 
+
+// const getProductsByCategory = () => {
+//     return new Promise(async (resolve, reject) => {
+//         try {
+//             // Tìm danh mục dựa trên tên
+//             const category = await Category.findOne({ name: categoryName });
+//             if (!category) {
+//                 throw new Error('Category not found');
+//             }
+            
+//             // Tìm sản phẩm dựa trên danh mục
+//             const products = await Product.find({ category: category._id });
+//             return products;
+//         } catch (error) {
+//             throw new Error(error.message);
+//         }
+//     })
+// }
+
+async function getProductsByCategory(categoryId) {
+    try {
+        const products = await Product.find({ category: categoryId });
+        return products;
+    } catch (error) {
+        throw new Error(error.message);
+    }
+}
+
 module.exports = {
     createProduct,
     updateProduct,
@@ -194,5 +224,6 @@ module.exports = {
     deleteProduct,
     getAllProduct,
     deleteManyProduct,
-    getAllType
+    getAllType,
+    getProductsByCategory
 }

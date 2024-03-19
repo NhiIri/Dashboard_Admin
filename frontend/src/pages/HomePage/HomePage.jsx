@@ -11,13 +11,15 @@ import { useState } from 'react'
 import Loading from '../../components/LoadingComponent/Loading'
 import { useDebounce } from '../../hooks/useDebounce'
 import { useEffect } from 'react'
-import Gallery from '../../components/Gallery/Gallery'
+import Information from '../../components/information/Information'
+// import Gallery from '../../components/Gallery/Gallery'
+// import Flower from '../../components/Flower/Flower'
 
 const HomePage = () => {
   const searchProduct = useSelector((state) => state?.product?.search)
   const searchDebounce = useDebounce(searchProduct, 500)
   const [loading] = useState(false)
-  const [limit, setLimit] = useState(7)
+  const [limit, setLimit] = useState(4)
   const [typeProducts, setTypeProducts] = useState([])
   
   const fetchProductAll = async (context) => {
@@ -59,8 +61,15 @@ const HomePage = () => {
           <div style={{marginTop:'20px'}}>
             <SliderComponent/>
           </div>
-          <WrapperProducts>
-            {products?.data?.map((product) => {
+          <div>
+            <Information/> 
+          </div>
+
+            <div style={{display:'flex'}}>  
+            <div>
+              <div style={{textAlign:'center'}}><h1>The shop's products</h1></div>
+              <WrapperProducts>
+              {products?.data?.map((product) => {
               return (
                 <CardComponent
                   key={product._id}
@@ -77,7 +86,11 @@ const HomePage = () => {
                 />
               )
             })}
-          </WrapperProducts>
+            </WrapperProducts>
+            </div>
+            
+            </div>
+          
           <div style={{ width: '100%', display: 'flex', justifyContent: 'center', margin: '10px 0 20px' }}>
             <WrapperButtonMore
               textbutton={isPreviousData ? 'Load more' : "Xem thêm"} type="outline" styleButton={{
@@ -89,7 +102,8 @@ const HomePage = () => {
               onClick={() => setLimit((prev) => prev + 6)}
             />
           </div>
-          <Gallery/>
+          {/* <Flower/>
+          <Gallery/> */}
         </div> 
       </div>      
       <div>

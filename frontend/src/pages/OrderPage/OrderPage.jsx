@@ -1,6 +1,6 @@
 import {Checkbox, Form } from 'antd'
 import React, { useEffect, useState } from 'react'
-import { CustomCheckbox, WrapperCountOrder, WrapperInfo, WrapperItemOrder, WrapperLeft, WrapperListOrder, WrapperRight, WrapperStyleHeader, WrapperStyleHeaderDilivery, WrapperTotal } from './style';
+import { CustomCheckbox, WrapperCountOrder, WrapperInfo, WrapperItemOrder, WrapperLeft, WrapperListOrder, WrapperNavbar, WrapperRight, WrapperStyleHeader, WrapperStyleHeaderDilivery, WrapperTotal } from './style';
 import { DeleteOutlined, MinusOutlined, PlusOutlined} from '@ant-design/icons'
 
 import { WrapperInputNumber } from '../../components/ProductDetailsComponent/style';
@@ -105,7 +105,7 @@ const OrderPage = () => {
   const priceDiscountMemo = useMemo(() => {
     const result = order?.orderItemsSlected?.reduce((total, cur) => {
       const totalDiscount = cur.discount ? cur.discount : 0
-      return total + (priceMemo * (totalDiscount  * cur.amount) / 100)
+      return total + (priceMemo * (totalDiscount/ 100))
     },0)
     if(Number(result)){
       return result
@@ -201,12 +201,15 @@ const OrderPage = () => {
   ]
   return (
     <div style={{background: '#f5f5fa', with: '100%', height: '100vh'}}>
-      <div style={{height: '100%', width: '1270px', margin: '0 auto'}}>
-        <h3 style={{fontWeight: 'bold'}}>Giỏ hàng</h3>
+      <WrapperNavbar style={{fontWeight: 'bold'}}>Cart</WrapperNavbar>
+      <div style={{height: '80%', width: '90%', margin: '0 auto'}}>
+        
         <div style={{ display: 'flex', justifyContent: 'center'}}>
-          <WrapperLeft>
-            <h4>Phí giao hàng</h4>
+
+        
+          <WrapperLeft>             
             <WrapperStyleHeaderDilivery>
+             <h4 style={{color:'#000000'}}>Ship</h4>
               <StepComponent items={itemsDelivery} current={diliveryPriceMemo === 10000 
                 ? 2 : diliveryPriceMemo === 20000 ? 1 
                 : order.orderItemsSlected.length === 0 ? 0:  3}/>
@@ -214,7 +217,7 @@ const OrderPage = () => {
             <WrapperStyleHeader>
                 <span style={{display: 'inline-block', width: '390px'}}>
                   <CustomCheckbox onChange={handleOnchangeCheckAll} checked={listChecked?.length === order?.orderItems?.length}></CustomCheckbox>
-                  <span> Tất cả ({order?.orderItems?.length} sản phẩm)</span>
+                  <span> All ({order?.orderItems?.length}products)</span>
                 </span>
                 <div style={{flex:1,display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
                   <span>Đơn giá</span>
@@ -250,7 +253,7 @@ const OrderPage = () => {
                         <PlusOutlined style={{ color: '#000', fontSize: '10px' }}/>
                     </button>
                   </WrapperCountOrder>
-                  <span style={{color: 'rgb(255, 66, 78)', fontSize: '13px', fontWeight: 500}}>{convertPrice(order?.price * order?.amount)}</span>
+                  <span style={{color: '#e57098', fontSize: '13px', fontWeight: 500}}>{convertPrice(order?.price * order?.amount)}</span>
                   <DeleteOutlined style={{cursor: 'pointer'}} onClick={() => handleDeleteOrder(order?.product)}/>
                 </div>
               </WrapperItemOrder>
@@ -264,7 +267,7 @@ const OrderPage = () => {
                 <div>
                   <span>Địa chỉ: </span>
                   <span style={{fontWeight: 'bold'}}>{ `${user?.address} ${user?.city}`} </span>
-                  <span onClick={handleChangeAddress} style={{color: '#9255FD', cursor:'pointer'}}>Thay đổi</span>
+                  <span onClick={handleChangeAddress} style={{color: '#e57098', cursor:'pointer'}}>Thay đổi</span>
                 </div>
               </WrapperInfo>
               <WrapperInfo>
@@ -284,8 +287,8 @@ const OrderPage = () => {
               <WrapperTotal>
                 <span>Tổng tiền</span>
                 <span style={{display:'flex', flexDirection: 'column'}}>
-                  <span style={{color: 'rgb(254, 56, 52)', fontSize: '24px', fontWeight: 'bold'}}>{convertPrice(totalPriceMemo)}</span>
-                  <span style={{color: '#000', fontSize: '11px'}}>(Đã bao gồm VAT nếu có)</span>
+                  <span style={{color: '#e57098', fontSize: '24px', fontWeight: 'bold'}}>{convertPrice(totalPriceMemo)}</span>
+                  {/* <span style={{color: '#000', fontSize: '11px'}}>(Đã bao gồm VAT nếu có)</span> */}
                 </span>
               </WrapperTotal>
             </div>
@@ -293,7 +296,7 @@ const OrderPage = () => {
               onClick={() => handleAddCard()}
               size={40}
               styleButton={{
-                  background: 'rgb(255, 57, 69)',
+                  background: '#e57098',
                   height: '48px',
                   width: '320px',
                   border: 'none',

@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleNameProduct, WrapperCardStyle, WrapperDiscountText, WrapperPriceText, WrapperReportText, WrapperStyleTextSell } from './style'
+import { StyleNameProduct, WrapperCardStyle, WrapperDiscountText, WrapperPriceText, WrapperReportText } from './style'
 import { StarFilled } from '@ant-design/icons'
 // import logo from '../../assets/images/logo.png'
 import { useNavigate } from 'react-router-dom'
@@ -15,11 +15,15 @@ const CardComponent = (props) => {
         <WrapperCardStyle
             hoverable
             headStyle={{ width: '200px', height: '200px' }}
-            style={{ width: 200 }}
-            bodyStyle={{ padding: '10px' }}
+            style={{ width: 300 }}
+            bodyStyle={{ padding: '10px 30px' }}
             cover={<img alt="example" src={image} />}
             onClick={() =>  handleDetailsProduct(id)}
+        
         >
+                <WrapperDiscountText>
+                -{discount}%
+                </WrapperDiscountText> 
             {/* <img
                 src={logo}
                 style={{
@@ -33,16 +37,17 @@ const CardComponent = (props) => {
             /> */}
             <StyleNameProduct>{name}</StyleNameProduct>
             <WrapperReportText>
-                <span style={{ marginRight: '4px' }}>
+                {/* <span style={{ marginRight: '4px' }}>
                     <span>{rating} </span> <StarFilled style={{ fontSize: '12px', color: 'rgb(253, 216, 54)' }} />
-                </span>
-                <WrapperStyleTextSell> | Da ban {selled || 1000}+</WrapperStyleTextSell>
+                </span> */}
+                {/* <WrapperStyleTextSell> | Da ban {selled || 1000}+</WrapperStyleTextSell> */}
+
+               
             </WrapperReportText>
             <WrapperPriceText>
-                <span style={{ marginRight: '8px' }}>{convertPrice(price)}</span>
-                <WrapperDiscountText>
-                    - {discount || 5} %
-                </WrapperDiscountText>
+                
+                <span style={{ marginRight: '10px', display:'flex', justifyContent:'center'}}>{convertPrice(price)}</span>
+                
             </WrapperPriceText>
         </WrapperCardStyle>
     )

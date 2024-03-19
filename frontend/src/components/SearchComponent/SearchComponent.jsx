@@ -25,8 +25,8 @@ const SearchComponent = ({ isHiddenSearch = false}) => {
             <ButttonInputSearch
               size="large"
               bordered={false}
-              textbutton="Tìm kiếm"
-              placeholder="Nhập tên sản phẩm"
+              textbutton="Search"
+              placeholder="Enter product name"
               onChange={onSearch}
               backgroundColorButton="#E57098"
             />

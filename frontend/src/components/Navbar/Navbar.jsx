@@ -38,10 +38,11 @@ const Navbar = () => {
                 WindyIris
                 </h1>
             </div>
+            
 
             <div className={active}>
-                <ul className='NavList flex'>
-
+              <div style={{margin: '0 10% 0'}}>
+                <ul className='NavList flex'>                 
                     <li className="navItem li">
                         <Link to={"/"} className="navLink">Home</Link>
                     </li>
@@ -55,21 +56,19 @@ const Navbar = () => {
                     </li>
 
                     <li className="navItem li">
-                        <Link to={"contact"} className="navLink">Contact</Link>
+                        <Link to={"/contact"} className="navLink">Contact</Link>
                     </li>
 
-                    <div style={{marginLeft:'50%'}}>
+                    <div style={{display:'flex', paddingLeft:'30%' }}>
                    <User_Cart_Component/> 
                     </div>
 
                 </ul>
-                
-                
-            
+              </div>
+                        
                 <div onClick = {closeNav} className='closeNav'>
                 {/* <RiCloseCircleLine className='icon'/> */}
-                </div>
-                
+                </div>     
 
             </div>
             

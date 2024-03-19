@@ -2,8 +2,8 @@ const ProductService = require('../services/ProductService')
 
 const createProduct = async (req, res) => {
     try {
-        const { name, image, type, countInStock, price, rating, description, discount } = req.body
-        if (!name || !image || !type || !countInStock || !price || !rating || !discount) {
+        const { name, image, type, countInStock, price, rating, description, discount,category } = req.body
+        if (!name || !image || !type || !countInStock || !price || !rating || !discount || !category) {
             return res.status(200).json({
                 status: 'ERR',
                 message: 'The input is required'
@@ -114,6 +114,27 @@ const getAllType = async (req, res) => {
     }
 }
 
+
+// const getProductsByCategory = async (req, res) => {
+//     try {
+//         const categoryName = req.params.name;
+//         const products = await ProductService.getProductsByCategory(categoryName);
+//         res.json(products);
+//     } catch (error) {
+//         res.status(500).json({ error: error.message });
+//     }
+// }
+
+async function getProductsByCategory(req, res) {
+    try {
+        const categoryId = req.params.categoryId;
+        const products = await ProductService.getProductsByCategory(categoryId);
+        res.json(products);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
 module.exports = {
     createProduct,
     updateProduct,
@@ -121,5 +142,6 @@ module.exports = {
     deleteProduct,
     getAllProduct,
     deleteMany,
-    getAllType
+    getAllType,
+    getProductsByCategory
 }

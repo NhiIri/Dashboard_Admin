@@ -1,20 +1,21 @@
 import { Menu } from 'antd'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { getItem } from '../../utils';
 import { UserOutlined, AppstoreOutlined, ShoppingCartOutlined } from '@ant-design/icons'
-import HeaderComponent from '../../components/HeaderCompoent/HeaderComponent';
+import Navbar from '../../components/Navbar/Navbar';
 import AdminUser from '../../components/AdminUser/AdminUser';
 import AdminProduct from '../../components/AdminProduct/AdminProduct';
 import OrderAdmin from '../../components/OrderAdmin/OrderAmin';
 import * as OrderService from '../../services/OrderService'
 import * as ProductService from '../../services/ProductService'
 import * as UserService from '../../services/UserService'
-
+import * as CategoryService from '../../services/CategoryService'
 import CustomizedContent from './components/CustomizedContent';
 import { useSelector } from 'react-redux';
 import { useQueries } from '@tanstack/react-query';
 import { useMemo } from 'react';
 import Loading from '../../components/LoadingComponent/Loading';
+// import AdminCategory from '../../components/AdminCategory/AdminCategory';
 
 const AdminPage = () => {
   const user = useSelector((state) => state?.user)
@@ -23,6 +24,7 @@ const AdminPage = () => {
     getItem('Người dùng', 'users', <UserOutlined />),
     getItem('Sản phẩm', 'products', <AppstoreOutlined />),
     getItem('Đơn hàng', 'orders', <ShoppingCartOutlined />),
+    // getItem('Thể loại', 'categories', <ShoppingCartOutlined />),
     
   ];
 
@@ -43,12 +45,18 @@ const AdminPage = () => {
     console.log('res', res)
     return {data: res?.data, key: 'users'}
   }
+  // const getAllCategories = async () => {
+  //   const res = await CategoryService.getAllCategory()
+  //   console.log('res2', res)
+  //   return {data: res?.data, key: 'categories'}
+  // }
 
   const queries = useQueries({
     queries: [
       {queryKey: ['products'], queryFn: getAllProducts, staleTime: 1000 * 60},
       {queryKey: ['users'], queryFn: getAllUsers, staleTime: 1000 * 60},
       {queryKey: ['orders'], queryFn: getAllOrder, staleTime: 1000 * 60},
+      // {queryKey: ['categories'], queryFn: getAllCategories, staleTime: 1000 * 60},
     ]
   })
   const memoCount = useMemo(() => {
@@ -68,6 +76,7 @@ const AdminPage = () => {
    users: ['#e66465', '#9198e5'],
    products: ['#a8c0ff', '#3f2b96'],
    orders: ['#11998e', '#38ef7d'],
+  //  categories:['#b446b4', '#195aa4'],
   };
 
   const renderPage = (key) => {
@@ -76,6 +85,10 @@ const AdminPage = () => {
         return (
           <AdminUser />
         )
+        // case 'categories':
+        // return (
+        //   <AdminCategory />
+        // )
       case 'products':
         return (
           <AdminProduct />
@@ -95,7 +108,7 @@ const AdminPage = () => {
   console.log('memoCount', memoCount)
   return (
     <>
-      <HeaderComponent isHiddenSearch isHiddenCart />
+      <Navbar isHiddenSearch isHiddenCart />
       <div style={{ display: 'flex',overflowX: 'hidden' }}>
         <Menu
           mode="inline"

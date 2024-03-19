@@ -14,6 +14,7 @@ import SignUpPage from "../pages/SignUpPage/SignUpPage";
 import TypeProductPage from "../pages/TypeProductPage/TypeProductPage";
 import AboutPage from "../pages/AboutPage/AboutPage";
 import ContactPage from "../pages/ContactPage/ContactPage";
+import CategoryPage from "../pages/CategoryPage/CategoryPage";
 
 export const routes = [
     {
@@ -74,6 +75,11 @@ export const routes = [
     {
         path: '/profile-user',
         page: ProfilePage,
+        isShowHeader: true
+    },
+    {
+        path: '/category/:categoryId',
+        page: CategoryPage,
         isShowHeader: true
     },
     {
