@@ -40,7 +40,7 @@ const TableComponent = (props) => {
     <Loading isLoading={isLoading}>
       {!!rowSelectedKeys.length && (
         <div style={{
-          background: '#1d1ddd',
+          background: '#E57098',
           color: '#fff',
           fontWeight: 'bold',
           padding: '10px',

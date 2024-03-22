@@ -7,7 +7,7 @@ export const WrapperNavbar = styled.h1`
     height: 50px ;
     background-color:#FBD6E3;
     font-size: 20px;
-    padding-left: 15%;
+    padding-left: 5%;
     padding-top: 8px;
     margin:0;
 `
@@ -16,7 +16,8 @@ export const WrapperStyleHeader = styled.div`
   background: rgb(255, 255, 255);
   padding: 9px 16px;
   border-radius: 4px;
-  border: 2px solid #000;
+  /* border: 2px solid #000; */
+  box-shadow: 0px 0px 5px #000;
   display: flex;
   align-items: center;
   span {
@@ -89,10 +90,10 @@ export const WrapperRight = styled.div`
 
 export const WrapperInfo = styled.div`
   padding: 17px 20px;
-  border-bottom: 1px solid #f5f5f5;
+  border-bottom: 4px solid #e0e0e0;
   background: #fff;
   border-top-right-radius: 6px;
-  border: 2px solid #000;
+  /* border: 2px solid #000; */
   border-top-left-radius: 6px;
   width: 100%
 `
@@ -108,10 +109,10 @@ export const WrapperTotal = styled.div`
 
 export const CustomCheckbox = styled(Checkbox)`
   .ant-checkbox-checked .ant-checkbox-inner {
-    background-color: #9255FD;
-    border-color: #9255FD;
+    background-color: #E57098;
+    border-color: #E57098;
   }
   .ant-checkbox:hover .ant-checkbox-inner {
-    border-color: #9255FD;
+    border-color: #E57098;
   }
 `

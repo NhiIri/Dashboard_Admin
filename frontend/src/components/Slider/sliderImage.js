@@ -4,18 +4,18 @@ import Third from "../../assets/images/h_slide3.jpg";
 
 export default [
   {
-    title: "First Slide",
-    description: "This is the first slider Image of our carousel",
+    title: "Welcome to WindyIris!!!",
+    description: "Enjoy the little things in life for one day you’ll look back and realize they were the big things",
     urls: First,
   },
   {
-    title: "Second Slide",
-    description: "This is the second slider Image of our carousel",
+    title: "We always bring the best for you",
+    description: "Bring flowers closer to everyone",
     urls: Second,
   },
   {
-    title: "Third Slide",
-    description: "This is the Third slider Image of our carousel",
+    title: "Many offers are waiting for you",
+    description: "With many promotions and discounts for loyal customers",
     urls: Third,
   },
  /* {

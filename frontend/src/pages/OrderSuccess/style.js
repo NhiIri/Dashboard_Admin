@@ -1,6 +1,17 @@
 import { Radio } from "antd";
 import styled  from "styled-components";
 
+export const WrapperOrderSuccess = styled.div`
+    color: #000;
+    height: 50px ;
+    background-color:#FBD6E3;
+    font-size: 20px;
+    padding-left: 5%;
+    padding-top: 8px;
+    font-weight:bold;
+    margin:0;
+`
+
 export const WrapperStyleHeader = styled.div`
   background: rgb(255, 255, 255);
   padding: 9px 16px;
@@ -15,8 +26,8 @@ export const WrapperStyleHeader = styled.div`
 `
 
 export const WrapperValue = styled.div`
-  background: rgb(240, 248, 255);
-  border: 1px solid rgb(194, 225, 255);
+  /* background: rgb(240, 248, 255); */
+  /* border: 1px solid rgb(194, 225, 255); */
   padding: 10px;
   width: fit-content;
   border-radius: 6px;
@@ -24,6 +35,7 @@ export const WrapperValue = styled.div`
 `
 
 export const WrapperContainer = styled.div`
+  margin-top:30px;
   width: 100%;
 `
 
@@ -65,7 +77,7 @@ export const WrapperRight = styled.div`
 
 export const WrapperInfo = styled.div`
   padding: 17px 20px;
-  border-bottom: 1px solid #f5f5f5;
+  border-bottom: 4px solid #e0e0e0;
   background: #fff;
   border-top-right-radius: 6px;
   border-top-left-radius: 6px;
@@ -74,7 +86,7 @@ export const WrapperInfo = styled.div`
 
 export const WrapperItemOrderInfo = styled.div`
   padding: 17px 20px;
-  border-bottom: 1px solid #f5f5f5;
+  border-bottom: 4px solid #e0e0e0;
   background: #fff;
   border-top-right-radius: 6px;
   border-top-left-radius: 6px;

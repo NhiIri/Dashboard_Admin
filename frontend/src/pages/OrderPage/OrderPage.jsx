@@ -200,16 +200,17 @@ const OrderPage = () => {
     },
   ]
   return (
-    <div style={{background: '#f5f5fa', with: '100%', height: '100vh'}}>
+    <div style={{background: '#e0e0e0', with: '100%', height: '100vh'}}>
       <WrapperNavbar style={{fontWeight: 'bold'}}>Cart</WrapperNavbar>
       <div style={{height: '80%', width: '90%', margin: '0 auto'}}>
         
         <div style={{ display: 'flex', justifyContent: 'center'}}>
 
         
-          <WrapperLeft>             
+          <WrapperLeft>
+            {/* <h4 style={{color:'#000000', fontSize:'18px'}}>Ship</h4>              */}
             <WrapperStyleHeaderDilivery>
-             <h4 style={{color:'#000000'}}>Ship</h4>
+             
               <StepComponent items={itemsDelivery} current={diliveryPriceMemo === 10000 
                 ? 2 : diliveryPriceMemo === 20000 ? 1 
                 : order.orderItemsSlected.length === 0 ? 0:  3}/>
@@ -219,7 +220,7 @@ const OrderPage = () => {
                   <CustomCheckbox onChange={handleOnchangeCheckAll} checked={listChecked?.length === order?.orderItems?.length}></CustomCheckbox>
                   <span> All ({order?.orderItems?.length}products)</span>
                 </span>
-                <div style={{flex:1,display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+                <div style={{flex:1,display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontWeight:'bold',}}>
                   <span>Đơn giá</span>
                   <span>Số lượng</span>
                   <span>Thành tiền</span>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Lable, WrapperInfo, WrapperContainer, WrapperValue, WrapperCountOrder, WrapperItemOrder, WrapperItemOrderInfo } from './style';
+import { Lable, WrapperInfo, WrapperContainer, WrapperValue, WrapperCountOrder, WrapperItemOrder, WrapperItemOrderInfo, WrapperOrderSuccess } from './style';
 import Loading from '../../components/LoadingComponent/Loading';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
@@ -11,17 +11,18 @@ const OrderSucess = () => {
   const location = useLocation()
   const {state} = location
   return (
-    <div style={{background: '#f5f5fa', with: '100%', height: '100vh'}}>
+    <div style={{background: '#e0e0e0', with: '100%', height: '100vh'}}>
       <Loading isLoading={false}>
-        <div style={{height: '100%', width: '1270px', margin: '0 auto'}}>
-          <h3>Đơn hàng đặt thành công</h3>
+        <WrapperOrderSuccess>Order Success</WrapperOrderSuccess>
+        <div style={{height: '100%', width: '90%', margin: '0 auto'}}>
+          
           <div style={{ display: 'flex', justifyContent: 'center'}}>
             <WrapperContainer>
               <WrapperInfo>
                 <div>
                   <Lable>Phương thức giao hàng</Lable>
                     <WrapperValue>
-                      <span style={{color: '#ea8500', fontWeight: 'bold'}}>{orderContant.delivery[state?.delivery]}</span> Giao hàng tiết kiệm
+                      <span style={{color: '#E57098', fontWeight: 'bold'}}>{orderContant.delivery[state?.delivery]}</span> Giao hàng tiết kiệm
                     </WrapperValue>
                 </div>
               </WrapperInfo>
@@ -60,7 +61,7 @@ const OrderSucess = () => {
                 })}
               </WrapperItemOrderInfo>
               <div>
-                <span style={{ fontSize: '16px', color: 'red' }}>Tổng tiền: {convertPrice(state?.totalPriceMemo)}</span>
+                <span style={{ fontSize: '16px', color: '#E57098',fontWeight:'bold' }}>Tổng tiền: {convertPrice(state?.totalPriceMemo)}</span>
               </div>
             </WrapperContainer>
           </div>

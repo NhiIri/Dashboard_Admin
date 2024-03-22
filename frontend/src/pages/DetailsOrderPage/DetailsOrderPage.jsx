@@ -1,5 +1,5 @@
 import React from 'react'
-import { WrapperAllPrice, WrapperContentInfo, WrapperHeaderUser, WrapperInfoUser, WrapperItem, WrapperItemLabel, WrapperLabel, WrapperNameProduct, WrapperProduct, WrapperStyleContent } from './style'
+import { WrapperAllPrice, WrapperContentInfo, WrapperDetailsOrder, WrapperHeaderUser, WrapperInfoUser, WrapperItem, WrapperItemLabel, WrapperLabel, WrapperNameProduct, WrapperProduct, WrapperStyleContent } from './style'
 import logo from '../../assets/images/logo.png'
 import { useLocation, useParams } from 'react-router-dom'
 import { useEffect } from 'react'
@@ -35,9 +35,10 @@ const DetailsOrderPage = () => {
 
   return (
    <Loading isLoading={isLoading}>
-     <div style={{width: '100%', height: '100vh', background: '#f5f5fa'}}>
-      <div style={{ width: '1270px', margin: '0 auto', height: '1270px'}}>
-        <h4>Chi tiết đơn hàng</h4>
+     <div style={{width: '100%', height: '100vh', background: '#e0e0e0'}}>
+      <WrapperDetailsOrder>Details Order</WrapperDetailsOrder>
+      <div style={{ width: '90%', margin: '0 auto', height: '100%'}}>
+        
         <WrapperHeaderUser>
           <WrapperInfoUser>
             <WrapperLabel>Địa chỉ người nhận</WrapperLabel>
@@ -50,7 +51,7 @@ const DetailsOrderPage = () => {
           <WrapperInfoUser>
             <WrapperLabel>Hình thức giao hàng</WrapperLabel>
             <WrapperContentInfo>
-              <div className='delivery-info'><span className='name-delivery'>FAST </span>Giao hàng tiết kiệm</div>
+              <div className='delivery-info'><span className='name-delivery'>FAST </span>Giao hàng nhanh</div>
               <div className='delivery-fee'><span>Phí giao hàng: </span> {data?.shippingPrice}</div>
             </WrapperContentInfo>
           </WrapperInfoUser>
@@ -63,8 +64,8 @@ const DetailsOrderPage = () => {
           </WrapperInfoUser>
         </WrapperHeaderUser>
         <WrapperStyleContent>
-          <div style={{flex:1,display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-            <div style={{width: '670px'}}>Sản phẩm</div>
+          <div style={{flex:1,display: 'flex', alignItems: 'center'}}>
+            <div style={{width: '670px',fontWeight:'500'}}>Sản phẩm</div>
             <WrapperItemLabel>Giá</WrapperItemLabel>
             <WrapperItemLabel>Số lượng</WrapperItemLabel>
             <WrapperItemLabel>Giảm giá</WrapperItemLabel>

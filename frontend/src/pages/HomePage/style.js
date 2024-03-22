@@ -28,4 +28,5 @@ export const WrapperProducts = styled.div`
     gap: 14px;
     margin-top:20px;
     flex-wrap: wrap;
+    justify-content: center;
 `

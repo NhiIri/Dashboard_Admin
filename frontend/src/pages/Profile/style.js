@@ -7,7 +7,8 @@ export const WrapperHeader = styled.h1`
     height: 50px ;
     background-color:#FBD6E3;
     font-size: 20px;
-    padding-left: 15%;
+    font-weight:bold;
+    padding-left: 5%;
     padding-top: 8px;
 
 

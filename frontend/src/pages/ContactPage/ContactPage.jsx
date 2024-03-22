@@ -7,6 +7,31 @@ import React from 'react'
 const ContactPage = () => {
   return (
     <div>
+
+
+{/* 
+      <div>
+
+        <div>
+          <div></div>
+          <div></div>
+        </div>
+
+        <div>
+          <div></div>
+          <div></div>
+        </div>
+
+        <div>
+          <div></div>
+          <div></div>
+        </div>
+
+      </div> */}
+
+
+
+
       {/* <Flower/> */}
       {/* <CardProduct/> */}
       {/* <CategoryComponent/> */}
@@ -15,3 +40,6 @@ const ContactPage = () => {
 }
 
 export default ContactPage
+
+
+

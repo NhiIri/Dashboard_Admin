@@ -1,6 +1,6 @@
 import {Form, Radio } from 'antd'
 import React, { useEffect, useState } from 'react'
-import { Lable, WrapperInfo, WrapperLeft, WrapperRadio, WrapperRight, WrapperTotal } from './style';
+import { Lable, WrapperInfo, WrapperLeft, WrapperPayment, WrapperRadio, WrapperRight, WrapperTotal } from './style';
 
 import ButtonComponent from '../../components/ButtonComponent/ButtonComponent';
 import { useDispatch, useSelector } from 'react-redux';
@@ -241,18 +241,19 @@ const PaymentPage = () => {
   }, [])
 
   return (
-    <div style={{background: '#f5f5fa', with: '100%', height: '100vh'}}>
-      <Loading isLoading={isLoadingAddOrder}>
-        <div style={{height: '100%', width: '1270px', margin: '0 auto'}}>
-          <h3>Thanh toán</h3>
+    <div style={{background: '#e0e0e0', with: '100%', height: '100vh'}}>
+      <Loading isLoading={isLoadingAddOrder}> 
+      <WrapperPayment>Payment</WrapperPayment>
+        <div style={{height: '80%', width: '90%', margin: '0 auto'}}>
+         
           <div style={{ display: 'flex', justifyContent: 'center'}}>
             <WrapperLeft>
               <WrapperInfo>
                 <div>
                   <Lable>Chọn phương thức giao hàng</Lable>
                   <WrapperRadio onChange={handleDilivery} value={delivery}> 
-                    <Radio  value="fast"><span style={{color: '#ea8500', fontWeight: 'bold'}}>FAST</span> Giao hàng tiết kiệm</Radio>
-                    <Radio  value="gojek"><span style={{color: '#ea8500', fontWeight: 'bold'}}>GO_JEK</span> Giao hàng tiết kiệm</Radio>
+                    <Radio  value="fast"><span style={{color: '#E57098', fontWeight: 'bold'}}>FAST</span> Giao hàng nhanh</Radio>
+                    <Radio  value="gojek"><span style={{color: '#E57098', fontWeight: 'bold'}}>GO_JEK</span> Giao hàng tiết kiệm</Radio>
                   </WrapperRadio>
                 </div>
               </WrapperInfo>
@@ -261,7 +262,7 @@ const PaymentPage = () => {
                   <Lable>Chọn phương thức thanh toán</Lable>
                   <WrapperRadio onChange={handlePayment} value={payment}> 
                     <Radio value="later_money"> Thanh toán tiền mặt khi nhận hàng</Radio>
-                    <Radio value="paypal"> Thanh toán tiền bằng paypal</Radio>
+                    <Radio value="paypal"> Thanh toán tiền bằng PayPal</Radio>
                   </WrapperRadio>
                 </div>
               </WrapperInfo>
@@ -272,7 +273,7 @@ const PaymentPage = () => {
                   <div>
                     <span>Địa chỉ: </span>
                     <span style={{fontWeight: 'bold'}}>{ `${user?.address} ${user?.city}`} </span>
-                    <span onClick={handleChangeAddress} style={{color: '#9255FD', cursor:'pointer'}}>Thay đổi</span>
+                    <span onClick={handleChangeAddress} style={{color: '#E57097', cursor:'pointer'}}>Thay đổi</span>
                   </div>
                 </WrapperInfo>
                 <WrapperInfo>
@@ -292,8 +293,8 @@ const PaymentPage = () => {
                 <WrapperTotal>
                   <span>Tổng tiền</span>
                   <span style={{display:'flex', flexDirection: 'column'}}>
-                    <span style={{color: 'rgb(254, 56, 52)', fontSize: '24px', fontWeight: 'bold'}}>{convertPrice(totalPriceMemo)}</span>
-                    <span style={{color: '#000', fontSize: '11px'}}>(Đã bao gồm VAT nếu có)</span>
+                    <span style={{color: '#E57097', fontSize: '24px', fontWeight: 'bold'}}>{convertPrice(totalPriceMemo)}</span>
+                    {/* <span style={{color: '#000', fontSize: '11px'}}>(Đã bao gồm VAT nếu có)</span> */}
                   </span>
                 </WrapperTotal>
               </div>
@@ -313,7 +314,7 @@ const PaymentPage = () => {
                   onClick={() => handleAddOrder()}
                   size={40}
                   styleButton={{
-                      background: 'rgb(255, 57, 69)',
+                      background: '#E57097',
                       height: '48px',
                       width: '320px',
                       border: 'none',

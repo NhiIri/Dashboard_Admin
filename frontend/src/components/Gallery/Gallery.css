@@ -1,8 +1,10 @@
 .app__gallery {
     flex-direction: row;
     background: #32323296;
+    /* background: linear-gradient(to bottom, #FBD6E3 0%, #a8a8a8 100%); */
     padding: 4rem 0 4rem 6rem;
     display: flex;
+    border-radius: 10px;
     justify-content: center;
     align-items: center;
     /* border: 2px solid #000000;
@@ -20,7 +22,7 @@
 }
 .headtext__cormorant{
 font-family: Georgia, 'Times New Roman', Times, serif;
-  color: #E57098;
+  color: #ffffff;
   font-size: 64px;
   line-height: 83.2px;
   letter-spacing: 0.04em;
@@ -29,12 +31,13 @@ font-family: Georgia, 'Times New Roman', Times, serif;
 }
 .p__opensans{
     font-family: Arial, Helvetica, sans-serif;
-    color: white;
+    color: rgb(0, 0, 0);
     font-weight: 400;
     letter-spacing: 0.04em;
     text-transform: capitalize;
-    line-height: 28px;
-    font-size: 16px;
+    line-height: 30px;
+    font-size: 35px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .app__gallery-images {

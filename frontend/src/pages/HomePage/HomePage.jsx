@@ -12,8 +12,9 @@ import Loading from '../../components/LoadingComponent/Loading'
 import { useDebounce } from '../../hooks/useDebounce'
 import { useEffect } from 'react'
 import Information from '../../components/information/Information'
-// import Gallery from '../../components/Gallery/Gallery'
-// import Flower from '../../components/Flower/Flower'
+import Gallery from '../../components/Gallery/Gallery'
+import Flower from '../../components/Flower/Flower'
+import slide_image from '../../assets/images/home123.jpg'
 
 const HomePage = () => {
   const searchProduct = useSelector((state) => state?.product?.search)
@@ -59,15 +60,23 @@ const HomePage = () => {
         <div id="container" style={{ height: '80%', width: '90%', margin: '0 auto' }}>   
 
           <div style={{marginTop:'20px'}}>
-            <SliderComponent/>
+            <div style={{display:'flex'}}>
+              <SliderComponent/>
+              <img src={slide_image} style={{height:'auto', width:'25%', marginLeft:'15px',objectFit:'cover', opacity:'0.7',}} alt="" />
+            </div>
+            
           </div>
           <div>
             <Information/> 
           </div>
+          <div>
+            <Flower/>
+          </div>
 
-            <div style={{display:'flex'}}>  
+            <div style={{display:'flex', justifyContent:'center'}}>  
             <div>
-              <div style={{textAlign:'center'}}><h1>The shop's products</h1></div>
+              <div style={{textAlign:'center'}}><h1>Shop's Products</h1></div>
+              <p style={{textAlign:'center',fontSize:'19px',fontFamily:'Times New Roman',fontWeight:'500'}}>Our products are very various</p>
               <WrapperProducts>
               {products?.data?.map((product) => {
               return (
@@ -101,10 +110,11 @@ const HomePage = () => {
               styleTextButton={{ fontWeight: 500, color: products?.total === products?.data?.length && '#fff' }}
               onClick={() => setLimit((prev) => prev + 6)}
             />
-          </div>
-          {/* <Flower/>
-          <Gallery/> */}
+          </div>   
+          <Gallery/>
         </div> 
+      </div>
+      <div>
       </div>      
       <div>
         <Footer/>       

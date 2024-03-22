@@ -54,7 +54,7 @@ const ProductDetailsComponent = ({idProduct}) => {
 
     useEffect(() => {
         if(order.isSucessOrder) {
-            message.success('Đã thêm vào giỏ hàng')
+            message.success('Add to cart successfully!!!')
         }
         return () => {
             dispatch(resetOrder())
@@ -143,24 +143,24 @@ const ProductDetailsComponent = ({idProduct}) => {
                     <WrapperStyleNameProduct>{productDetails?.name}</WrapperStyleNameProduct>
                     <div>
                         <Rate allowHalf defaultValue={productDetails?.rating} value={productDetails?.rating} />
-                        <WrapperStyleTextSell> | Sold: 100+</WrapperStyleTextSell>
+                        {/* <WrapperStyleTextSell> | Sold: 100+</WrapperStyleTextSell> */}
                     </div>
                     <WrapperPriceProduct>
                         <WrapperPriceTextProduct>{convertPrice(productDetails?.price)}</WrapperPriceTextProduct>
                     </WrapperPriceProduct>
                     <WrapperAddressProduct>
-                        <span>Delivery address:  </span>
-                        <span className='address'>{user?.address}</span> -
+                        <span style={{fontSize:'17px', fontWeight:'500'}}>Delivery address:  </span>
+                        <span style={{fontSize:'17px'}} className='address'>{user?.address}</span>
                         {/* <span className='change-address'>Đổi địa chỉ</span> */}
                     </WrapperAddressProduct>
-                    <LikeButtonComponent
+                    {/* <LikeButtonComponent
                      dataHref={ process.env.REACT_APP_IS_LOCAL 
                                 ? "https://developers.facebook.com/docs/plugins/" 
                                 : window.location.href
                             } 
-                    />
+                    /> */}
                     <div style={{ margin: '10px 0 20px', padding: '10px 0', borderTop: '1px solid #e5e5e5', borderBottom: '1px solid #e5e5e5' }}>
-                        <div style={{ marginBottom: '10px' }}>Quantity</div>
+                        <div style={{ marginBottom: '10px',fontSize:'17px', fontWeight:'500' }}>Quantity</div>
                         <WrapperQualityProduct>
                             <button style={{ border: 'none', background: 'transparent', cursor: 'pointer' }} onClick={() => handleChangeCount('decrease',numProduct === 1)}>
                                 <MinusOutlined style={{ color: '#000', fontSize: '20px' }} />
@@ -183,7 +183,7 @@ const ProductDetailsComponent = ({idProduct}) => {
                                     borderRadius: '4px'
                                 }}
                                 onClick={handleAddOrderProduct}
-                                textbutton={'Chọn mua'}
+                                textbutton={'Add to cart'}
                                 styleTextButton={{ color: '#fff', fontSize: '15px', fontWeight: '700' }}
                             ></ButtonComponent>
                             {errorLimitOrder && <div style={{color: 'red'}}>San pham het hang</div>}

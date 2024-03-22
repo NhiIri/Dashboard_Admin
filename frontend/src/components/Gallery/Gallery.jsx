@@ -22,12 +22,12 @@ const Gallery = () => {
   return (
     <div className="app__gallery flex__center">
       <div className="app__gallery-content">
-        <h1 className="headtext__cormorant">Photo Gallery</h1>
-        <p className="p__opensans" style={{ color: '#ffffff', marginTop: '2rem' }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat mattis ipsum turpis elit elit scelerisque egestas mu.</p>
+        <h1 className="headtext__cormorant">WindyIris Shop</h1>
+        <p className="p__opensans" style={{ color: '#dddddd' }}>Have it your way!!!</p>
       </div>
       <div className="app__gallery-images">
         <div className="app__gallery-images_container" ref={scrollRef}>
-          {[images.gallery01, images.gallery02, images.gallery03, images.gallery04].map((image, index) => (
+          {[images.gallery01, images.gallery02, images.gallery03, images.gallery04, images.gallery05, images.gallery06, images.gallery07].map((image, index) => (
             <div className="app__gallery-images_card flex__center" key={`gallery_image-${index + 1}`}>
               <img src={image} alt="gallery_image" />
             </div>

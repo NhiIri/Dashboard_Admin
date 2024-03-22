@@ -86,7 +86,7 @@ const ProfilePage = () => {
             <WrapperHeader>User Information</WrapperHeader>
            <div className='background'>
             
-            <div className='body' style={{  paddingTop:'60px', height:'73vh'}}> 
+            <div className='body' style={{  paddingTop:'30px', height:'90%', marginBottom:'40px'}}> 
              {/* <div  style={{ height: '100%'}}> */}
               {/* <div style={{ width: '90%', margin: '20px auto', height: '80%' }}> */}
             

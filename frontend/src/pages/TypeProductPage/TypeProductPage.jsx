@@ -48,12 +48,12 @@ const TypeProductPage = () => {
     return (
         <Loading isLoading={loading}>
             <div style={{ width: '100%', background: '#efefef', height: 'calc(100vh - 64px)' }}>
-                <div style={{ width: '1270px', margin: '0 auto', height: '100%' }}>
+                <div style={{ width: '90%', margin: '0 auto', height: '80%' }}>
                     <Row style={{ flexWrap: 'nowrap', paddingTop: '10px',height: 'calc(100% - 20px)' }}>
-                        <WrapperNavbar span={4} >
+                        {/* <WrapperNavbar span={4} >
                             <NavBarComponent />
-                        </WrapperNavbar>
-                        <Col span={20} style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
+                        </WrapperNavbar> */}
+                        <Col span={24} style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
                             <WrapperProducts >
                                 {products?.filter((pro) => {
                                     if(searchDebounce === '') {

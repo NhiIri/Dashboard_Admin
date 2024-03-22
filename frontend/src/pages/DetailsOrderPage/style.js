@@ -1,9 +1,21 @@
 import styled from "styled-components"
 
+export const WrapperDetailsOrder = styled.div`
+    color: #000;
+    height: 50px ;
+    background-color:#FBD6E3;
+    font-size: 20px;
+    padding-left: 5%;
+    padding-top: 8px;
+    font-weight:bold;
+    margin:0;
+`
+
 export const WrapperHeaderUser = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top:30px;
 `
 
 export const WrapperInfoUser = styled.div`
@@ -14,26 +26,27 @@ export const WrapperInfoUser = styled.div`
     text-transform: uppercase;
   }
   .address,.phone-info,.delivery-info,.delivery-fee,.payment-info {
-    color: rgba(0, 0, 0, 0.65);
+
     font-size: 13px;
     margin-top: 8px;
   }
   .name-delivery {
-    color: rgb(234, 133, 0); 
+    color: #E57098;
     font-weight: bold;
     text-transform: uppercase;
   }
   .status-payment {
     margin-top: 8px;
-    color: rgb(234, 133, 0); 
+        color: #E57098;
   }
 `
 
 export const WrapperLabel = styled.div`
   color: rgb(36, 36, 36);
-  font-size: 13px;
+  font-size: 14px;
   text-transform: uppercase;
-  margin-bottom: 15px;
+  font-weight:bold;
+  margin-bottom: 10px;
 `
 export const WrapperContentInfo = styled.div`
   height: 118px;
@@ -66,11 +79,12 @@ export const WrapperItem = styled.div`
   width: 200px;
   font-weight: bold;
   &:last-child {
-    color: red
+    color: #E57098
   }
 `
 export const WrapperItemLabel = styled.div`
   width: 200px;
+  font-weight:500;
   &:last-child {
     font-weight: bold;
   }

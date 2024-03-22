@@ -1,7 +1,17 @@
 import styled  from "styled-components";
 
+export const WrapperOrder = styled.div`
+    color: #000;
+    height: 50px ;
+    background-color:#FBD6E3;
+    font-size: 20px;
+    padding-left: 5%;
+    padding-top: 8px;
+    font-weight:bold;
+    margin:0;
+`
 export const WrapperStyleHeader = styled.div`
-  background: rgb(255, 255, 255);
+  background: #e0e0e0;
   padding: 9px 16px;
   border-radius: 4px;
   display: flex;
@@ -13,7 +23,7 @@ export const WrapperStyleHeader = styled.div`
   }
 `
 export const WrapperStyleHeaderDilivery = styled.div`
-  background: rgb(255, 255, 255);
+  background: #e0e0e0;
   padding: 9px 16px;
   border-radius: 4px;
   display: flex;
@@ -28,7 +38,7 @@ export const WrapperStyleHeaderDilivery = styled.div`
 
 export const WrapperContainer = styled.div`
   width: 100%;
-  background-color: #f5f5fa;
+  background-color: #e0e0e0;
 `
 
 export const WrapperLeft = styled.div`

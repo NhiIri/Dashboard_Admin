@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import * as OrderService from '../../services/OrderService'
 import { useSelector } from 'react-redux';
 import { convertPrice } from '../../utils';
-import { WrapperItemOrder, WrapperListOrder, WrapperHeaderItem, WrapperFooterItem, WrapperContainer, WrapperStatus } from './style';
+import { WrapperItemOrder, WrapperListOrder, WrapperHeaderItem, WrapperFooterItem, WrapperContainer, WrapperStatus, WrapperOrder } from './style';
 import ButtonComponent from '../../components/ButtonComponent/ButtonComponent';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useMutationHooks } from '../../hooks/useMutationHook';
@@ -87,8 +87,9 @@ const MyOrderPage = () => {
   return (
     <Loading isLoading={isLoading || isLoadingCancel}>
       <WrapperContainer>
-        <div style={{height: '100%', width: '1270px', margin: '0 auto'}}>
-          <h4>Đơn hàng của tôi</h4>
+        <WrapperOrder>My order</WrapperOrder>
+        <div style={{height: '100%', width: '90%', margin: '0 auto'}}>
+          
           <WrapperListOrder>
             {data?.map((order) => {
               return (
@@ -96,18 +97,18 @@ const MyOrderPage = () => {
                   <WrapperStatus>
                     <span style={{fontSize: '14px', fontWeight: 'bold'}}>Trạng thái</span>
                     <div>
-                      <span style={{color: 'rgb(255, 66, 78)'}}>Giao hàng: </span>
-                      <span style={{color: 'rgb(90, 32, 193)', fontWeight: 'bold'}}>{`${order.isDelivered ? 'Đã giao hàng': 'Chưa giao hàng'}`}</span>
+                      <span style={{color: 'rgb(0, 0, 0)'}}>Giao hàng: </span>
+                      <span style={{color: '#E57098', fontWeight: 'bold'}}>{`${order.isDelivered ? 'Đã giao hàng': 'Chưa giao hàng'}`}</span>
                     </div>
                     <div>
-                      <span style={{color: 'rgb(255, 66, 78)'}}>Thanh toán: </span>
-                      <span style={{color: 'rgb(90, 32, 193)', fontWeight: 'bold'}}>{`${order.isPaid ? 'Đã thanh toán': 'Chưa thanh toán'}`}</span>
+                      <span style={{color: 'rgb(0, 0, 0)'}}>Thanh toán: </span>
+                      <span style={{color: '#E57098', fontWeight: 'bold'}}>{`${order.isPaid ? 'Đã thanh toán': 'Chưa thanh toán'}`}</span>
                     </div>
                   </WrapperStatus>
                   {renderProduct(order?.orderItems)}
                   <WrapperFooterItem>
                     <div>
-                      <span style={{color: 'rgb(255, 66, 78)'}}>Tổng tiền: </span>
+                      <span style={{color: 'rgb(255, 66, 78)', fontWeight:'500'}}>Tổng tiền: </span>
                       <span 
                         style={{ fontSize: '13px', color: 'rgb(56, 56, 61)',fontWeight: 700 }}
                       >{convertPrice(order?.totalPrice)}</span>
@@ -118,11 +119,11 @@ const MyOrderPage = () => {
                         size={40}
                         styleButton={{
                             height: '36px',
-                            border: '1px solid #9255FD',
+                            border: '1px solid #E57098',
                             borderRadius: '4px'
                         }}
                         textbutton={'Hủy đơn hàng'}
-                        styleTextButton={{ color: '#9255FD', fontSize: '14px' }}
+                        styleTextButton={{ color: '#E57098', fontSize: '14px' }}
                       >
                       </ButtonComponent>
                       <ButtonComponent
@@ -130,11 +131,11 @@ const MyOrderPage = () => {
                         size={40}
                         styleButton={{
                             height: '36px',
-                            border: '1px solid #9255FD',
+                            border: '1px solid #E57098',
                             borderRadius: '4px'
                         }}
                         textbutton={'Xem chi tiết'}
-                        styleTextButton={{ color: '#9255FD', fontSize: '14px' }}
+                        styleTextButton={{ color: '#E57098', fontSize: '14px' }}
                       >
                       </ButtonComponent>
                     </div>
