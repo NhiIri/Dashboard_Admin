@@ -19,7 +19,9 @@ app.use(cookieParser())
 
 routes(app);
 
-mongoose.connect(`${process.env.MONGO_DB}`)
+mongoose.connect(process.env.CONNECTION_STRING, {
+        dbName: 'WindyIris-Shop',
+    })
     .then(() => {
      console.log('Connect Db success!')
     })
