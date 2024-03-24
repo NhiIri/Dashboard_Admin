@@ -19,7 +19,7 @@ app.use(cookieParser())
 
 routes(app);
 
-mongoose.connect(process.env.CONNECTION_STRING)
+mongoose.createConnection(process.env.CONNECTION_STRING)
     .then(() => {
      console.log('Connect Db success!')
     })
