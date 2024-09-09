@@ -5,6 +5,7 @@ const routes = require('./routes')
 const cors = require('cors');
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
+mongoose.set('strictQuery', true);
 
 dotenv.config()
 
