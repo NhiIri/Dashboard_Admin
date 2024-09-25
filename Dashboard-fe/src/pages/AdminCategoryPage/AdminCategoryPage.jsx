@@ -2,9 +2,9 @@ import { Button, Form } from 'antd'
 import { PlusOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons'
 import React from 'react'
 import { WrapperHeader, WrapperUploadFile } from './style'
-import TableComponent from '../TableComponent/TableComponent'
+import TableComponent from '../../components/TableComponent/TableComponent'
 import { useState } from 'react'
-import InputComponent from '../InputComponent/InputComponent'
+import InputComponent from '../../components/InputComponent/InputComponent'
 import { getBase64 } from '../../utils'
 import * as CategoryService from '../../services/CategoryService'
 import { useMutationHooks } from '../../hooks/useMutationHook'
@@ -12,11 +12,11 @@ import Loading from '../../components/LoadingComponent/Loading'
 import { useEffect } from 'react'
 import * as message from '../../components/Message/Message'
 import { useQuery } from '@tanstack/react-query'
-import DrawerComponent from '../DrawerComponent/DrawerComponent'
+import DrawerComponent from '../../components/DrawerComponent/DrawerComponent'
 import { useSelector } from 'react-redux'
-import ModalComponent from '../ModalComponent/ModalComponent'
+import ModalComponent from '../../components/ModalComponent/ModalComponent'
 
-const AdminCategory = () => {
+const AdminCategoryPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [rowSelected, setRowSelected] = useState('')
   const [isOpenDrawer, setIsOpenDrawer] = useState(false)
@@ -366,4 +366,4 @@ const AdminCategory = () => {
   )
 }
 
-export default AdminCategory
+export default AdminCategoryPage

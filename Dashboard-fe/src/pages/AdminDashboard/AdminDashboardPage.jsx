@@ -1,10 +1,4 @@
-import { Menu } from 'antd'
 import React, { useState } from 'react'
-import { getItem } from '../../utils';
-import { UserOutlined, AppstoreOutlined, AlignRightOutlined } from '@ant-design/icons'
-import Navbar from '../../components/Navbar/Navbar';
-import AdminUser from '../../components/AdminUser/AdminUser';
-import AdminProduct from '../../components/AdminProduct/AdminProduct';
 import * as ProductService from '../../services/ProductService'
 import * as UserService from '../../services/UserService'
 import * as CategoryService from '../../services/CategoryService'
@@ -12,17 +6,10 @@ import CustomizedContent from './components/CustomizedContent';
 import { useSelector } from 'react-redux';
 import { useQueries } from '@tanstack/react-query';
 import { useMemo } from 'react';
-import AdminCategory from '../../components/AdminCategory/AdminCategory';
 
-const AdminPage = () => {
+const AdminDashboardPage = () => {
   const user = useSelector((state) => state?.user)
 
-  const items = [
-    getItem('Người dùng', 'users', <UserOutlined />),
-    getItem('Sản phẩm', 'products', <AppstoreOutlined />),
-    getItem('Thể loại', 'categories', <AlignRightOutlined />),
-    
-  ];
 
   const [keySelected, setKeySelected] = useState('');
 
@@ -70,53 +57,20 @@ const AdminPage = () => {
    categories:['#b446b4', '#195aa4'],
   };
 
-  const renderPage = (key) => {
-    switch (key) {
-      case 'users':
-        return (
-          <AdminUser />
-        )
-        case 'categories':
-        return (
-          <AdminCategory />
-        )
-      case 'products':
-        return (
-          <AdminProduct />
-        )
 
-      default:
-        return <></>
-    }
-  }
-
-  const handleOnCLick = ({ key }) => {
-    setKeySelected(key)
-  }
   console.log('memoCount', memoCount)
   return (
     <>
-      {/* <Navbar isHiddenSearch isHiddenCart /> */}
+
       <div style={{ display: 'flex',overflowX: 'hidden' }}>
-        <Menu
-          mode="inline"
-          style={{
-            width: 256,
-            boxShadow: '1px 1px 2px #ccc',
-            height: '100vh'
-          }}
-          items={items}
-          onClick={handleOnCLick}
-        />
         <div style={{ flex: 1, padding: '15px 0 15px 15px' }}>          
             {!keySelected && (
               <CustomizedContent data={memoCount} colors={COLORS} setKeySelected={setKeySelected} />
             )}       
-          {renderPage(keySelected)}
         </div>
       </div>
     </>
   )
 }
 
-export default AdminPage
+export default AdminDashboardPage

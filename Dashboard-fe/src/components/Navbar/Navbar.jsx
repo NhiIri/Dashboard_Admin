@@ -18,7 +18,7 @@ const Navbar = () => {
               </div>
                         
      </section> 
-     <div style={{paddingBottom:'90.5px'}}></div>
+     <div style={{paddingBottom:'50px'}}></div>
     </div>
     
   )

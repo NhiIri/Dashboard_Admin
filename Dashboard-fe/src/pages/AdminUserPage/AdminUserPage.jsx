@@ -1,13 +1,13 @@
 import { Form } from 'antd'
 import React from 'react'
 import { WrapperHeader } from './style'
-import TableComponent from '../TableComponent/TableComponent'
+import TableComponent from '../../components/TableComponent/TableComponent'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import * as UserService from '../../services/UserService'
 import { useQueryClient } from '@tanstack/react-query'
 
-const AdminUser = () => {
+const AdminUserPage = () => {
   const [rowSelected, setRowSelected] = useState('')
   const [isOpenDrawer, setIsOpenDrawer] = useState(false)
 
@@ -92,4 +92,4 @@ const AdminUser = () => {
   )
 }
 
-export default AdminUser
+export default AdminUserPage
