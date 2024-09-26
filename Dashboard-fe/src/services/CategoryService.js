@@ -29,15 +29,6 @@ export const deleteCategory = async (id, access_token) => {
     return res.data
 }
 
-export const deleteManyCategory = async (data, access_token,) => {
-    const res = await axiosJWT.post(`${process.env.REACT_APP_API_URL}/category/delete-many-category`, data, {
-        headers: {
-            token: `Bearer ${access_token}`,
-        }
-    })
-    return res.data
-}
-
 export const getAllCategory = async (search, limit) => {
     let res = {}
     if (search?.length > 0) {

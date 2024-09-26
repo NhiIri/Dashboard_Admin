@@ -1,11 +1,11 @@
 import { Button, Form, Select, Space } from 'antd'
-import { PlusOutlined, DeleteOutlined, EditOutlined, SearchOutlined } from '@ant-design/icons'
+import { PlusOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons'
 import React, { useRef } from 'react'
 import { WrapperHeader, WrapperUploadFile } from './style'
 import TableComponent from '../../components/TableComponent/TableComponent'
 import { useState } from 'react'
 import InputComponent from '../../components/InputComponent/InputComponent'
-import { getBase64, renderOptions } from '../../utils'
+import { getBase64 } from '../../utils'
 import * as ProductService from '../../services/ProductService'
 import { useMutationHooks } from '../../hooks/useMutationHook'
 import Loading from '../../components/LoadingComponent/Loading'
@@ -262,7 +262,7 @@ const AdminProductPage = () => {
       discount: stateProduct.discount
     }
 
-    
+
     mutation.mutate(params, {
       onSettled: () => {
         queryProduct.refetch()

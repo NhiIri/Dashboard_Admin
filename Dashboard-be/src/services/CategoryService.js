@@ -79,20 +79,6 @@ const deleteCategory = (id) => {
     })
 }
 
-const deleteManyCategory = (ids) => {
-    return new Promise(async (resolve, reject) => {
-        try {
-            await Product.deleteMany({ _id: ids })
-            resolve({
-                status: 'OK',
-                message: 'Delete category success',
-            })
-        } catch (e) {
-            reject(e)
-        }
-    })
-}
-
 const getDetailsCategory= (id) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -171,6 +157,5 @@ module.exports = {
     updatedCategory,
     getDetailsCategory,
     deleteCategory,
-    deleteManyCategory,
     getAllCategory,
 }

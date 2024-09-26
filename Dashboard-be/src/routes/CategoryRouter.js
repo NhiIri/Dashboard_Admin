@@ -7,7 +7,6 @@ router.post('/create-category', CategoryController.createCategory)
 router.put('/update-category/:id', authMiddleWare, CategoryController.updatedCategory)
 router.get('/get-details-category/:id', CategoryController.getDetailsCategory)
 router.delete('/delete-category/:id', authMiddleWare, CategoryController.deleteCategory)
-router.post('/delete-many-category', authMiddleWare, CategoryController.deleteMany)
 router.get('/get-all-category', CategoryController.getAllCategory)
 
 module.exports = router
