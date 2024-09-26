@@ -111,7 +111,7 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
               <Badge count={order?.orderItems?.length} size="small">
                 <ShoppingCartOutlined style={{ fontSize: '30px', color: '#ffffff', }} />
               </Badge>
-              {/* <WrapperTextHeaderSmall>Giỏ hàng</WrapperTextHeaderSmall> */}
+              <WrapperTextHeaderSmall>Giỏ hàng</WrapperTextHeaderSmall>
             </div>
           )}
         </div>

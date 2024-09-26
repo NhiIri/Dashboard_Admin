@@ -33,9 +33,9 @@ const AdminDashboardPage = () => {
 
   const queries = useQueries({
     queries: [
-      {queryKey: ['products'], queryFn: getAllProducts, staleTime: 1000 * 60},
       {queryKey: ['users'], queryFn: getAllUsers, staleTime: 1000 * 60},
       {queryKey: ['categories'], queryFn: getAllCategories, staleTime: 1000 * 60},
+      {queryKey: ['products'], queryFn: getAllProducts, staleTime: 1000 * 60},
     ]
   })
   const memoCount = useMemo(() => {

@@ -1,6 +1,5 @@
 import AdminCategoryPage from "../pages/AdminCategoryPage/AdminCategoryPage";
 import AdminDashboard from "../pages/AdminDashboard/AdminDashboardPage";
-import AdminPage from "../pages/AdminPage/AdminPage";
 import AdminProductPage from "../pages/AdminProductPage/AdminProductPage";
 import AdminUserPage from "../pages/AdminUserPage/AdminUserPage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
@@ -10,13 +9,6 @@ import SignUpPage from "../pages/SignUpPage/SignUpPage";
 export const routes = [
     {
         path: '/',
-        page: AdminPage,
-        isShowHeader: false,
-        isPrivated: true
-    },
-
-    {
-        path: '/admin-dashboard',
         page: AdminDashboard,
         isShowHeader: false
     },

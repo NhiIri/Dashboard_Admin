@@ -261,7 +261,7 @@ const AdminCategoryPage = () => {
         <Button style={{ height: '150px', width: '150px', borderRadius: '6px', borderStyle: 'dashed' }} onClick={() => setIsModalOpen(true)}><PlusOutlined style={{ fontSize: '60px' }} /></Button>
       </div>
       <div style={{ marginTop: '20px' }}>
-        <TableComponent columns={columns} isLoading={isLoadingCategories} data={dataTable} onRow={(record, rowIndex) => {
+        <TableComponent  columns={columns} isLoading={isLoadingCategories} data={dataTable} onRow={(record, rowIndex) => {
           return {
             onClick: event => {
               setRowSelected(record._id)
@@ -269,7 +269,7 @@ const AdminCategoryPage = () => {
           };
         }} />
       </div>
-      <ModalComponent forceRender title="Thêm mới thể loại sản phẩm" open={isModalOpen} onCancel={handleCancel} footer={null}>
+      <ModalComponent forceRender title="Create Category" open={isModalOpen} onCancel={handleCancel} footer={null}>
         <Loading isLoading={isLoading}>
 
           <Form
@@ -281,7 +281,7 @@ const AdminCategoryPage = () => {
             form={form}
           >
             <Form.Item
-              label="Tên thể loại"
+              label="Name"
               name="name"
               rules={[{ required: true, message: 'Nhập tên thể loại sản phẩm!' }]}
             >
@@ -293,7 +293,7 @@ const AdminCategoryPage = () => {
               rules={[{ required: true, message: 'Chọn hình ảnh thể loại!' }]}
             >
               <WrapperUploadFile onChange={handleOnchangeAvatar} maxCount={1}>
-                <Button >Select File</Button>
+                <Button >Chọn file</Button>
                 {stateCategory?.image && (
                   <img src={stateCategory?.image} style={{
                     height: '60px',
@@ -307,7 +307,7 @@ const AdminCategoryPage = () => {
             </Form.Item>
             <Form.Item wrapperCol={{ offset: 20, span: 16 }}>
               <Button type="primary" htmlType="submit">
-                Submit
+                Thêm
               </Button>
             </Form.Item>
           </Form>
@@ -337,7 +337,7 @@ const AdminCategoryPage = () => {
               rules={[{ required: true, message: 'Chọn hình ảnh thể loại!' }]}
             >
               <WrapperUploadFile onChange={handleOnchangeAvatarDetails} maxCount={1}>
-                <Button >Select File</Button>
+                <Button >Chọn file</Button>
                 {stateCategoryDetails?.image && (
                   <img src={stateCategoryDetails?.image} style={{
                     height: '60px',
@@ -351,7 +351,7 @@ const AdminCategoryPage = () => {
             </Form.Item>
             <Form.Item wrapperCol={{ offset: 20, span: 16 }}>
               <Button type="primary" htmlType="submit">
-                Apply
+                Cập nhật
               </Button>
             </Form.Item>
           </Form>

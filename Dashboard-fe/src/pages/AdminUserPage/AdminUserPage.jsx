@@ -61,11 +61,11 @@ const AdminUserPage = () => {
       title: 'Email',
       dataIndex: 'email',
     },
-    {
-      title: 'Admin',
-      dataIndex: 'isAdmin',
+    // {
+    //   title: 'Admin',
+    //   dataIndex: 'isAdmin',
       
-    },
+    // },
     {
       title: 'Phone',
       dataIndex: 'phone',

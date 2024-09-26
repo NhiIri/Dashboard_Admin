@@ -8,6 +8,9 @@ import * as UserService from './services/UserService'
 import { useDispatch, useSelector } from 'react-redux'
 import { resetUser, updateUser } from './redux/slides/userSlide'
 import Loading from './components/LoadingComponent/Loading'
+import SideMenuCpn from './components/SideMenuCpn/SideMenuCpn'
+import "./App.css";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -63,19 +66,23 @@ function App() {
     <div style={{height: '100vh', width: '100%'}}>
       <Loading isLoading={isLoading}>
         <Router>
-          <Routes>
-            {routes.map((route) => {
-              const Page = route.page
-              const Layout = route.isShowHeader ? DefaultComponent : Fragment
-              return (
-                <Route key={route.path} path={route.path} element={
-                  <Layout>
-                    <Page />
-                  </Layout>
+          <div className="SideMenuAndPageContent">
+            <SideMenuCpn/>
+             <Routes>
+              {routes.map((route) => {
+                const Page = route.page
+                const Layout = route.isShowHeader ? DefaultComponent : Fragment
+                return (
+                  <Route key={route.path} path={route.path} element={
+                    <Layout>
+                      <Page />
+                    </Layout>
                 } />
-              )
-            })}
-          </Routes>
+                )
+              })}
+            </Routes>
+          </div>
+        
         </Router>
       </Loading>
     </div>

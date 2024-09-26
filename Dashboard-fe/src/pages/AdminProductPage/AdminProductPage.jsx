@@ -261,6 +261,8 @@ const AdminProductPage = () => {
       countInStock: stateProduct.countInStock,
       discount: stateProduct.discount
     }
+
+    
     mutation.mutate(params, {
       onSettled: () => {
         queryProduct.refetch()
@@ -333,7 +335,7 @@ const AdminProductPage = () => {
           };
         }} />
       </div>
-      <ModalComponent forceRender title="Tạo sản phẩm" open={isModalOpen} onCancel={handleCancel} footer={null}>
+      <ModalComponent forceRender title="Create Product" open={isModalOpen} onCancel={handleCancel} footer={null}>
         <Loading isLoading={isLoading}>
 
           <Form
@@ -347,7 +349,7 @@ const AdminProductPage = () => {
             <Form.Item
               label="Name"
               name="name"
-              rules={[{ required: true, message: 'Please input your name!' }]}
+              rules={[{ required: true, message: 'Please input name!' }]}
             >
               <InputComponent value={stateProduct['name']} onChange={handleOnchange} name="name" />
             </Form.Item>
@@ -376,27 +378,28 @@ const AdminProductPage = () => {
               </Form.Item>
             )} */}
 
+           <Form.Item
+              label="Description"
+              name="description"
+              rules={[{ required: true, message: 'Please input description!' }]}
+            >
+              <InputComponent value={stateProduct.description} onChange={handleOnchange} name="description" />
+            </Form.Item>
+
+            <Form.Item
+              label="Price"
+              name="price"
+              rules={[{ required: true, message: 'Please input price!' }]}
+            >
+              <InputComponent value={stateProduct.price} onChange={handleOnchange} name="price" />
+            </Form.Item>
 
             <Form.Item
               label="Count inStock"
               name="countInStock"
-              rules={[{ required: true, message: 'Please input your count inStock!' }]}
+              rules={[{ required: true, message: 'Please input count inStock!' }]}
             >
               <InputComponent value={stateProduct.countInStock} onChange={handleOnchange} name="countInStock" />
-            </Form.Item>
-            <Form.Item
-              label="Price"
-              name="price"
-              rules={[{ required: true, message: 'Please input your count price!' }]}
-            >
-              <InputComponent value={stateProduct.price} onChange={handleOnchange} name="price" />
-            </Form.Item>
-            <Form.Item
-              label="Description"
-              name="description"
-              rules={[{ required: true, message: 'Please input your count description!' }]}
-            >
-              <InputComponent value={stateProduct.description} onChange={handleOnchange} name="description" />
             </Form.Item>
 
 
@@ -412,14 +415,14 @@ const AdminProductPage = () => {
             <Form.Item
               label="Discount"
               name="discount"
-              rules={[{ required: true, message: 'Please input your discount of product!' }]}
+              rules={[{ required: true, message: 'Please input discount of product!' }]}
             >
               <InputComponent value={stateProduct.discount} onChange={handleOnchange} name="discount" />
             </Form.Item>
             <Form.Item
               label="Image"
               name="image"
-              rules={[{ required: true, message: 'Please input your count image!' }]}
+              rules={[{ required: true, message: 'Please input image!' }]}
             >
               <WrapperUploadFile onChange={handleOnchangeAvatar} maxCount={1}>
                 <Button >Select File</Button>
@@ -442,7 +445,7 @@ const AdminProductPage = () => {
           </Form>
         </Loading>
       </ModalComponent>
-      <DrawerComponent title='Chi tiết sản phẩm' isOpen={isOpenDrawer} onClose={() => setIsOpenDrawer(false)} width="90%">
+      <DrawerComponent title='Product Details' isOpen={isOpenDrawer} onClose={() => setIsOpenDrawer(false)} width="90%">
         <Loading isLoading={isLoadingUpdate || isLoadingUpdated}>
 
           <Form
@@ -457,7 +460,7 @@ const AdminProductPage = () => {
             <Form.Item
               label="Name"
               name="name"
-              rules={[{ required: true, message: 'Please input your name!' }]}
+              rules={[{ required: true, message: 'Please input name!' }]}
             >
               <InputComponent value={stateProductDetails['name']} onChange={handleOnchangeDetails} name="name" />
             </Form.Item>
@@ -465,7 +468,7 @@ const AdminProductPage = () => {
             <Form.Item
               label="Description"
               name="description"
-              rules={[{ required: true, message: 'Please input your count description!' }]}
+              rules={[{ required: true, message: 'Please input description!' }]}
             >
               <InputComponent value={stateProductDetails.description} onChange={handleOnchangeDetails} name="description" />
             </Form.Item>
@@ -473,7 +476,7 @@ const AdminProductPage = () => {
             <Form.Item
               label="Price"
               name="price"
-              rules={[{ required: true, message: 'Please input your count price!' }]}
+              rules={[{ required: true, message: 'Please input price!' }]}
             >
               <InputComponent value={stateProductDetails.price} onChange={handleOnchangeDetails} name="price" />
             </Form.Item>
@@ -490,7 +493,7 @@ const AdminProductPage = () => {
             <Form.Item
               label="Count inStock"
               name="countInStock"
-              rules={[{ required: true, message: 'Please input your count inStock!' }]}
+              rules={[{ required: true, message: 'Please input count inStock!' }]}
             >
               <InputComponent value={stateProductDetails.countInStock} onChange={handleOnchangeDetails} name="countInStock" />
             </Form.Item>
@@ -508,7 +511,7 @@ const AdminProductPage = () => {
             <Form.Item
               label="Discount"
               name="discount"
-              rules={[{ required: true, message: 'Please input your discount of product!' }]}
+              rules={[{ required: true, message: 'Please input discount of product!' }]}
             >
               <InputComponent value={stateProductDetails.discount} onChange={handleOnchangeDetails} name="discount" />
             </Form.Item>
@@ -516,7 +519,7 @@ const AdminProductPage = () => {
             <Form.Item
               label="Image"
               name="image"
-              rules={[{ required: true, message: 'Please input your count image!' }]}
+              rules={[{ required: true, message: 'Please input image!' }]}
             >
               <WrapperUploadFile onChange={handleOnchangeAvatarDetails} maxCount={1}>
                 <Button >Select File</Button>
@@ -540,9 +543,9 @@ const AdminProductPage = () => {
           </Form>
         </Loading>
       </DrawerComponent>
-      <ModalComponent title="Xóa sản phẩm" open={isModalOpenDelete} onCancel={handleCancelDelete} onOk={handleDeleteProduct}>
+      <ModalComponent title="Delete Product" open={isModalOpenDelete} onCancel={handleCancelDelete} onOk={handleDeleteProduct}>
         <Loading isLoading={isLoadingDeleted}>
-          <div>Bạn có chắc xóa sản phẩm này không?</div>
+          <div>Do you want to delete product?</div>
         </Loading>
       </ModalComponent>
     </div>

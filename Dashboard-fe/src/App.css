@@ -1,0 +1,30 @@
+.App{
+    display: flex;
+    flex-direction: column;
+    width: 100vh;
+    height: 100vh;
+}
+
+.SideMenuAndPageContent{
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: rgba(255, 255, 255, 0.127) ;
+}
+.SideMenu{
+    height: 100%;
+    width: 100%;
+    /* padding-top: 20%; */
+
+}
+.SideMenuVertical{
+    height: 100%;
+}
+.PageContent{
+    padding-left: 12px;
+}
+/* .TableComponent{
+
+
+} */
