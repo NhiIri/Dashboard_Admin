@@ -66,12 +66,10 @@ function App() {
     <div style={{height: '100vh', width: '100%'}}>
       <Loading isLoading={isLoading}>
         <Router>
-          <div className="SideMenuAndPageContent">
-            <SideMenuCpn/>
              <Routes>
               {routes.map((route) => {
                 const Page = route.page
-                const Layout = route.isShowHeader ? DefaultComponent : Fragment
+                const Layout = route.isShowSideMenu ? DefaultComponent : Fragment
                 return (
                   <Route key={route.path} path={route.path} element={
                     <Layout>
@@ -80,9 +78,7 @@ function App() {
                 } />
                 )
               })}
-            </Routes>
-          </div>
-        
+            </Routes>     
         </Router>
       </Loading>
     </div>

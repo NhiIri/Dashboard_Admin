@@ -1,11 +1,11 @@
 import React from 'react'
-import Navbar from '../../components/Navbar/Navbar'
+import SideMenuCpn from '../SideMenuCpn/SideMenuCpn'
 
 
 const DefaultComponent = ({children}) => {
   return (
-    <div>
-         <Navbar />
+    <div className="SideMenuAndPageContent">
+         <SideMenuCpn />
         {children}
     </div>
   )

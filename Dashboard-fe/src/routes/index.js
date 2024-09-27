@@ -11,36 +11,36 @@ export const routes = [
     {
         path: '/',
         page: AdminDashboard,
-        isShowHeader: false
+        isShowSideMenu: true
     },
 
     {
         path: '/admin-category',
         page: AdminCategoryPage,
-        isShowHeader: false
+        isShowSideMenu: true
     },
 
     {
         path: '/admin-product',
         page: AdminProductPage,
-        isShowHeader: false
+        isShowSideMenu: true
     },
 
     {
         path: '/admin-user',
         page: AdminUserPage,
-        isShowHeader: false
+        isShowSideMenu: true
     },
     {
         path: '/admin-account',
         page: AdminAccountPage,
-        isShowHeader: false
+        isShowSideMenu: true
     },
 
     {
         path: '/sign-in',
         page: SignInPage,
-        isShowHeader: false
+        isShowSideMenu: false
     },
 
 
@@ -48,7 +48,7 @@ export const routes = [
     {
         path: '/sign-up',
         page: SignUpPage,
-        isShowHeader: false
+        isShowSideMenu: false
     },
    
     {
