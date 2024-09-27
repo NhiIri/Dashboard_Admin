@@ -5,10 +5,10 @@ export const WrapperInputStyle = styled(Input)`
     border-top: none;
     border-right: none;
     border-left: none;
-    border-bottom: 2px solid #E57098;
+    border-bottom: 2px solid #708fe5;
     outline: none;
     &:focus {
-        background-color: rgb(251, 214, 227);
-        border: 1.5px solid #E57098;
+        background-color: #708fe54a;
+        border: 1.5px solid #708fe5;
     }
 `

@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react'
 import ButtonComponent from '../../components/ButtonComponent/ButtonComponent'
 import InputForm from '../../components/InputForm/InputForm'
-import { WrapperContainerLeft, WrapperContainerRight, WrapperTextLight } from './style'
-import imageLogo from '../../assets/images/signin.jpg'
-import { Image } from 'antd'
+import { WrapperContainer} from './style'
 import { EyeFilled, EyeInvisibleFilled } from '@ant-design/icons'
 import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
@@ -54,11 +52,6 @@ const SignInPage = () => {
     dispatch(updateUser({ ...res?.data, access_token: token,refreshToken }))
   }
 
-
-  const handleNavigateSignUp = () => {
-    navigate('/sign-up')
-  }
-
   const handleOnchangeEmail = (value) => {
     setEmail(value)
   }
@@ -77,10 +70,9 @@ const SignInPage = () => {
 
   return (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center',  background:'#5a5a5a95', height: '100vh' }}>
-      <div style={{ width: '70%', height: '80%' ,border: '4px solid #E57098',boxShadow:'0px 0px 10px 6px #0000005d',borderRadius: '6px', background:'#fff', display: 'flex' }}>
-        <WrapperContainerLeft>
-          <h1 style={{fontFamily:'Garamond', fontSize:'40px', fontWeight:'700', borderBottom:'3px dashed #E57098',textAlign:'center'}}>Welcome to WindyIris!!!</h1>
-          <p style={{fontFamily:'Garamond', fontSize:'30px', fontWeight:'600', textAlign:'center',color:'#E57098'}}>Login</p>
+      <div style={{ width: '70%', height: '80%' ,boxShadow:'0px 0px 10px 6px #0000005d',borderRadius: '6px', background:'#fff', display: 'flex' }}>
+        <WrapperContainer>
+          <p style={{fontFamily:'Garamond', fontSize:'30px', fontWeight:'600', textAlign:'center',color:'#708fe5'}}>Login</p>
           <InputForm style={{ marginBottom: '15px', fontSize:'17px'}} placeholder="abc@gmail.com" value={email} onChange={handleOnchangeEmail} />
           <div style={{ position: 'relative' }}>
             <span
@@ -114,7 +106,7 @@ const SignInPage = () => {
               onClick={handleSignIn}
               size={40}
               styleButton={{
-                background: '#E57098',
+                background: '#708fe5',
                 height: '48px',
                 width: '100%',
                 border: 'none',
@@ -125,15 +117,91 @@ const SignInPage = () => {
               styleTextButton={{ color: '#fff', fontSize: '17px', fontWeight: '700' }}
             ></ButtonComponent>
           </Loading>
-          <p><WrapperTextLight>Forgot password?</WrapperTextLight></p>
-          <p>Don't have an account? <WrapperTextLight onClick={handleNavigateSignUp}> Signup</WrapperTextLight></p>
-        </WrapperContainerLeft>
-        <WrapperContainerRight>
+          {/* <p><WrapperTextLight>Forgot password?</WrapperTextLight></p>
+          <p>Don't have an account? <WrapperTextLight onClick={handleNavigateSignUp}> Signup</WrapperTextLight></p> */}
+        </WrapperContainer>
+        {/* <WrapperContainerRight>
           <Image src={imageLogo} preview={false} alt="iamge-logo" height="98%" width="98%" />        
-        </WrapperContainerRight>
+        </WrapperContainerRight> */}
       </div>
     </div >
   )
 }
 
 export default SignInPage
+
+
+
+
+
+// import React from 'react'
+// import { useState } from 'react'
+// import { WrapperContainerLeft, WrapperTextLight } from './style'
+// import InputForm from '../../components/InputForm/InputForm'
+// import { EyeFilled, EyeInvisibleFilled } from '@ant-design/icons'
+// import ButtonComponent from '../../components/ButtonComponent/ButtonComponent'
+
+// const SignInPage = () => {
+//   const [isShowPassword, setIsShowPassword] = useState(false)
+
+//   return (
+//     <div>
+//       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center',  background:'#5a5a5a95', height: '100vh' }}>
+//     <div style={{ width: '500px', height: '450px' ,boxShadow:'0px 0px 10px 6px #0000005d',borderRadius: '6px', background:'#fff', display: 'flex' }}>
+//       <WrapperContainerLeft>
+//         <h1 style={{fontFamily:'Garamond', fontSize:'40px', fontWeight:'700', borderBottom:'2px dashed #708fe5',textAlign:'center'}}>LOGIN</h1>
+//         {/* <p style={{fontFamily:'Garamond', fontSize:'30px', fontWeight:'600', textAlign:'center',color:'#E57098'}}>Login</p> */}
+//         <InputForm style={{ marginBottom: '15px', fontSize:'17px'}} placeholder="abc@gmail.com"  />
+//         {/* value={email} onChange={handleOnchangeEmail} */}
+//         <div style={{ position: 'relative' }}>
+//           <span
+//             onClick={() => setIsShowPassword(!isShowPassword)}
+//             style={{
+//               zIndex: 10,
+//               position: 'absolute',
+//               top: '4px',
+//               right: '8px'
+//             }}
+//           >{
+//               isShowPassword ? (
+//                 <EyeFilled />
+//               ) : (
+//                 <EyeInvisibleFilled />
+//               )
+//             }
+//           </span>
+//           <InputForm
+//             style={{fontSize:'17px'}}
+//             placeholder="password"
+//             type={isShowPassword ? "text" : "password"}
+//             // value={password}
+//             // onChange={handleOnchangePassword}
+//           />
+//         </div>
+//         {/* {data?.status === 'ERR' && <span style={{ color: 'red' }}>{data?.message}</span>} */}
+       
+//           <ButtonComponent
+//             // disabled={!email.length || !password.length}
+//             // onClick={handleSignIn}
+//             size={40}
+//             styleButton={{
+//               background: '#708fe5',
+//               height: '48px',
+//               width: '100%',
+//               border: 'none',
+//               borderRadius: '4px',
+//               margin: '26px 0 10px'
+//             }}
+//             textbutton={'Login'}
+//             styleTextButton={{ color: '#fff', fontSize: '17px', fontWeight: '700' }}
+//           ></ButtonComponent>
+        
+
+//       </WrapperContainerLeft>
+//     </div>
+//   </div >
+//   </div>
+//   )
+// }
+
+// export default SignInPage

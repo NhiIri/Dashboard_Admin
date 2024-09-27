@@ -7,7 +7,12 @@ const InputForm = (props) => {
         props.onChange(e.target.value)
     }
     return (
-        <WrapperInputStyle placeholder={placeholder} value={props.value} {...rests} onChange={handleOnchangeInput} />
+        <WrapperInputStyle 
+        placeholder={placeholder} 
+        value={props.value} 
+        {...rests} 
+        onChange={handleOnchangeInput} 
+        />
     )
 }
 

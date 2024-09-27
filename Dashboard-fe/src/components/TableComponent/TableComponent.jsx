@@ -5,7 +5,7 @@ const TableComponent = (props) => {
   const { data:dataSource = [], columns = [] } = props
   return (
       <Table
-        className='TableComponent'
+        // className='TableComponent'
         columns={columns}
         dataSource={dataSource}
         {...props}

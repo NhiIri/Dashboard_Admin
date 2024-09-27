@@ -283,17 +283,17 @@ const AdminCategoryPage = () => {
             <Form.Item
               label="Name"
               name="name"
-              rules={[{ required: true, message: 'Nhập tên thể loại sản phẩm!' }]}
+              rules={[{ required: true, message: 'Please input name!' }]}
             >
               <InputComponent value={stateCategory['name']} onChange={handleOnchange} name="name" />
             </Form.Item>          
             <Form.Item
-              label="Hình ảnh"
+              label="Image"
               name="image"
-              rules={[{ required: true, message: 'Chọn hình ảnh thể loại!' }]}
+              rules={[{ required: true, message: 'Please input image!' }]}
             >
               <WrapperUploadFile onChange={handleOnchangeAvatar} maxCount={1}>
-                <Button >Chọn file</Button>
+                <Button >Select File</Button>
                 {stateCategory?.image && (
                   <img src={stateCategory?.image} style={{
                     height: '60px',
@@ -307,13 +307,13 @@ const AdminCategoryPage = () => {
             </Form.Item>
             <Form.Item wrapperCol={{ offset: 20, span: 16 }}>
               <Button type="primary" htmlType="submit">
-                Thêm
+              Apply
               </Button>
             </Form.Item>
           </Form>
         </Loading>
       </ModalComponent>
-      <DrawerComponent title='Chi tiết thể loại' isOpen={isOpenDrawer} onClose={() => setIsOpenDrawer(false)} width="90%">
+      <DrawerComponent title='Category Details' isOpen={isOpenDrawer} onClose={() => setIsOpenDrawer(false)} width="90%">
         <Loading isLoading={isLoadingUpdate || isLoadingUpdated}>
 
           <Form
@@ -325,19 +325,19 @@ const AdminCategoryPage = () => {
             form={form}
           >
             <Form.Item
-              label="Tên thể loại"
+              label="Name"
               name="name"
-              rules={[{ required: true, message: 'Nhập tên thể loại sản phẩm!' }]}
+              rules={[{ required: true, message: 'Please input name!' }]}
             >
               <InputComponent value={stateCategoryDetails['name']} onChange={handleOnchangeDetails} name="name" />
             </Form.Item>
             <Form.Item
-              label="Hình ảnh"
+              label="Image"
               name="image"
-              rules={[{ required: true, message: 'Chọn hình ảnh thể loại!' }]}
+              rules={[{ required: true, message: 'Please input image!' }]}
             >
               <WrapperUploadFile onChange={handleOnchangeAvatarDetails} maxCount={1}>
-                <Button >Chọn file</Button>
+                <Button >Select File</Button>
                 {stateCategoryDetails?.image && (
                   <img src={stateCategoryDetails?.image} style={{
                     height: '60px',
@@ -351,15 +351,15 @@ const AdminCategoryPage = () => {
             </Form.Item>
             <Form.Item wrapperCol={{ offset: 20, span: 16 }}>
               <Button type="primary" htmlType="submit">
-                Cập nhật
+                Apply
               </Button>
             </Form.Item>
           </Form>
         </Loading>
       </DrawerComponent>
-      <ModalComponent title="Xóa thể loại" open={isModalOpenDelete} onCancel={handleCancelDelete} onOk={handleDeleteCategory}>
+      <ModalComponent title="Delete Category" open={isModalOpenDelete} onCancel={handleCancelDelete} onOk={handleDeleteCategory}>
         <Loading isLoading={isLoadingDeleted}>
-          <div>Bạn có chắc xóa thể loại này không?</div>
+          <div>Do you want to delete category?</div>
         </Loading>
       </ModalComponent>
     </div>

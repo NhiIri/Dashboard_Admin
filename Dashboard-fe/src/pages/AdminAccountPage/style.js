@@ -25,14 +25,12 @@ export const WrapperTextHeader = styled(Link)`
 export const WrapperHeaderAccout = styled.div`
     display: flex;
     align-items: center;
-    color: #fff;
     gap: 10px;
     max-width: 200px;
 `
 
 export const WrapperTextHeaderSmall = styled.span`
     font-size: 15px;
-    color: #fff;
     font-weight:700;
     /* text-shadow: 0px 0px 0px #ffffff; */
     white-space: nowrap;

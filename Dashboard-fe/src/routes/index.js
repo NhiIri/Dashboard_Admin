@@ -1,3 +1,4 @@
+import AdminAccountPage from "../pages/AdminAccountPage/AdminAccountPage";
 import AdminCategoryPage from "../pages/AdminCategoryPage/AdminCategoryPage";
 import AdminDashboard from "../pages/AdminDashboard/AdminDashboardPage";
 import AdminProductPage from "../pages/AdminProductPage/AdminProductPage";
@@ -28,6 +29,11 @@ export const routes = [
     {
         path: '/admin-user',
         page: AdminUserPage,
+        isShowHeader: false
+    },
+    {
+        path: '/admin-account',
+        page: AdminAccountPage,
         isShowHeader: false
     },
 

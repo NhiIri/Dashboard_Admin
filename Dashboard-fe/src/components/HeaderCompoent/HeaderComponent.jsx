@@ -6,7 +6,6 @@ import {
   CaretDownOutlined,
   ShoppingCartOutlined
 } from '@ant-design/icons';
-import ButttonInputSearch from '../ButtonInputSearch/ButttonInputSearch';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import * as UserService from '../../services/UserService'
@@ -87,14 +86,14 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
         </Col>
         {!isHiddenSearch && (
           <Col span={13}>
-            <ButttonInputSearch
+            {/* <ButttonInputSearch
               size="large"
               bordered={false}
               textbutton="Tìm kiếm"
               placeholder="Nhập tên sản phẩm"
               onChange={onSearch}
               backgroundColorButton="#fb6f92"
-            />
+            /> */}
           </Col>
         )}
         <Col span={6} style={{ display: 'flex', gap: '54px', alignItems: 'center' }}>

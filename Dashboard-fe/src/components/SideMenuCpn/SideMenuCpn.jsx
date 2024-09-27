@@ -3,10 +3,12 @@ import {
     AlignRightOutlined,
     ShoppingCartOutlined,
     UserOutlined,
+    SettingOutlined
   } from "@ant-design/icons";
   import { Menu } from "antd";
   import { useEffect, useState } from "react";
   import { useLocation, useNavigate } from "react-router-dom";
+import Navbar from "../Navbar/Navbar";
   
   function SideMenuCpn() {
     const location = useLocation();
@@ -19,7 +21,9 @@ import {
   
     const navigate = useNavigate();
     return (
-      <div className="SideMenu">
+      <div className="Menu">
+        <Navbar/>
+        <div className="SideMenu">
         <Menu
           className="SideMenuVertical"
           mode="vertical"
@@ -49,9 +53,16 @@ import {
               key: "/admin-product",
               icon: <ShoppingCartOutlined />,
             },
+            {
+              label: "ACCOUNT",
+              key: "/admin-account",
+              icon: <SettingOutlined />,
+            },
           ]}
         ></Menu>
       </div>
+      </div>
+
     );
   }
   export default SideMenuCpn;

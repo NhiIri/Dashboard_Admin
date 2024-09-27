@@ -8,6 +8,8 @@ import * as UserService from '../../services/UserService'
 import { useQueryClient } from '@tanstack/react-query'
 
 const AdminUserPage = () => {
+
+  
   const [rowSelected, setRowSelected] = useState('')
   const [isOpenDrawer, setIsOpenDrawer] = useState(false)
 
@@ -21,8 +23,6 @@ const AdminUserPage = () => {
   })
 
   const [form] = Form.useForm();
-
-
 
   const fetchGetDetailsUser = async (rowSelected) => {
     const res = await UserService.getDetailsUser(rowSelected)
