@@ -2,7 +2,7 @@ const Category = require("../models/CategoryModel")
 
 const createCategory = (newCategory) => {
     return new Promise(async (resolve, reject) => {
-        const { name, image } = newCategory
+        const { name } = newCategory
         try {
             const checkCategory = await Category.findOne({
                 name: name
@@ -14,8 +14,7 @@ const createCategory = (newCategory) => {
                 })
             }
             const newCategory = await Category.create({
-                name, 
-                image,           
+                name,           
             })
             if (newCategory) {
                 resolve({

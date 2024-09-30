@@ -11,6 +11,7 @@ import Loading from '../../components/LoadingComponent/Loading'
 import jwt_decode from "jwt-decode";
 import { useDispatch, useSelector } from 'react-redux'
 import { updateUser } from '../../redux/slides/userSlide'
+import { GoogleLogin } from '@react-oauth/google'
 
 const SignInPage = () => {
   const [isShowPassword, setIsShowPassword] = useState(false)
@@ -116,13 +117,10 @@ const SignInPage = () => {
               textbutton={'Login'}
               styleTextButton={{ color: '#fff', fontSize: '17px', fontWeight: '700' }}
             ></ButtonComponent>
+            <div>
+            </div>
           </Loading>
-          {/* <p><WrapperTextLight>Forgot password?</WrapperTextLight></p>
-          <p>Don't have an account? <WrapperTextLight onClick={handleNavigateSignUp}> Signup</WrapperTextLight></p> */}
         </WrapperContainer>
-        {/* <WrapperContainerRight>
-          <Image src={imageLogo} preview={false} alt="iamge-logo" height="98%" width="98%" />        
-        </WrapperContainerRight> */}
       </div>
     </div >
   )

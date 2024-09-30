@@ -4,15 +4,11 @@ const productSchema = new mongoose.Schema(
     {
         name: { type: String, required: true, unique: true },
         image: { type: String, required: true },
-        type: { type: String, required: true },
         category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true },
         price: { type: Number, required: true },
         countInStock: { type: Number, required: true },
-        rating: { type: Number, required: true },
         description: { type: String },
         discount: { type: Number },
-        selled: { type: Number },
-        isFeatured: {type: Boolean}
     },
     {
         timestamps: true,

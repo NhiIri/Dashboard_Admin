@@ -8,7 +8,5 @@ router.put('/update/:id', authMiddleWare, ProductController.updateProduct)
 router.get('/get-details/:id', ProductController.getDetailsProduct)
 router.delete('/delete/:id', authMiddleWare, ProductController.deleteProduct)
 router.get('/get-all', ProductController.getAllProduct)
-router.get('/get-all-type', ProductController.getAllType)
-router.get('/category/:categoryId', ProductController.getProductsByCategory);
-// router.get('/getproduct-category/:categoryName', ProductController.getProductsByCategory);
+router.get('/category/:category', ProductController.getProductsByCategory);
 module.exports = router

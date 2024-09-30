@@ -4,10 +4,13 @@ import { useSelector } from 'react-redux';
 
 const PrivateRoute = ({ children }) => {
   const user = useSelector((state) => state.user);
-  const isAuthenticated = user?.access_token || localStorage.getItem('access_token');
+  const isAuthenticated = user?.access_token;
 
-  return isAuthenticated ? children : <Navigate to="/sign-in" />;
+  if (!isAuthenticated) {
+    return <Navigate to="/sign-in" />;
+  }
+
+  return children;
 };
 
 export default PrivateRoute;
-

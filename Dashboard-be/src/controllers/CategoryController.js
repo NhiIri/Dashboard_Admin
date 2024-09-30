@@ -2,8 +2,8 @@ const CategoryService = require('../services/CategoryService')
 
 const createCategory = async (req, res) => {
     try {
-        const { name, image} = req.body
-        if (!name || !image ) {
+        const { name} = req.body
+        if (!name) {
             return res.status(200).json({
                 status: 'ERR',
                 message: 'The input is required'

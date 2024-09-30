@@ -128,18 +128,12 @@ const AdminProductPage = () => {
     setIsOpenDrawer(true)
   }
 
-  const fetchAllTypeProduct = async () => {
-    const res = await ProductService.getAllTypeProduct()
-    return res
-  }
-
   const { data, isLoading, isSuccess, isError } = mutation
   const { data: dataUpdated, isLoading: isLoadingUpdated, isSuccess: isSuccessUpdated, isError: isErrorUpdated } = mutationUpdate
   const { data: dataDeleted, isLoading: isLoadingDeleted, isSuccess: isSuccessDelected, isError: isErrorDeleted } = mutationDeleted
 
 
   const queryProduct = useQuery({ queryKey: ['products'], queryFn: getAllProducts })
-  // const typeProduct = useQuery({ queryKey: ['type-product'], queryFn: fetchAllTypeProduct })
   const { isLoading: isLoadingProducts, data: products } = queryProduct
   const renderAction = () => {
     return (
@@ -354,30 +348,6 @@ const AdminProductPage = () => {
               <InputComponent value={stateProduct['name']} onChange={handleOnchange} name="name" />
             </Form.Item>
 
-            {/* <Form.Item
-              label="Type"
-              name="type"
-              rules={[{ required: true, message: 'Please input your type!' }]}
-            >
-              <Select
-                name="type"
-                // defaultValue="lucy"
-                // style={{ width: 120 }}
-                value={stateProduct.type}
-                onChange={handleChangeSelect}
-                options={renderOptions(typeProduct?.data?.data)}
-                />
-            </Form.Item>
-            {stateProduct.type === 'add_type' && (
-              <Form.Item
-                label='New type'
-                name="newType"
-                rules={[{ required: true, message: 'Please input your type!' }]}
-              >
-                <InputComponent value={stateProduct.newType} onChange={handleOnchange} name="newType" />
-              </Form.Item>
-            )} */}
-
            <Form.Item
               label="Description"
               name="description"
@@ -401,15 +371,6 @@ const AdminProductPage = () => {
             >
               <InputComponent value={stateProduct.countInStock} onChange={handleOnchange} name="countInStock" />
             </Form.Item>
-
-
-            {/* <Form.Item
-              label="Rating"
-              name="rating"
-              rules={[{ required: true, message: 'Please input your count rating!' }]}
-            >
-              <InputComponent value={stateProduct.rating} onChange={handleOnchange} name="rating" />
-            </Form.Item> */}
 
 
             <Form.Item
@@ -481,15 +442,6 @@ const AdminProductPage = () => {
               <InputComponent value={stateProductDetails.price} onChange={handleOnchangeDetails} name="price" />
             </Form.Item>
 
-
-            {/* <Form.Item
-              label="Type"
-              name="type"
-              rules={[{ required: true, message: 'Please input your type!' }]}
-            >
-              <InputComponent value={stateProductDetails['type']} onChange={handleOnchangeDetails} name="type" />
-            </Form.Item> */}
-
             <Form.Item
               label="Count inStock"
               name="countInStock"
@@ -497,15 +449,6 @@ const AdminProductPage = () => {
             >
               <InputComponent value={stateProductDetails.countInStock} onChange={handleOnchangeDetails} name="countInStock" />
             </Form.Item>
-
-
-            {/* <Form.Item
-              label="Rating"
-              name="rating"
-              rules={[{ required: true, message: 'Please input your count rating!' }]}
-            >
-              <InputComponent value={stateProductDetails.rating} onChange={handleOnchangeDetails} name="rating" />
-            </Form.Item> */}
 
 
             <Form.Item

@@ -2,8 +2,8 @@ const ProductService = require('../services/ProductService')
 
 const createProduct = async (req, res) => {
     try {
-        const { name, image, type, countInStock, price, rating, description, discount,category } = req.body
-        if (!name || !image || !type || !countInStock || !price || !rating || !discount || !category  || !description) {
+        const { name, image, countInStock, price, description, discount,category } = req.body
+        if (!name || !image || !countInStock || !price || !discount || !category  || !description) {
             return res.status(200).json({
                 status: 'ERR',
                 message: 'The input is required'
@@ -85,28 +85,19 @@ const getAllProduct = async (req, res) => {
     }
 }
 
-const getAllType = async (req, res) => {
+const getProductsByCategory = async (req, res) => {
+    const categoryId = req.params.categoryId;
     try {
-        const response = await ProductService.getAllType()
-        return res.status(200).json(response)
-    } catch (e) {
-        return res.status(404).json({
-            message: e
-        })
-    }
-}
-
-
-
-async function getProductsByCategory(req, res) {
-    try {
-        const categoryId = req.params.categoryId;
-        const products = await ProductService.getProductsByCategory(categoryId);
+        const products = await productService.getProductsByCategoryId(categoryId);
+        if (products.length === 0) {
+            return res.status(404).json({ message: 'Không tìm thấy sản phẩm nào trong danh mục này' });
+        }
         res.json(products);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
+    } catch (err) {
+        res.status(500).json({ message: 'Lỗi server', error: err });
     }
-}
+};
+
 
 module.exports = {
     createProduct,
@@ -114,6 +105,5 @@ module.exports = {
     getDetailsProduct,
     deleteProduct,
     getAllProduct,
-    getAllType,
     getProductsByCategory
 }

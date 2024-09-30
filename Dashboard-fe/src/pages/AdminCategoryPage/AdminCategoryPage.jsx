@@ -25,7 +25,6 @@ const AdminCategoryPage = () => {
   const user = useSelector((state) => state?.user)
   const inittial = () => ({
     name: '',
-    image: '',  
   })
   const [stateCategory, setStateCategory] = useState(inittial())
   const [stateCategoryDetails, setStateCategoryDetails] = useState(inittial())
@@ -36,11 +35,9 @@ const AdminCategoryPage = () => {
     (data) => {
       const { 
         name,
-        image,
         } = data
       const res = CategoryService.createCategory({
-        name,       
-        image,    
+        name,           
       })
       return res
     }
@@ -79,8 +76,7 @@ const AdminCategoryPage = () => {
     const res = await CategoryService.getDetailsCategory(rowSelected)
     if (res?.data) {
       setStateCategoryDetails({
-        name: res?.data?.name,
-        image: res?.data?.image,     
+        name: res?.data?.name,    
       })
     }
     setIsLoadingUpdate(false)
@@ -160,7 +156,6 @@ const AdminCategoryPage = () => {
     setIsOpenDrawer(false);
     setStateCategoryDetails({
       name: '',
-      image: '',
     })
     form.resetFields()
   };
@@ -191,7 +186,6 @@ const AdminCategoryPage = () => {
     setIsModalOpen(false);
     setStateCategory({
       name: '',
-      image: '',
     })
     form.resetFields()
   };
@@ -199,7 +193,6 @@ const AdminCategoryPage = () => {
   const onFinish = () => {
     const params = {
       name: stateCategory.name,
-      image: stateCategory.image
     }
     mutation.mutate(params, {
       onSettled: () => {
@@ -228,8 +221,7 @@ const AdminCategoryPage = () => {
       file.preview = await getBase64(file.originFileObj);
     }
     setStateCategory({
-      ...stateCategory,
-      image: file.preview
+      ...stateCategory
     })
   }
 
@@ -239,8 +231,7 @@ const AdminCategoryPage = () => {
       file.preview = await getBase64(file.originFileObj);
     }
     setStateCategoryDetails({
-      ...stateCategoryDetails,
-      image: file.preview
+      ...stateCategoryDetails
     })
   }
 
@@ -286,25 +277,7 @@ const AdminCategoryPage = () => {
               rules={[{ required: true, message: 'Please input name!' }]}
             >
               <InputComponent value={stateCategory['name']} onChange={handleOnchange} name="name" />
-            </Form.Item>          
-            <Form.Item
-              label="Image"
-              name="image"
-              rules={[{ required: true, message: 'Please input image!' }]}
-            >
-              <WrapperUploadFile onChange={handleOnchangeAvatar} maxCount={1}>
-                <Button >Select File</Button>
-                {stateCategory?.image && (
-                  <img src={stateCategory?.image} style={{
-                    height: '60px',
-                    width: '60px',
-                    borderRadius: '50%',
-                    objectFit: 'cover',
-                    marginLeft: '10px'
-                  }} alt="avatar" />
-                )}
-              </WrapperUploadFile>
-            </Form.Item>
+            </Form.Item>                     
             <Form.Item wrapperCol={{ offset: 20, span: 16 }}>
               <Button type="primary" htmlType="submit">
               Apply
@@ -330,24 +303,6 @@ const AdminCategoryPage = () => {
               rules={[{ required: true, message: 'Please input name!' }]}
             >
               <InputComponent value={stateCategoryDetails['name']} onChange={handleOnchangeDetails} name="name" />
-            </Form.Item>
-            <Form.Item
-              label="Image"
-              name="image"
-              rules={[{ required: true, message: 'Please input image!' }]}
-            >
-              <WrapperUploadFile onChange={handleOnchangeAvatarDetails} maxCount={1}>
-                <Button >Select File</Button>
-                {stateCategoryDetails?.image && (
-                  <img src={stateCategoryDetails?.image} style={{
-                    height: '60px',
-                    width: '60px',
-                    borderRadius: '50%',
-                    objectFit: 'cover',
-                    marginLeft: '10px'
-                  }} alt="avatar" />
-                )}
-              </WrapperUploadFile>
             </Form.Item>
             <Form.Item wrapperCol={{ offset: 20, span: 16 }}>
               <Button type="primary" htmlType="submit">
