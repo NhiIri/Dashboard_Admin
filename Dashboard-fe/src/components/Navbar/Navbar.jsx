@@ -1,11 +1,7 @@
-import { Badge,Popover } from 'antd'
+import { Popover } from 'antd'
 import React from 'react'
 import { WrapperContentPopup, WrapperHeader, WrapperHeaderAccout, WrapperTextHeaderSmall } from './style'
-import {
-  UserOutlined,
-  CaretDownOutlined,
-
-} from '@ant-design/icons';
+import {UserOutlined} from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import * as UserService from '../../services/UserService'
@@ -21,7 +17,6 @@ const Navbar = ({ isHiddenSearch = false }) => {
   const [userName, setUserName] = useState('')
   const [userAvatar, setUserAvatar] = useState('')
   const [isOpenPopup, setIsOpenPopup] = useState(false)
-  const order = useSelector((state) => state.order)
   const [loading, setLoading] = useState(false)
   const handleNavigateLogin = () => {
     navigate('/sign-in')
@@ -47,7 +42,7 @@ const Navbar = ({ isHiddenSearch = false }) => {
     </div>
   );
 
-  const handleClickNavigate = (type) => {
+  const handleClickNavigate = () => {
     
       handleLogout()
     

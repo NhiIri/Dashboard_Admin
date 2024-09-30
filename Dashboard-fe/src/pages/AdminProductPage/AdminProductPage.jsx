@@ -150,6 +150,19 @@ const AdminProductPage = () => {
       dataIndex: 'name',
     },
     {
+      title: 'Image',
+      dataIndex: 'image',
+      render: (image) => (
+        <img
+          src={image}
+          style={{
+            height: '60px', 
+            width: '60px', 
+            borderRadius: '5px',
+            objectFit: 'cover' 
+          }}/>)
+    },
+    {
       title: 'Description',
       dataIndex: 'description',
     },
@@ -307,13 +320,6 @@ const AdminProductPage = () => {
     })
   }
 
-  const handleChangeSelect = (value) => {
-      setStateProduct({
-        ...stateProduct,
-        type: value
-      })
-  }
-
   return (
     <div>
       <WrapperHeader>PRODUCT</WrapperHeader>
@@ -391,10 +397,10 @@ const AdminProductPage = () => {
                   <img src={stateProduct?.image} style={{
                     height: '60px',
                     width: '60px',
-                    borderRadius: '50%',
+                    borderRadius: '5px',
                     objectFit: 'cover',
                     marginLeft: '10px'
-                  }} alt="avatar" />
+                  }} />
                 )}
               </WrapperUploadFile>
             </Form.Item>
@@ -470,10 +476,10 @@ const AdminProductPage = () => {
                   <img src={stateProductDetails?.image} style={{
                     height: '60px',
                     width: '60px',
-                    borderRadius: '50%',
+                    borderRadius: '5px',
                     objectFit: 'cover',
                     marginLeft: '10px'
-                  }} alt="avatar" />
+                  }} />
                 )}
               </WrapperUploadFile>
             </Form.Item>

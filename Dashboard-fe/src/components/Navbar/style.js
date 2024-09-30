@@ -42,7 +42,6 @@ export const WrapperPopup = styled.div`
 `
 export const WrapperContentPopup = styled.p`
     cursor: pointer;
-    /* position: fixed; */
     &:hover {
         color: rgb(26, 148, 255);
     }
