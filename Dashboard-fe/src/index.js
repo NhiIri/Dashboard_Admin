@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals'; //Đo lường hiệu suất
 import { Provider } from 'react-redux' //Cung cấp store redux 
 import { persistor, store } from './redux/store'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'; //truy vấn
@@ -25,4 +24,3 @@ root.render(
     </QueryClientProvider>
 );
 
-reportWebVitals();

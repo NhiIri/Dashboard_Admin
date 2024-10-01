@@ -54,7 +54,7 @@ const AdminDashboardPage = () => {
   const COLORS = {
    users: ['#e66465', '#9198e5'],
    products: ['#a8c0ff', '#3f2b96'],
-   categories:['#b446b4', '#195aa4'],
+   categories:['#ff82ff', '#4570a1'],
   };
 
 

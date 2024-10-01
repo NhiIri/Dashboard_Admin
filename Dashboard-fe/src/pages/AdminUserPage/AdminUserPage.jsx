@@ -64,6 +64,10 @@ const AdminUserPage = () => {
     {
       title: 'Phone',
       dataIndex: 'phone',
+    },
+    {
+      title: 'Address',
+      dataIndex: 'address',
     }
   ];
 

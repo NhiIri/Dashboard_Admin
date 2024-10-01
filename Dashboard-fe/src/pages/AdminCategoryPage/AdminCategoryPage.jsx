@@ -1,11 +1,10 @@
 import { Button, Form } from 'antd'
 import { PlusOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons'
 import React from 'react'
-import { WrapperHeader, WrapperUploadFile } from './style'
+import { WrapperHeader } from './style'
 import TableComponent from '../../components/TableComponent/TableComponent'
 import { useState } from 'react'
 import InputComponent from '../../components/InputComponent/InputComponent'
-import { getBase64 } from '../../utils'
 import * as CategoryService from '../../services/CategoryService'
 import { useMutationHooks } from '../../hooks/useMutationHook'
 import Loading from '../../components/LoadingComponent/Loading'
@@ -104,7 +103,6 @@ const AdminCategoryPage = () => {
   const { data, isLoading, isSuccess, isError } = mutation
   const { data: dataUpdated, isLoading: isLoadingUpdated, isSuccess: isSuccessUpdated, isError: isErrorUpdated } = mutationUpdate
   const { data: dataDeleted, isLoading: isLoadingDeleted, isSuccess: isSuccessDelected, isError: isErrorDeleted } = mutationDeleted
-
 
   const queryCategory = useQuery({ queryKey: ['categories'], queryFn: getAllCategories })
   const { isLoading: isLoadingCategories, data: categories } = queryCategory
@@ -215,27 +213,6 @@ const AdminCategoryPage = () => {
     })
   }
 
-  const handleOnchangeAvatar = async ({ fileList }) => {
-    const file = fileList[0]
-    if (!file.url && !file.preview) {
-      file.preview = await getBase64(file.originFileObj);
-    }
-    setStateCategory({
-      ...stateCategory
-    })
-  }
-
-  const handleOnchangeAvatarDetails = async ({ fileList }) => {
-    const file = fileList[0]
-    if (!file.url && !file.preview) {
-      file.preview = await getBase64(file.originFileObj);
-    }
-    setStateCategoryDetails({
-      ...stateCategoryDetails
-    })
-  }
-
-
   const onUpdateCategory = () => {
     mutationUpdate.mutate({ id: rowSelected, token: user?.access_token, ...stateCategoryDetails }, {
       onSettled: () => {
@@ -243,7 +220,6 @@ const AdminCategoryPage = () => {
       }
     })
   }
-
 
   return (
     <div>

@@ -1,3 +1,4 @@
+//Xác thực & phân quyền cho người dùng
 const jwt = require('jsonwebtoken')
 const dotenv = require('dotenv')
 dotenv.config()
@@ -44,6 +45,6 @@ const authUserMiddleWare = (req, res, next) => {
 }
 
 module.exports = {
-    authMiddleWare,
-    authUserMiddleWare
+    authMiddleWare, //Đảm bảo người dùng là Admin
+    authUserMiddleWare //Phân quyền cho phép người dùng truy cập vào tài nguyên
 }

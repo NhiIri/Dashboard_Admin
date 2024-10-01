@@ -4,8 +4,6 @@ import AdminDashboard from "../pages/AdminDashboard/AdminDashboardPage";
 import AdminProductPage from "../pages/AdminProductPage/AdminProductPage";
 import AdminUserPage from "../pages/AdminUserPage/AdminUserPage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
-import SignInPage from "../pages/SignInPage/SignInPage";
-import PrivateRoute from "./PrivateRoute";
 
 export const routes = [
     {
@@ -31,18 +29,12 @@ export const routes = [
         page: AdminUserPage,
         isShowSideMenu: true
     },
+    
     {
         path: '/admin-account',
         page: AdminAccountPage,
         isShowSideMenu: true
     },
-    
-
-    // {
-    //     path: '/sign-in',
-    //     page: SignInPage,
-    //     isShowSideMenu: false
-    // },
    
     {
         path: '*',

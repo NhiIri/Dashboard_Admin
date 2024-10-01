@@ -1,5 +1,10 @@
+//Quản lý trạng thái người dùng
+//Lưu trữ và vặp nhật các thông tin liên quan tới người dùng
 import { createSlice } from '@reduxjs/toolkit'
 
+
+
+//Khởi tạo với các giá trị mặc định
 const initialState = {
     name: '',
     email: '',
@@ -9,7 +14,6 @@ const initialState = {
     access_token: '',
     id: '',
     isAdmin: false,
-    city: '',
     refreshToken: ''
 }
 
@@ -17,8 +21,9 @@ export const userSlide = createSlice({
     name: 'user',
     initialState,
     reducers: {
+        //Cập nhật thông tin người dùng
         updateUser: (state, action) => {
-            const { name = '', email = '', access_token = '', address = '', phone = '', avatar = '', _id = '', isAdmin,city= '',refreshToken = '' } = action.payload
+            const { name = '', email = '', access_token = '', address = '', phone = '', avatar = '', _id = '', isAdmin  ,refreshToken = '' } = action.payload
             state.name = name ? name : state.name;
             state.email = email ? email : state.email;
             state.address = address ? address : state.address;
@@ -27,9 +32,9 @@ export const userSlide = createSlice({
             state.id = _id ? _id : state.id
             state.access_token = access_token ? access_token : state.access_token;
             state.isAdmin = isAdmin ? isAdmin : state.isAdmin;
-            state.city = city ? city : state.city;
             state.refreshToken = refreshToken ? refreshToken : state.refreshToken;
         },
+        //Đặt về giá trị mặc định 
         resetUser: (state) => {
             state.name = '';
             state.email = '';
@@ -39,13 +44,11 @@ export const userSlide = createSlice({
             state.id = '';
             state.access_token = '';
             state.isAdmin = false;
-            state.city = '';
             state.refreshToken = ''
         },
     },
 })
 
-// Action creators are generated for each case reducer function
 export const { updateUser, resetUser } = userSlide.actions
 
 export default userSlide.reducer

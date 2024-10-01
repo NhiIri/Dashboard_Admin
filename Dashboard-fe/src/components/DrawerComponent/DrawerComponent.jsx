@@ -8,7 +8,6 @@ const DrawerComponent = ({
     children, 
     ...rests }) => {
 
-
     return (
         <>
             <Drawer 
