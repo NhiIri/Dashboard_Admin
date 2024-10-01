@@ -1,6 +1,6 @@
 import { Button, Form } from 'antd'
 import { PlusOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons'
-import React, { useRef } from 'react'
+import React from 'react'
 import { WrapperHeader, WrapperUploadFile } from './style'
 import TableComponent from '../../components/TableComponent/TableComponent'
 import { useState } from 'react'

@@ -9,9 +9,9 @@ import * as UserService from '../../services/UserService'
 import { useMutationHooks } from '../../hooks/useMutationHook'
 import Loading from '../../components/LoadingComponent/Loading'
 import jwt_decode from "jwt-decode";
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { updateUser } from '../../redux/slides/userSlide'
-import { GoogleLogin } from '@react-oauth/google'
+// import { GoogleLogin } from '@react-oauth/google'
 
 const SignInPage = () => {
   const [isShowPassword, setIsShowPassword] = useState(false)
@@ -19,7 +19,7 @@ const SignInPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
-  const user  = useSelector((state) => state.user)
+  // const user  = useSelector((state) => state.user)
 
   const navigate = useNavigate()
 
