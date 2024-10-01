@@ -23,7 +23,6 @@ const AdminProductPage = () => {
   const [isLoadingUpdate, setIsLoadingUpdate] = useState(false)
   const [isModalOpenDelete, setIsModalOpenDelete] = useState(false)
   const user = useSelector((state) => state?.user)
-  const searchInput = useRef(null);
   const inittial = () => ({
     name: '',
     price: '',
@@ -214,7 +213,6 @@ const AdminProductPage = () => {
       description: '',
       rating: '',
       image: '',
-      type: '',
       countInStock: ''
     })
     form.resetFields()
@@ -248,9 +246,7 @@ const AdminProductPage = () => {
       name: '',
       price: '',
       description: '',
-      rating: '',
       image: '',
-      type: '',
       countInStock: '',
       discount: '',
     })
@@ -262,9 +258,7 @@ const AdminProductPage = () => {
       name: stateProduct.name,
       price: stateProduct.price,
       description: stateProduct.description,
-      rating: stateProduct.rating,
       image: stateProduct.image,
-      type: stateProduct.type === 'add_type' ? stateProduct.newType : stateProduct.type,
       countInStock: stateProduct.countInStock,
       discount: stateProduct.discount
     }
@@ -391,6 +385,7 @@ const AdminProductPage = () => {
               name="image"
               rules={[{ required: true, message: 'Please input image!' }]}
             >
+              
               <WrapperUploadFile onChange={handleOnchangeAvatar} maxCount={1}>
                 <Button >Select File</Button>
                 {stateProduct?.image && (
