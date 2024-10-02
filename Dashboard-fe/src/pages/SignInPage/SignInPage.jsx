@@ -11,7 +11,8 @@ import Loading from '../../components/LoadingComponent/Loading'
 import jwt_decode from "jwt-decode";
 import { useDispatch } from 'react-redux'
 import { updateUser } from '../../redux/slides/userSlide'
-// import { GoogleLogin } from '@react-oauth/google'
+import { GoogleLogin } from '@react-oauth/google'
+
 
 const SignInPage = () => {
   const [isShowPassword, setIsShowPassword] = useState(false)
@@ -78,17 +79,28 @@ const SignInPage = () => {
     }
   }
 
-  // const responseMessage = (response) => {
-  //   console.log(response);
-  // };
 
-  // const errorMessage = (error) => {
-  //   console.log(error);
-  // };
+
+//----------------------------------
+
+const handelLogin=(googleData)=>{
+  const userData = jwt_decode(googleData);
+  console.log(userData);
+
+}
+
+  const handleError = () => {
+    alert ('Login failed')
+  };
+
+
+  //--------------------------------------
+
+  
 
   return (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center',  background:'#5a5a5a95', height: '100vh' }}>
-      <div style={{ width: '70%', height: '80%' ,boxShadow:'0px 0px 10px 6px #0000005d',borderRadius: '6px', background:'#fff', display: 'flex' }}>
+      <div style={{ width: '500px', height: '400px' ,boxShadow:'0px 0px 10px 6px #0000005d',borderRadius: '6px', background:'#fff', display: 'flex' }}>
         <WrapperContainer>
           <p style={{fontFamily:'Garamond', fontSize:'30px', fontWeight:'600', textAlign:'center',color:'#708fe5'}}>Login</p>
           <InputForm style={{ marginBottom: '15px', fontSize:'17px'}} placeholder="abc@gmail.com" value={email} onChange={handleOnchangeEmail} />
@@ -130,6 +142,15 @@ const SignInPage = () => {
               styleTextButton={{ color: '#fff', fontSize: '17px', fontWeight: '700' }}
             />
           </Loading>
+
+          <GoogleLogin 
+          onSuccess={(credentialResponse) => {
+            handelLogin(credentialResponse.credential);
+          }}
+          onError={() => {
+          }} 
+          />
+        
         </WrapperContainer>
       </div>
     </div>
