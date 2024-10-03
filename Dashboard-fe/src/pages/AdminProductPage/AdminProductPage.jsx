@@ -44,17 +44,14 @@ const AdminProductPage = () => {
       const { name,
         price,
         description,
-        rating,
         image,
-        type,
-        countInStock,discount } = data
+        countInStock,
+        discount } = data
       const res = ProductService.createProduct({
         name,
         price,
         description,
-        rating,
         image,
-        type,
         countInStock,
         discount
       })
@@ -63,7 +60,8 @@ const AdminProductPage = () => {
   )
   const mutationUpdate = useMutationHooks(
     (data) => {
-      const { id,
+      const { 
+        id,
         token,
         ...rests } = data
       const res = ProductService.updateProduct(
@@ -76,7 +74,8 @@ const AdminProductPage = () => {
 
   const mutationDeleted = useMutationHooks(
     (data) => {
-      const { id,
+      const { 
+        id,
         token,
       } = data
       const res = ProductService.deleteProduct(
@@ -98,9 +97,7 @@ const AdminProductPage = () => {
         name: res?.data?.name,
         price: res?.data?.price,
         description: res?.data?.description,
-        rating: res?.data?.rating,
         image: res?.data?.image,
-        type: res?.data?.type,
         countInStock: res?.data?.countInStock,
         discount: res?.data?.discount
       })
@@ -180,6 +177,7 @@ const AdminProductPage = () => {
     {
       title: 'Action',
       dataIndex: 'action',
+
       render: renderAction
     },
   ];
