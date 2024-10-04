@@ -23,15 +23,13 @@ const AdminProductPage = () => {
   const [isLoadingUpdate, setIsLoadingUpdate] = useState(false)
   const [isModalOpenDelete, setIsModalOpenDelete] = useState(false)
   const user = useSelector((state) => state?.user)
-  const inittial = () => ({
+  
+  const inittial = () => ({ //Khởi tạo dữ liệu ban đầu cho state sản phẩm
     name: '',
     price: '',
     description: '',
-    rating: '',
     image: '',
-    type: '',
     countInStock: '',
-    newType: '',
     discount: '',
   })
   const [stateProduct, setStateProduct] = useState(inittial())
@@ -39,15 +37,18 @@ const AdminProductPage = () => {
 
   const [form] = Form.useForm();
 
-  const mutation = useMutationHooks(
+
+  //Dùng useMutationHooks để tạo các hook thao tác với Api
+  const mutation = useMutationHooks( 
     (data) => {
-      const { name,
+      const { 
+        name,
         price,
         description,
         image,
         countInStock,
         discount } = data
-      const res = ProductService.createProduct({
+      const res = ProductService.createProduct({ //Gọi Api để tạo sản phẩm
         name,
         price,
         description,
@@ -64,7 +65,7 @@ const AdminProductPage = () => {
         id,
         token,
         ...rests } = data
-      const res = ProductService.updateProduct(
+      const res = ProductService.updateProduct( //Gọi Api để cập nhật sản phẩm
         id,
         token,
         { ...rests })
@@ -78,20 +79,20 @@ const AdminProductPage = () => {
         id,
         token,
       } = data
-      const res = ProductService.deleteProduct(
+      const res = ProductService.deleteProduct( //Xóa sản phẩm
         id,
         token)
       return res
     },
   )
 
-  const getAllProducts = async () => {
+  const getAllProducts = async () => { // async - gọi lấy danh sách sản phẩm
     const res = await ProductService.getAllProduct()
     return res
   }
 
-  const fetchGetDetailsProduct = async (rowSelected) => {
-    const res = await ProductService.getDetailsProduct(rowSelected)
+  const fetchGetDetailsProduct = async (rowSelected) => { //Cập nhật thông tin sản phẩm
+    const res = await ProductService.getDetailsProduct(rowSelected) 
     if (res?.data) {
       setStateProductDetails({
         name: res?.data?.name,
