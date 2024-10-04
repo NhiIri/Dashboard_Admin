@@ -10,10 +10,10 @@ import { useQueryClient } from '@tanstack/react-query'
 const AdminUserPage = () => {
 
   
-  const [rowSelected, setRowSelected] = useState('')
-  const [isOpenDrawer, setIsOpenDrawer] = useState(false)
+  const [rowSelected, setRowSelected] = useState('')//Lưu trữ ID người dùng
+  const [isOpenDrawer, setIsOpenDrawer] = useState(false)//Mở đóng Drawer
 
-  const [stateUserDetails, setStateUserDetails] = useState({
+  const [stateUserDetails, setStateUserDetails] = useState({ //Lưu trữ thông tin người dùng
     name: '',
     email: '',
     phone: '',
@@ -26,6 +26,7 @@ const AdminUserPage = () => {
 
   const fetchGetDetailsUser = async (rowSelected) => {
     const res = await UserService.getDetailsUser(rowSelected)
+
     if (res?.data) {
       setStateUserDetails({
         name: res?.data?.name,

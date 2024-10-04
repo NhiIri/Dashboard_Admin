@@ -15,13 +15,13 @@ const AdminDashboardPage = () => {
 
   const getAllProducts = async () => {
     const res = await ProductService.getAllProduct()
-    console.log('res1', res)
+    console.log('res', res)
     return {data: res?.data, key: 'products'}
   }
 
   const getAllUsers = async () => {
     const res = await UserService.getAllUser(user?.access_token)
-    console.log('res', res)
+    console.log('res1', res)
     return {data: res?.data, key: 'users'}
   }
 
@@ -52,9 +52,9 @@ const AdminDashboardPage = () => {
     }
   },[queries])
   const COLORS = {
-   users: ['#e66465', '#9198e5'],
-   products: ['#a8c0ff', '#3f2b96'],
-   categories:['#ff82ff', '#4570a1'],
+   users: ['#e6646490', '#9198e577'],
+   products: ['#a8c1ffaf', '#3f2b9699'],
+   categories:['#ff82ff6c', '#4570a165'],
   };
 
 

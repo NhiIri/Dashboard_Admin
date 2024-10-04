@@ -43,7 +43,8 @@ const AdminCategoryPage = () => {
   )
   const mutationUpdate = useMutationHooks(
     (data) => {
-      const { id,
+      const { 
+        id,
         token,
         ...rests } = data
       const res = CategoryService.updatedCategory(
@@ -56,7 +57,8 @@ const AdminCategoryPage = () => {
 
   const mutationDeleted = useMutationHooks(
     (data) => {
-      const { id,
+      const { 
+        id,
         token,
       } = data
       const res =CategoryService.deleteCategory(

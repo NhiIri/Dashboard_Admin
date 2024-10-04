@@ -14,20 +14,20 @@ import SignInPage from './pages/SignInPage/SignInPage'
 
 
 function App() {
-  const dispatch = useDispatch();
-  const [isLoading, setIsLoading] = useState(false)
-  const user = useSelector((state) => state.user)
+  const dispatch = useDispatch();//Gửi các action đến Redux store
+  const [isLoading, setIsLoading] = useState(false)//Trạng thái Loading
+  const user = useSelector((state) => state.user)//Sử dụng useSelector lấy thông tin người dùng từ Redux store
 
   useEffect(() => {
     setIsLoading(true)
-    const { storageData, decoded } = handleDecoded()
-    if (decoded?.id) {
-      handleGetDetailsUser(decoded?.id, storageData)
+    const { storageData, decoded } = handleDecoded()//Kiểm tra và giải mã token lưu trữ trên trình duyệt
+    if (decoded?.id) {//Kiểm tra id người dùng
+      handleGetDetailsUser(decoded?.id, storageData)//Id hợp lệ thì lấy thông tin người dùng
     }
     setIsLoading(false)
   }, [])
 
-  const handleDecoded = () => {
+  const handleDecoded = () => {//Lấy và giải mã token từ LocalStorage
     let storageData = user?.access_token || localStorage.getItem('access_token')
     let decoded = {}
     if (storageData && isJsonString(storageData) && !user?.access_token) {

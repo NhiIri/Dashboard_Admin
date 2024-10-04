@@ -12,17 +12,17 @@ import { useSelector } from "react-redux";
 import Navbar from "../Navbar/Navbar";
 
 function SideMenuCpn() {
-  const location = useLocation();
-  const [selectedKeys, setSelectedKeys] = useState("/");
-  const user = useSelector((state) => state.user);
-  const isAdmin = user?.isAdmin;
+  const location = useLocation();//Đại diện cho URL hiện tại
+  const [selectedKeys, setSelectedKeys] = useState("/");//Chọn mặc định trang chính
+  const user = useSelector((state) => state.user);//Lấy thông tin người dùng từ Redux
+  const isAdmin = user?.isAdmin;//Kiểm tra người dùng có là admin không
 
   useEffect(() => {
-      const pathName = location.pathname;
-      setSelectedKeys(pathName);
+      const pathName = location.pathname;//Khi pathname thay đổi
+      setSelectedKeys(pathName);//setSelectedKeys được gọi để cập nhật lại menu hiện tại
   }, [location.pathname]);
 
-  const navigate = useNavigate();
+  const navigate = useNavigate();//Chuyển hướng người dùng
 
   return (
       <div className="Menu">

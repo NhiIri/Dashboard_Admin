@@ -1,6 +1,6 @@
 import { Popover } from 'antd'
 import React from 'react'
-import { WrapperContentPopup, WrapperHeader, WrapperHeaderAccout, WrapperTextHeaderSmall } from './style'
+import { WrapperContentPopup, WrapperHeader, WrapperHeaderAccout } from './style'
 import {UserOutlined} from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import * as UserService from '../../services/UserService'
