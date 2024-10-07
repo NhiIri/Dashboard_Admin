@@ -53,7 +53,7 @@ const loginUser = async (req, res) => {
             httpOnly: true,
             secure: false,
             sameSite: 'strict',
-            path: '/',
+            path: '/',//Phạm vi của cookie
         })
         return res.status(200).json({...newReponse, refresh_token})
     } catch (e) {
@@ -110,7 +110,30 @@ const getDetailsUser = async (req, res) => {
     }
 }
 
-const refreshToken = async (req, res) => {
+const updateUser = async (req, res) => {
+    try {
+        const userId = req.params.id
+        const data = req.body
+        if (!userId) {
+            return res.status(200).json({
+                status: 'ERR',
+                message: 'The userId is required'
+            })
+        }
+        const response = await UserService.updateUser(userId, data)
+        return res.status(200).json(response)
+    } catch (e) {
+        return res.status(404).json({
+            message: e
+        })
+    }
+}
+
+
+
+//Làm mới Access Token từ Refresh Token mà người dùng gửi lên
+//Token hết hạn
+const refreshToken = async (req, res) => { 
     try {
         let token = req.headers.token.split(' ')[1]
         if (!token) {
@@ -127,6 +150,26 @@ const refreshToken = async (req, res) => {
         })
     }
 }
+
+// const refreshToken = async (req, res) => {
+//     try {
+//       const token = req.cookies.refresh_token; // Lấy token từ cookie
+//       if (!token) {
+//         return res.status(200).json({
+//           status: 'ERR',
+//           message: 'The token is required'
+//         });
+//       }
+//       const response = await JwtService.refreshTokenJwtService(token); // Xử lý làm mới token
+//       return res.status(200).json(response); // Trả về token mới
+//     } catch (e) {
+//       return res.status(404).json({
+//         message: e.message
+//       });
+//     }
+//   };
+  
+
 
 const logoutUser = async (req, res) => {
     try {
@@ -149,4 +192,5 @@ module.exports = {
     getDetailsUser,
     refreshToken,
     logoutUser,
+    updateUser
 }

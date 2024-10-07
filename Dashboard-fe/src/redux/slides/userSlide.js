@@ -1,5 +1,5 @@
 //Quản lý trạng thái người dùng
-//Lưu trữ và vặp nhật các thông tin liên quan tới người dùng
+//Lưu trữ và cập nhật các thông tin liên quan tới người dùng
 import { createSlice } from '@reduxjs/toolkit'
 
 

@@ -30,6 +30,7 @@ const AdminUserPage = () => {
     if (res?.data) {
       setStateUserDetails({
         name: res?.data?.name,
+        avatar: res?.data?.avatar,
         email: res?.data?.email,
         phone: res?.data?.phone,
         isAdmin: res?.data?.isAdmin,
@@ -57,6 +58,19 @@ const AdminUserPage = () => {
     {
       title: 'Name',
       dataIndex: 'name',
+    },
+    {
+      title: 'Avatar',
+      dataIndex: 'avatar',
+      render: (avatar) => (
+        <img
+          src={avatar}
+          style={{
+            height: '60px', 
+            width: '60px', 
+            borderRadius: '5px',
+            objectFit: 'cover' 
+          }}/>)
     },
     {
       title: 'Email',
