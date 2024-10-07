@@ -10,7 +10,7 @@ import { useMutationHooks } from '../../hooks/useMutationHook'
 import Loading from '../../components/LoadingComponent/Loading'
 import * as message from '../../components/Message/Message'
 import { updateUser } from '../../redux/slides/userSlide'
-import { Button, Upload } from 'antd'
+import { Button } from 'antd'
 import { UploadOutlined} from '@ant-design/icons'
 import { getBase64 } from '../../utils'
 
@@ -81,12 +81,9 @@ const AdminAccountPage = () => {
     return (
 
         <div>
-            <WrapperHeader>User Information</WrapperHeader>
-           <div className='background'>
+            <WrapperHeader>USER INFORMATION</WrapperHeader>
             
-            <div className='body' style={{  paddingTop:'30px', height:'90%', marginBottom:'40px'}}> 
-             {/* <div  style={{ height: '100%'}}> */}
-              {/* <div style={{ width: '90%', margin: '20px auto', height: '80%' }}> */}
+            <div className='body' style={{  paddingTop:'10px', marginBottom:'40px'}}> 
             
               <Loading isLoading={isLoading}>
                 <WrapperContentProfile>
@@ -94,17 +91,26 @@ const AdminAccountPage = () => {
                 <WrapperInput1>    
                         {avatar && (
                             <img src={avatar} style={{
-                                height: '80%',
-                                width: '80%',
-                                borderRadius: '50%',
+                                height: '250px',
+                                width: '250px',
+                                // borderRadius: '50%',
+                                // paddingLeft:'50px',
                                 objectFit: 'cover'
                             }} alt="avatar"/>
                         )}
-                        {/* <InputForm style={{ width: '350px' }} id="avatar" value={avatar} onChange={handleOnchangeAvatar} /> */}
+                     
                         <div style={{display:'flex', justifyContent:'center'}}>
-                          {/* <WrapperLabel htmlFor="avatar">Avatar:</WrapperLabel> */}
+                          
                         <WrapperUploadFile onChange={handleOnchangeAvatar} maxCount={1}>
-                            <Button style={{color:'#E57098', marginRight:'20px',}} icon={<UploadOutlined />}type="primary" danger ghost >Select File</Button>
+
+                            <Button 
+                            style={{color:'#708fe5', marginRight:'20px',}} 
+                            icon={<UploadOutlined />}
+                            type="primary" 
+                            ghost >
+                              Select File
+                            </Button>
+
                         </WrapperUploadFile>
                         <ButtonComponent
                             onClick={handleUpdate}
@@ -115,8 +121,8 @@ const AdminAccountPage = () => {
                                 borderRadius: '4px',
                                 padding: '2px 6px 6px',                  
                             }}
-                            textbutton={'Cập nhật'}
-                            styleTextButton={{ color: '#E57098', fontSize: '15px', fontWeight: '700' }}
+                            textbutton={'Update'}
+                            styleTextButton={{ color: '#708fe5', fontSize: '15px', fontWeight: '500' }}
                         ></ButtonComponent>  
                         </div>
                         
@@ -136,8 +142,8 @@ const AdminAccountPage = () => {
                                 padding: '2px 6px 6px'
                                 
                             }}
-                            textbutton={'Cập nhật'}
-                            styleTextButton={{ color: '#E57098', fontSize: '15px', fontWeight: '700' }}
+                            textbutton={'Update'}
+                            styleTextButton={{ color: '#708fe5', fontSize: '15px', fontWeight: '700' }}
                         ></ButtonComponent>
                     </WrapperInput>
                     <WrapperInput>
@@ -152,8 +158,8 @@ const AdminAccountPage = () => {
                                 borderRadius: '4px',
                                 padding: '2px 6px 6px'
                             }}
-                            textbutton={'Cập nhật'}
-                            styleTextButton={{ color: '#E57098', fontSize: '15px', fontWeight: '700' }}
+                            textbutton={'Update'}
+                            styleTextButton={{ color: '#708fe5', fontSize: '15px', fontWeight: '700' }}
                         ></ButtonComponent>
                     </WrapperInput>
                     <WrapperInput>
@@ -168,8 +174,8 @@ const AdminAccountPage = () => {
                                 borderRadius: '4px',
                                 padding: '2px 6px 6px'
                             }}
-                            textbutton={'Cập nhật'}
-                            styleTextButton={{ color: '#E57098', fontSize: '15px', fontWeight: '700' }}
+                            textbutton={'Update'}
+                            styleTextButton={{ color: '#708fe5', fontSize: '15px', fontWeight: '700' }}
                         ></ButtonComponent>
                     </WrapperInput>
                     
@@ -185,8 +191,8 @@ const AdminAccountPage = () => {
                                 borderRadius: '4px',
                                 padding: '2px 6px 6px',                
                             }}
-                            textbutton={'Cập nhật'}
-                            styleTextButton={{ color: '#E57098', fontSize: '15px', fontWeight: '700' }}
+                            textbutton={'Update'}
+                            styleTextButton={{ color: '#708fe5', fontSize: '15px', fontWeight: '500' }}
                         ></ButtonComponent>
                     </WrapperInput>
                     </WrapperContentProfile1>
@@ -194,10 +200,7 @@ const AdminAccountPage = () => {
                 </WrapperContentProfile>
             </Loading>
             </div>
-         </div>  
-        </div>
-       
-        
+         </div> 
     )
 }
 

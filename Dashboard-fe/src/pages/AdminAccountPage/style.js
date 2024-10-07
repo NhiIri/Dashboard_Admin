@@ -1,39 +1,29 @@
 import { Upload } from "antd";
 import styled from "styled-components";
 
-
 export const WrapperHeader = styled.h1`
-    color: #000;
-    height: 50px ;
-    background-color:#FBD6E3;
-    font-size: 20px;
-    font-weight:bold;
-    padding-left: 5%;
-    padding-top: 8px;
-
-
+   color: #000;
+   font-size: 14px;
 `
 export const WrapperContentProfile = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border: 2px solid #E57089;
+    border: 2px solid #708fe5;
     background-color:#fff;
-    width: 70%;
+    width: 90%;
     margin:auto;
     padding: 30px;
     border-radius: 10px;
-    /* gap: 30px; */
 `
 export const WrapperContentProfile1 = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 70%;
+    width: 60%;
     margin: 50px auto;
-    padding: 30px;
     gap: 40px;
 `
 export const WrapperLabel = styled.label`
@@ -43,12 +33,11 @@ export const WrapperLabel = styled.label`
     font-weight: 600;
     width: 60px;
     text-align: left;
-    font-family:Andale Mono, monospace;
 `
 
 export const WrapperInput = styled.div`
     display: flex;
-    width:'70%';
+    width:90%;
     align-items: center;
     gap: 20px; 
 `
@@ -67,7 +56,5 @@ export const WrapperUploadFile = styled(Upload)`
         height: 60px;
         border-radius: 50%;
     }
-    & .ant-upload-list-item-info {
-        display: none
-    }
+
 `

@@ -26,7 +26,7 @@ function SideMenuCpn() {
 
   return (
       <div className="Menu">
-          <Navbar />
+          {/* <Navbar /> */}
           <div className="SideMenu">
               <Menu
                   className="SideMenuVertical"

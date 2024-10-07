@@ -9,7 +9,8 @@ export const routes = [
     {
         path: '/',
         page: AdminDashboard,
-        isShowSideMenu: true
+        isShowSideMenu: true,
+        
     },
 
     {

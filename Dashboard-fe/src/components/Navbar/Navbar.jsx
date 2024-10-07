@@ -45,15 +45,13 @@ const Navbar = ({ isHiddenSearch = false }) => {
 
   return (
     
-      <WrapperHeader style={{ justifyContent: isHiddenSearch && isHiddenSearch ? 'space-between' : 'unset' }}>          
-        <div span={6} style={{ display: 'flex', gap: '54px', alignItems: 'center' }}>
-        
+      <WrapperHeader style={{ justifyContent: isHiddenSearch && isHiddenSearch ? 'space-between' : 'unset' }}>                  
             <WrapperHeaderAccout>
               {userAvatar ? (
                 <img src={userAvatar} 
                 style={{
-                  height: '35px',
-                  width: '35px',           
+                  height: '40px',
+                  width: '40px',           
                   borderRadius: '50%',
                   objectFit: 'cover'
                 }} />
@@ -85,9 +83,7 @@ const Navbar = ({ isHiddenSearch = false }) => {
                 </>
               ):null}
             </WrapperHeaderAccout>
-   
 
-        </div>
       </WrapperHeader>
     
   )
