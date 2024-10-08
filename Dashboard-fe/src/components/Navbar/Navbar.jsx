@@ -72,9 +72,9 @@ const Navbar = ({ isHiddenSearch = false }) => {
                     <div 
                     style={{ 
                       color:"#708fe5",
-                      textShadow:" 0px 0px 5px #ffffff0", 
+                      textShadow:" 0px 0px 5px #fffff", 
                       cursor: 'pointer',
-                      maxWidth: 100, 
+                      maxWidth: '300px', 
                       overflow: 'hidden', 
                       textOverflow: 'ellipsis',
                       fontWeight:700 }} 

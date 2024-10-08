@@ -92,6 +92,8 @@ const AdminUserPage = () => {
 
   return (
     <div>
+    <div className='ItemPage'></div>
+    <div className='StylePage'>
       <WrapperHeader>USER</WrapperHeader>
       <div style={{ marginTop: '20px' }}>
         <TableComponent columns={columns} data={dataTable} onRow={(record) => {
@@ -102,6 +104,7 @@ const AdminUserPage = () => {
           };
         }} />
       </div>
+     </div>
     </div>
   )
 }

@@ -61,12 +61,14 @@ const AdminDashboardPage = () => {
   console.log('memoCount', memoCount)
   return (
     <>
-
-      <div style={{ display: 'flex',overflowX: 'hidden' }}>
+        <div>
+      <div className='ItemPage'></div>
+      <div className='StylePage' style={{ display: 'flex',overflowX: 'hidden' }}>
         <div style={{ flex: 1, padding: '15px 0 15px 15px' }}>          
             {!keySelected && (
               <CustomizedContent data={memoCount} colors={COLORS} setKeySelected={setKeySelected} />
             )}       
+        </div>
         </div>
       </div>
     </>

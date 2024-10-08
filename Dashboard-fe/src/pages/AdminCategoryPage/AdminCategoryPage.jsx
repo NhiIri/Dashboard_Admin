@@ -225,6 +225,8 @@ const AdminCategoryPage = () => {
 
   return (
     <div>
+      <div className='ItemPage'></div>
+      <div className='StylePage'>      
       <WrapperHeader>CATEGORY</WrapperHeader>
       <div style={{ marginTop: '10px' }}>
         <Button style={{ height: '150px', width: '150px', borderRadius: '6px', borderStyle: 'dashed' }} onClick={() => setIsModalOpen(true)}><PlusOutlined style={{ fontSize: '60px' }} /></Button>
@@ -295,6 +297,7 @@ const AdminCategoryPage = () => {
           <div>Do you want to delete category?</div>
         </Loading>
       </ModalComponent>
+      </div>
     </div>
   )
 }

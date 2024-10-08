@@ -3,12 +3,18 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const WrapperHeader = styled(Row)`
-    background-color:#708fe593;
+    background-color:#fff;
     align-items: center;
     gap: 16px;
+    position:fixed;
     flex-wrap: nowrap;
     /* width: 100%;*/
     padding: 10px 0 10px; 
+    width:100%;
+    height: 50px;
+    z-index: 1000;
+    display:flex;
+    flex-direction:row-reverse;
 `
 
 export const WrapperTextHeader = styled(Link)`
@@ -27,6 +33,8 @@ export const WrapperHeaderAccout = styled.div`
     align-items: center;
     gap: 10px;
     max-width: 200px;
+    flex-direction:row-reverse;
+    padding-right: 15px;
 `
 
 export const WrapperTextHeaderSmall = styled.span`
@@ -41,8 +49,12 @@ export const WrapperPopup = styled.div`
 
 `
 export const WrapperContentPopup = styled.p`
+&.ant-popover-inner-content {
+    padding: 10px 15px 1px;
+    position:fixed
+}
     cursor: pointer;
     &:hover {
-        color: rgb(26, 148, 255);
+        color: red;
     }
 `

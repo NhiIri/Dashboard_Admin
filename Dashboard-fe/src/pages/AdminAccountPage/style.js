@@ -10,9 +10,9 @@ export const WrapperContentProfile = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border: 2px solid #708fe5;
+    /* border: 2px solid #708fe5; */
     background-color:#fff;
-    width: 90%;
+    width: 100%;
     margin:auto;
     padding: 30px;
     border-radius: 10px;

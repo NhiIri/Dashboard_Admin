@@ -79,8 +79,9 @@ const AdminAccountPage = () => {
 
     }
     return (
-
         <div>
+        <div className='ItemPage'></div>
+        <div className='StylePage'>
             <WrapperHeader>USER INFORMATION</WrapperHeader>
             
             <div className='body' style={{  paddingTop:'10px', marginBottom:'40px'}}> 
@@ -201,6 +202,7 @@ const AdminAccountPage = () => {
             </Loading>
             </div>
          </div> 
+        </div>
     )
 }
 

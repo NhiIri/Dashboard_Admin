@@ -315,6 +315,9 @@ const AdminProductPage = () => {
 
   return (
     <div>
+      <div className='ItemPage'>
+      </div>
+      <div className='StylePage'>
       <WrapperHeader>PRODUCT</WrapperHeader>
       <div style={{ marginTop: '10px' }}>
         <Button style={{ height: '150px', width: '150px', borderRadius: '6px', borderStyle: 'dashed' }} onClick={() => setIsModalOpen(true)}><PlusOutlined style={{ fontSize: '60px' }} /></Button>
@@ -491,6 +494,7 @@ const AdminProductPage = () => {
           <div>Do you want to delete product?</div>
         </Loading>
       </ModalComponent>
+      </div>
     </div>
   )
 }
