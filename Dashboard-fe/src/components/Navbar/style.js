@@ -3,18 +3,18 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const WrapperHeader = styled(Row)`
-    background-color:#fff;
+    background-color:#001529;
     align-items: center;
     gap: 16px;
     position:fixed;
     flex-wrap: nowrap;
     /* width: 100%;*/
     padding: 10px 0 10px; 
-    width:100%;
-    height: 50px;
+    width:200px;
+    height: 90px;
     z-index: 1000;
-    display:flex;
-    flex-direction:row-reverse;
+    /* display:flex;
+    flex-direction:row-reverse; */
 `
 
 export const WrapperTextHeader = styled(Link)`
@@ -33,7 +33,7 @@ export const WrapperHeaderAccout = styled.div`
     align-items: center;
     gap: 10px;
     max-width: 200px;
-    flex-direction:row-reverse;
+    /* flex-direction:row-reverse; */
     padding-right: 15px;
 `
 

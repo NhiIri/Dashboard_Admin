@@ -4,7 +4,8 @@ import styled from "styled-components";
 export const WrapperHeader = styled.h1`
     color: #000;
     font-size: 14px;
-    background-color:#fff;
+    /* position:fixed; */
+    /* background-color:#fff; */
 `
 
 export const WrapperUploadFile = styled(Upload)`

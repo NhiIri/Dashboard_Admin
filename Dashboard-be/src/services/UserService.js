@@ -4,7 +4,7 @@ const { genneralAccessToken, genneralRefreshToken } = require("./JwtService")
 
 const createUser = (newUser) => {
     return new Promise(async (resolve, reject) => {
-        const { name, email, password, phone, address } = newUser
+        const { name, email, password, phone } = newUser
         try {
             const checkUser = await User.findOne({
                 email: email
@@ -20,8 +20,7 @@ const createUser = (newUser) => {
                 name,
                 email,
                 password: hash,
-                phone,
-                address
+                phone
             })
             if (createdUser) {
                 resolve({
@@ -72,6 +71,31 @@ const loginUser = (userLogin) => {
                 message: 'SUCCESS',
                 access_token,
                 refresh_token
+            })
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
+
+const updateUser = (id, data) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const checkUser = await User.findOne({
+                _id: id
+            })
+            if (checkUser === null) {
+                resolve({
+                    status: 'ERR',
+                    message: 'The user is not defined'
+                })
+            }
+
+            const updatedUser = await User.findByIdAndUpdate(id, data, { new: true })
+            resolve({
+                status: 'OK',
+                message: 'SUCCESS',
+                data: updatedUser
             })
         } catch (e) {
             reject(e)
@@ -141,36 +165,11 @@ const getDetailsUser = (id) => {
     })
 }
 
-const updateUser = (id, data) => {
-    return new Promise(async (resolve, reject) => {
-        try {
-            const checkUser = await User.findOne({
-                _id: id
-            })
-            if (checkUser === null) {
-                resolve({
-                    status: 'ERR',
-                    message: 'The user is not defined'
-                })
-            }
-
-            const updatedUser = await User.findByIdAndUpdate(id, data, { new: true })
-            resolve({
-                status: 'OK',
-                message: 'SUCCESS',
-                data: updatedUser
-            })
-        } catch (e) {
-            reject(e)
-        }
-    })
-}
-
 module.exports = {
     createUser,
     loginUser,
+    updateUser,
     deleteUser,
     getAllUser,
-    getDetailsUser,
-    updateUser
+    getDetailsUser
 }

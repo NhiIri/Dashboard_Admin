@@ -7,6 +7,11 @@ export const loginUser = async (data) => {
     return res.data
 }
 
+export const signupUser = async (data) => {
+    const res = await axios.post(`${process.env.REACT_APP_API_URL}/user/sign-up`, data)
+    return res.data
+}
+
 export const getDetailsUser = async (id, access_token) => {
     const res = await axiosJWT.get(`${process.env.REACT_APP_API_URL}/user/get-details/${id}`, {
         headers: {
@@ -33,6 +38,7 @@ export const getAllUser = async (access_token) => {
     },)
     return res.data
 }
+
 
 export const refreshToken = async (refreshToken) => {
     console.log('refreshToken', refreshToken)

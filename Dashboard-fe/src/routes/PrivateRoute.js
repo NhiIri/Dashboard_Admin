@@ -1,17 +1,16 @@
-import React from 'react';
-import { Navigate } from 'react-router-dom';//Điều hướng
-import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
-//Nhận vào các thành phần con children - là các component được bảo vệ bởi PrivateRoute
-const PrivateRoute = ({ children }) => {
-  const user = useSelector((state) => state.user); //useSelector - Hook lấy thông tin người dùng từ Redux Store
-  const isAuthenticated = user?.access_token;//Kiểm tra người dùng đã được xác thực hay chưa
+const PrivateRoute = ({ children }) => { //Nhận vào các thành phần con children
+  const user = useSelector((state) => state.user)
+  const accessToken = user?.access_token || localStorage.getItem('access_token')//Kiểm tra xác thực người dùng
 
-  if (!isAuthenticated) {
-    return <Navigate to="/sign-in" />; //Chuyển hướng người dùng đến trang đăng nhập
+  // Nếu không có token, điều hướng tới trang đăng nhập
+  if (!accessToken) {
+    return <Navigate to="/sign-in" />
   }
 
-  return children; //Người dùng đã đăng nhập PrivateRoute trả về children
-};
+  return children
+}
 
-export default PrivateRoute;
+export default PrivateRoute
