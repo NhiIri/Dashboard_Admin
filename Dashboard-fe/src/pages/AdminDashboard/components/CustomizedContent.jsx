@@ -17,9 +17,9 @@ const CustomizedContent = (props) => {
             justifyContent: 'center', 
             alignItems: 'center',
             borderRadius: '10px',
-            cursor: 'pointer'
+            // cursor: 'pointer'
           }}
-            onClick={() => setKeySelected(item)}
+            // onClick={() => setKeySelected(item)}
           >
             <span style={{color: '#fff',fontSize: 30,}}>
               {item === 'users' && <UserOutlined />}
@@ -28,7 +28,7 @@ const CustomizedContent = (props) => {
 
             </span>
             <span style={{color: '#fff',fontSize: 30, fontWeight: 'bold', textTransform: 'uppercase',}}>{item}</span>
-            <span style={{color: '#fff',fontSize: 20, fontWeight: 'bold', textTransform: 'uppercase'}}>{data[item]}</span>
+            <span style={{color: '#fff',fontSize: 30, fontWeight: 'bold', textTransform: 'uppercase'}}>{data[item]}</span>
           </div>
         )
       })}

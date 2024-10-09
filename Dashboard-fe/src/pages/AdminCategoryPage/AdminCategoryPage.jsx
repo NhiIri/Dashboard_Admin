@@ -110,9 +110,20 @@ const AdminCategoryPage = () => {
   const { isLoading: isLoadingCategories, data: categories } = queryCategory
   const renderAction = () => {
     return (
-      <div>
-        <EditOutlined style={{ color: '#fb6f92', fontSize: '20px', cursor: 'pointer' }} onClick={handleDetailsCategory} />
-        <DeleteOutlined style={{ color: 'red', fontSize: '20px', cursor: 'pointer', padding:'20px' }} onClick={() => setIsModalOpenDelete(true)} />
+      <div >
+        <Button
+        type='text' 
+        style={{backgroundColor:'#ffe7e7', color:'#ff0040' }} 
+        onClick={() => setIsModalOpenDelete(true)}>
+        Delete
+        </Button>
+
+        <Button 
+        type='text' 
+        style={{backgroundColor:'#f7e7ff', color:'#aa00ff', marginLeft:'10px' }} 
+        onClick={handleDetailsCategory}>
+        Update
+        </Button>
       </div>
     )
   }
@@ -225,11 +236,13 @@ const AdminCategoryPage = () => {
 
   return (
     <div>
-      <div className='ItemPage'></div>
+        <WrapperHeader>CATEGORY</WrapperHeader>
+      {/* <div className='ItemPage'></div> */}
       <div className='StylePage'>      
-      <WrapperHeader>CATEGORY</WrapperHeader>
-      <div style={{ marginTop: '10px' }}>
-        <Button style={{ height: '150px', width: '150px', borderRadius: '6px', borderStyle: 'dashed' }} onClick={() => setIsModalOpen(true)}><PlusOutlined style={{ fontSize: '60px' }} /></Button>
+
+      <div style={{  marginTop: '80px', display:'flex', justifyContent:'flex-end', alignItems:'center',gap:'10px', flexDirection:'row' }}>
+      <div style={{fontSize:'16px', fontWeight:'500', }}>Create new category </div>
+        <Button style={{ height: '50px', width: '50px', borderRadius: '6px', borderStyle: 'dashed' }} onClick={() => setIsModalOpen(true)}><PlusOutlined style={{ fontSize: '20px' }} /></Button>
       </div>
       <div style={{ marginTop: '20px' }}>
         <TableComponent  columns={columns} isLoading={isLoadingCategories} data={dataTable} onRow={(record, rowIndex) => {

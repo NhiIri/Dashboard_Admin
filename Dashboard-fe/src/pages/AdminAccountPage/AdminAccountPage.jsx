@@ -9,13 +9,15 @@ import * as UserService from '../../services/UserService'
 import { useMutationHooks } from '../../hooks/useMutationHook'
 import Loading from '../../components/LoadingComponent/Loading'
 import * as message from '../../components/Message/Message'
-import { updateUser } from '../../redux/slides/userSlide'
+import { updateUser, resetUser } from '../../redux/slides/userSlide'
 import { Button } from 'antd'
 import { UploadOutlined} from '@ant-design/icons'
 import { getBase64 } from '../../utils'
+import { useNavigate } from 'react-router-dom';
 
 const AdminAccountPage = () => {
     const user = useSelector((state) => state.user)
+    const navigate = useNavigate()
     const [email, setEmail] = useState('')
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
@@ -78,13 +80,27 @@ const AdminAccountPage = () => {
         mutation.mutate({ id: user?.id, email, name, phone, address, avatar, access_token: user?.access_token })
 
     }
+
+    const handleLogout = async () => {
+        await UserService.logoutUser() 
+        dispatch(resetUser()) 
+        navigate('/sign-in')
+      }
+
+    const handleClickNavigate = () =>{
+        handleLogout()
+    }
+
+
+
     return (
         <div>
-        <div className='ItemPage'></div>
-        <div className='StylePage'>
             <WrapperHeader>USER INFORMATION</WrapperHeader>
+        {/* <div className='ItemPage'></div> */}
+        <div className='StylePage'>
             
-            <div className='body' style={{  paddingTop:'10px', marginBottom:'40px'}}> 
+            
+            <div className='body' style={{  paddingTop:'80px', marginBottom:'40px'}}> 
             
               <Loading isLoading={isLoading}>
                 <WrapperContentProfile>
@@ -197,10 +213,19 @@ const AdminAccountPage = () => {
                         ></ButtonComponent>
                     </WrapperInput>
                     </WrapperContentProfile1>
-
                 </WrapperContentProfile>
             </Loading>
+            <div style={{display:'flex', flexDirection:"row-reverse", paddingTop:'15px'}}>
+              <Button 
+              onClick={handleClickNavigate}
+              type='danger'
+              style={{fontSize:'16px', fontWeight:'500', height:'40px', width:'150px'}}>
+              Logout
+              </Button>  
             </div>
+            
+            </div>
+            
          </div> 
         </div>
     )

@@ -6,6 +6,7 @@ import CustomizedContent from './components/CustomizedContent';
 import { useSelector } from 'react-redux';
 import { useQueries } from '@tanstack/react-query';
 import { useMemo } from 'react';
+import { WrapperHeader } from './style';
 
 const AdminDashboardPage = () => {
   const user = useSelector((state) => state?.user)
@@ -52,19 +53,21 @@ const AdminDashboardPage = () => {
     }
   },[queries])
   const COLORS = {
-   users: ['#e6646490', '#9198e577'],
-   products: ['#a8c1ffaf', '#3f2b9699'],
-   categories:['#ff82ff6c', '#4570a165'],
+   users: ['#64a5e690', '#91bfe577'],
+   products: ['#64a5e690', '#91bfe577'],
+   categories:['#64a5e690', '#91bfe577'],
   };
 
 
   console.log('memoCount', memoCount)
   return (
     <>
-        <div>
-      <div className='ItemPage'></div>
+      <div>
+      <WrapperHeader>DASHBOARD</WrapperHeader>
+
+      {/* <div className='ItemPage'></div> */}
       <div className='StylePage' style={{ display: 'flex',overflowX: 'hidden' }}>
-        <div style={{ flex: 1, padding: '15px 0 15px 15px' }}>          
+        <div style={{ flex: 1, padding: '15px 0 15px 15px', marginTop: '80px' }}>          
             {!keySelected && (
               <CustomizedContent data={memoCount} colors={COLORS} setKeySelected={setKeySelected} />
             )}       

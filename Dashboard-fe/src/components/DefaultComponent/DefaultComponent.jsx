@@ -8,9 +8,10 @@ const DefaultComponent = ({children}) => {
     <div >
         <div>
         <Navbar/>
-        </div>
-        <div className="SideMenuAndPageContent">
         <SideMenuCpn />
+        </div>
+        <div className="">
+       
         {children}
        </div>
          

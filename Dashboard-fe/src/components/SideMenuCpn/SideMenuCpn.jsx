@@ -29,9 +29,9 @@ import {
             <div className="SideMenu">
                 <Menu
                     className="SideMenuVertical"
-                    theme="dark"
+                    // theme="dark"
                     mode="vertical"
-                    style={{ position:'fixed', height:'100vh', minWidth:'200px',marginTop:'70px', fontWeight:'500' }}
+                    style={{ position:'fixed', height:'100vh', minWidth:'200px',marginTop:'90px', fontWeight:'500' }}
                     onClick={(item) => {
                         navigate(item.key);
                     }}

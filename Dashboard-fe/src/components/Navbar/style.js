@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const WrapperHeader = styled(Row)`
-    background-color:#001529;
+    background-color:#ffff;
     align-items: center;
     gap: 16px;
     position:fixed;
     flex-wrap: nowrap;
     /* width: 100%;*/
-    padding: 10px 0 10px; 
+    padding: 0px 0px 10px 20px;
     width:200px;
     height: 90px;
     z-index: 1000;

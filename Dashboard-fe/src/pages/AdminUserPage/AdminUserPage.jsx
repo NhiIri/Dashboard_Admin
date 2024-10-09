@@ -92,10 +92,11 @@ const AdminUserPage = () => {
 
   return (
     <div>
-    <div className='ItemPage'></div>
+     <WrapperHeader>USER</WrapperHeader>
+    {/* <div className='ItemPage'></div> */}
     <div className='StylePage'>
-      <WrapperHeader>USER</WrapperHeader>
-      <div style={{ marginTop: '20px' }}>
+
+      <div style={{ marginTop: '80px' }}>
         <TableComponent columns={columns} data={dataTable} onRow={(record) => {
           return {
             onClick: event => {
