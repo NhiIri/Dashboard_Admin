@@ -1,3 +1,5 @@
+import Home from "../components/GoogleLoginComponent/Home";
+import Login from "../components/GoogleLoginComponent/Login";
 import AdminAccountPage from "../pages/AdminAccountPage/AdminAccountPage";
 import AdminCategoryPage from "../pages/AdminCategoryPage/AdminCategoryPage";
 import AdminDashboard from "../pages/AdminDashboard/AdminDashboardPage";
@@ -10,6 +12,11 @@ export const routes = [
         path: '/',
         page: AdminDashboard,
         isShowSideMenu: true,
+        
+    },
+    {
+        path: '/login/oauth',
+        page: Login,
         
     },
 

@@ -15,9 +15,9 @@ root.render(
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}> 
-          <GoogleOAuthProvider clientId={process.env.REACT_APP_GG_CLIENT_ID}>
+          {/* <GoogleOAuthProvider clientId={process.env.REACT_APP_GG_CLIENT_ID}> */}
             <App />
-          </GoogleOAuthProvider>          
+          {/* </GoogleOAuthProvider>           */}
         </PersistGate>
       </Provider>
     </QueryClientProvider>
