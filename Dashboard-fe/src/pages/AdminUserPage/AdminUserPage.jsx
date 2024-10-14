@@ -1,31 +1,30 @@
-import { Form } from 'antd'
-import React from 'react'
-import { WrapperHeader } from './style'
-import TableComponent from '../../components/TableComponent/TableComponent'
-import { useEffect } from 'react'
-import { useState } from 'react'
-import * as UserService from '../../services/UserService'
-import { useQueryClient } from '@tanstack/react-query'
+import { Form } from "antd";
+import React from "react";
+import { WrapperHeader } from "./style";
+import TableComponent from "../../components/TableComponent/TableComponent";
+import { useEffect } from "react";
+import { useState } from "react";
+import * as UserService from "../../services/UserService";
+import { useQueryClient } from "@tanstack/react-query";
 
 const AdminUserPage = () => {
+  const [rowSelected, setRowSelected] = useState(""); //Lưu trữ ID người dùng
+  const [isOpenDrawer, setIsOpenDrawer] = useState(false); //Mở đóng Drawer
 
-  
-  const [rowSelected, setRowSelected] = useState('')//Lưu trữ ID người dùng
-  const [isOpenDrawer, setIsOpenDrawer] = useState(false)//Mở đóng Drawer
-
-  const [stateUserDetails, setStateUserDetails] = useState({ //Lưu trữ thông tin người dùng
-    name: '',
-    email: '',
-    phone: '',
+  const [stateUserDetails, setStateUserDetails] = useState({
+    //Lưu trữ thông tin người dùng
+    name: "",
+    email: "",
+    phone: "",
     isAdmin: false,
-    avatar: '',
-    address: ''
-  })
+    avatar: "",
+    address: "",
+  });
 
   const [form] = Form.useForm();
 
   const fetchGetDetailsUser = async (rowSelected) => {
-    const res = await UserService.getDetailsUser(rowSelected)
+    const res = await UserService.getDetailsUser(rowSelected);
 
     if (res?.data) {
       setStateUserDetails({
@@ -35,79 +34,89 @@ const AdminUserPage = () => {
         phone: res?.data?.phone,
         isAdmin: res?.data?.isAdmin,
         address: res?.data?.address,
-        avatar: res.data?.avatar
-      })
+        avatar: res.data?.avatar,
+      });
     }
-  }
+  };
 
   useEffect(() => {
-    form.setFieldsValue(stateUserDetails)
-  }, [form, stateUserDetails])
+    form.setFieldsValue(stateUserDetails);
+  }, [form, stateUserDetails]);
 
   useEffect(() => {
     if (rowSelected && isOpenDrawer) {
-      fetchGetDetailsUser(rowSelected)
+      fetchGetDetailsUser(rowSelected);
     }
-  }, [rowSelected, isOpenDrawer])
+  }, [rowSelected, isOpenDrawer]);
 
-
-  const queryClient = useQueryClient()
-  const users = queryClient.getQueryData(['users'])
+  const queryClient = useQueryClient();
+  const users = queryClient.getQueryData(["users"]);
 
   const columns = [
     {
-      title: 'Name',
-      dataIndex: 'name',
+      title: "Name",
+      dataIndex: "name",
     },
     {
-      title: 'Avatar',
-      dataIndex: 'avatar',
+      title: "Avatar",
+      dataIndex: "avatar",
       render: (avatar) => (
         <img
           src={avatar}
           style={{
-            height: '60px', 
-            width: '60px', 
-            borderRadius: '5px',
-            objectFit: 'cover' 
-          }}/>)
+            height: "60px",
+            width: "60px",
+            borderRadius: "5px",
+            objectFit: "cover",
+          }}
+        />
+      ),
     },
     {
-      title: 'Email',
-      dataIndex: 'email',
+      title: "Email",
+      dataIndex: "email",
     },
     {
-      title: 'Phone',
-      dataIndex: 'phone',
+      title: "Phone",
+      dataIndex: "phone",
     },
     {
-      title: 'Address',
-      dataIndex: 'address',
-    }
+      title: "Address",
+      dataIndex: "address",
+    },
   ];
 
-  const dataTable = users?.data?.length > 0 && users?.data?.map((user) => {
-    return { ...user, key: user._id, isAdmin: user.isAdmin ? 'TRUE' : 'FALSE' }
-  })
+  const dataTable =
+    users?.data?.length > 0 &&
+    users?.data?.map((user) => {
+      return {
+        ...user,
+        key: user._id,
+        isAdmin: user.isAdmin ? "TRUE" : "FALSE",
+      };
+    });
 
   return (
     <div>
-     <WrapperHeader>USER</WrapperHeader>
-    {/* <div className='ItemPage'></div> */}
-    <div className='StylePage'>
-
-      <div style={{ marginTop: '80px' }}>
-        <TableComponent columns={columns} data={dataTable} onRow={(record) => {
-          return {
-            onClick: event => {
-              setRowSelected(record._id)
-            }
-          };
-        }} />
+      <WrapperHeader>USER</WrapperHeader>
+      {/* <div className='ItemPage'></div> */}
+      <div className="StylePage">
+        <div style={{ marginTop: "80px" }}>
+          <TableComponent
+            columns={columns}
+            data={dataTable}
+            onRow={(record) => {
+              return {
+                onClick: (event) => {
+                  setRowSelected(record._id);
+                },
+              };
+            }}
+          />
+        </div>
       </div>
-     </div>
     </div>
-  )
-}
+  );
+};
 
-export default AdminUserPage
+export default AdminUserPage;

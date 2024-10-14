@@ -13,5 +13,6 @@ export default function Login() {
     navigate('/')
   }, [searchParams, navigate])
 
-  return <div>Login</div>
+  return 
+  <div>Login</div>
 }

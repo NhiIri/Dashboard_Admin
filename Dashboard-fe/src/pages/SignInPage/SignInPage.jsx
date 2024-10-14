@@ -4,7 +4,6 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import jwt_decode from 'jwt-decode'
 import { GoogleLogin } from '@react-oauth/google'
-
 import ButtonComponent from '../../components/ButtonComponent/ButtonComponent'
 import InputForm from '../../components/InputForm/InputForm'
 import Loading from '../../components/LoadingComponent/Loading'

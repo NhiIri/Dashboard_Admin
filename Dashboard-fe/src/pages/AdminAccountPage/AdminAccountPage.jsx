@@ -121,9 +121,9 @@ const AdminAccountPage = () => {
                         <WrapperUploadFile onChange={handleOnchangeAvatar} maxCount={1}>
 
                             <Button 
-                            style={{color:'#708fe5', marginRight:'20px',}} 
+                            style={{color:'#0044ff', marginRight:'20px',backgroundColor:'#ffff'}} 
                             icon={<UploadOutlined />}
-                            type="primary" 
+                            type="text" 
                             ghost >
                               Select File
                             </Button>
@@ -136,10 +136,11 @@ const AdminAccountPage = () => {
                                 height: '30px',
                                 width: 'fit-content',
                                 borderRadius: '4px',
-                                padding: '2px 6px 6px',                  
+                                padding: '2px 6px 6px',
+                                backgroundColor:'#ecf0fd'                  
                             }}
                             textbutton={'Update'}
-                            styleTextButton={{ color: '#708fe5', fontSize: '15px', fontWeight: '500' }}
+                            styleTextButton={{ color: '#0044ff', fontSize: '15px', fontWeight: '500' }}
                         ></ButtonComponent>  
                         </div>
                         
@@ -156,11 +157,12 @@ const AdminAccountPage = () => {
                                 height: '30px',
                                 width: 'fit-content',
                                 borderRadius: '4px',
-                                padding: '2px 6px 6px'
+                                padding: '2px 6px 6px',
+                                backgroundColor:'#ecf0fd'
                                 
                             }}
                             textbutton={'Update'}
-                            styleTextButton={{ color: '#708fe5', fontSize: '15px', fontWeight: '700' }}
+                            styleTextButton={{ color: '#0044ff', fontSize: '15px', fontWeight: '600' }}
                         ></ButtonComponent>
                     </WrapperInput>
                     <WrapperInput>
@@ -173,10 +175,11 @@ const AdminAccountPage = () => {
                                 height: '30px',
                                 width: 'fit-content',
                                 borderRadius: '4px',
-                                padding: '2px 6px 6px'
+                                padding: '2px 6px 6px',
+                                backgroundColor:'#ecf0fd'
                             }}
                             textbutton={'Update'}
-                            styleTextButton={{ color: '#708fe5', fontSize: '15px', fontWeight: '700' }}
+                            styleTextButton={{ color: '#0044ff', fontSize: '15px', fontWeight: '600' }}
                         ></ButtonComponent>
                     </WrapperInput>
                     <WrapperInput>
@@ -189,10 +192,11 @@ const AdminAccountPage = () => {
                                 height: '30px',
                                 width: 'fit-content',
                                 borderRadius: '4px',
-                                padding: '2px 6px 6px'
+                                padding: '2px 6px 6px',
+                                backgroundColor:'#ecf0fd'
                             }}
                             textbutton={'Update'}
-                            styleTextButton={{ color: '#708fe5', fontSize: '15px', fontWeight: '700' }}
+                            styleTextButton={{ color: '#0044ff', fontSize: '15px', fontWeight: '600' }}
                         ></ButtonComponent>
                     </WrapperInput>
                     
@@ -206,10 +210,11 @@ const AdminAccountPage = () => {
                                 height: '30px',
                                 width: 'fit-content',
                                 borderRadius: '4px',
-                                padding: '2px 6px 6px',                
+                                padding: '2px 6px 6px',
+                                backgroundColor:'#ecf0fd'                
                             }}
                             textbutton={'Update'}
-                            styleTextButton={{ color: '#708fe5', fontSize: '15px', fontWeight: '500' }}
+                            styleTextButton={{ color: '#0044ff', fontSize: '15px', fontWeight: '600' }}
                         ></ButtonComponent>
                     </WrapperInput>
                     </WrapperContentProfile1>
@@ -218,8 +223,8 @@ const AdminAccountPage = () => {
             <div style={{display:'flex', flexDirection:"row-reverse", paddingTop:'15px'}}>
               <Button 
               onClick={handleClickNavigate}
-              type='danger'
-              style={{fontSize:'16px', fontWeight:'500', height:'40px', width:'150px'}}>
+              type='text' 
+              style={{backgroundColor:'#ff547f', color:'#faeded',fontSize:'16px', fontWeight:'500', height:'40px', width:'150px'}}>
               Logout
               </Button>  
             </div>
