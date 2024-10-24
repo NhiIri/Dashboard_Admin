@@ -1,29 +1,29 @@
-import React, { useState, useEffect } from "react";
-import { WrapperHeader, WrapperHeaderAccout } from "./style";
-import { UserOutlined } from "@ant-design/icons";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from "react"
+import { UserOutlined } from "@ant-design/icons"
+import { useSelector } from "react-redux"
+import { Avatar, Row } from "antd"
 
 const Navbar = ({ isHiddenSearch = false }) => {
-  const user = useSelector((state) => state.user);
-  const [userName, setUserName] = useState("");
-  const [userAvatar, setUserAvatar] = useState("");
-  const [loading, setLoading] = useState(false);
+  const user = useSelector((state) => state.user)
+  const [userName, setUserName] = useState("")
+  const [userAvatar, setUserAvatar] = useState("")
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    setLoading(true);
-    setUserName(user?.name);
-    setUserAvatar(user?.avatar);
-    setLoading(false);
-  }, [user?.name, user?.avatar]);
+    setLoading(true)
+    setUserName(user?.name)
+    setUserAvatar(user?.avatar)
+    setLoading(false)
+  }, [user?.name, user?.avatar])
 
   return (
-    <WrapperHeader
+    <Row
       style={{
         justifyContent:
           isHiddenSearch && isHiddenSearch ? "space-between" : "unset",
       }}
     >
-      <WrapperHeaderAccout>
+      <div style={{display:"flex", flexDirection:'row-reverse', alignItems:'center', gap:'10px'}}>
         {userAvatar ? (
           <img
             src={userAvatar}
@@ -35,17 +35,9 @@ const Navbar = ({ isHiddenSearch = false }) => {
             }}
           />
         ) : (
-          <UserOutlined
-            style={{
-              fontSize: "25px",
-              color: "#708fe5",
-              textShadow: "0px 0px 5px #fff",
-              background: "#fff",
-              borderRadius: "50%",
-              padding: "5px",
-            }}
-          />
+          <Avatar size="large" icon={<UserOutlined />} />
         )}
+
         {user?.access_token ? (
           <>
             <div
@@ -63,9 +55,10 @@ const Navbar = ({ isHiddenSearch = false }) => {
             </div>
           </>
         ) : null}
-      </WrapperHeaderAccout>
-    </WrapperHeader>
-  );
-};
 
-export default Navbar;
+        </div>
+    </Row>
+  )
+}
+
+export default Navbar

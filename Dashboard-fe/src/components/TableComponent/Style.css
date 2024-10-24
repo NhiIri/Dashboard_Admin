@@ -1,0 +1,13 @@
+.custom-table .ant-table {
+    .ant-table-container {
+      .ant-table-body,
+      .ant-table-content {
+        scrollbar-width: thin;
+        scrollbar-color: unset;
+      }
+    }
+  }
+
+:where(.css-dev-only-do-not-override-ni1kz0).ant-table-wrapper .ant-table-pagination.ant-pagination {
+  margin: 15px 0 0px;
+}

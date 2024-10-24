@@ -1,15 +1,15 @@
-import { Form } from "antd";
-import React from "react";
-import { WrapperHeader } from "./style";
-import TableComponent from "../../components/TableComponent/TableComponent";
-import { useEffect } from "react";
-import { useState } from "react";
-import * as UserService from "../../services/UserService";
-import { useQueryClient } from "@tanstack/react-query";
+import { Form } from "antd"
+import React from "react"
+import { WrapperHeader } from "./style"
+import TableComponent from "../../components/TableComponent/TableComponent"
+import { useEffect } from "react"
+import { useState } from "react"
+import * as UserService from "../../services/UserService"
+import { useQueryClient } from "@tanstack/react-query"
 
 const AdminUserPage = () => {
-  const [rowSelected, setRowSelected] = useState(""); //Lưu trữ ID người dùng
-  const [isOpenDrawer, setIsOpenDrawer] = useState(false); //Mở đóng Drawer
+  const [rowSelected, setRowSelected] = useState("") //Lưu trữ ID người dùng
+  const [isOpenDrawer, setIsOpenDrawer] = useState(false) //Mở đóng Drawer
 
   const [stateUserDetails, setStateUserDetails] = useState({
     //Lưu trữ thông tin người dùng
@@ -19,12 +19,12 @@ const AdminUserPage = () => {
     isAdmin: false,
     avatar: "",
     address: "",
-  });
+  })
 
-  const [form] = Form.useForm();
+  const [form] = Form.useForm()
 
   const fetchGetDetailsUser = async (rowSelected) => {
-    const res = await UserService.getDetailsUser(rowSelected);
+    const res = await UserService.getDetailsUser(rowSelected)
 
     if (res?.data) {
       setStateUserDetails({
@@ -35,22 +35,22 @@ const AdminUserPage = () => {
         isAdmin: res?.data?.isAdmin,
         address: res?.data?.address,
         avatar: res.data?.avatar,
-      });
+      })
     }
-  };
+  }
 
   useEffect(() => {
-    form.setFieldsValue(stateUserDetails);
-  }, [form, stateUserDetails]);
+    form.setFieldsValue(stateUserDetails)
+  }, [form, stateUserDetails])
 
   useEffect(() => {
     if (rowSelected && isOpenDrawer) {
-      fetchGetDetailsUser(rowSelected);
+      fetchGetDetailsUser(rowSelected)
     }
-  }, [rowSelected, isOpenDrawer]);
+  }, [rowSelected, isOpenDrawer])
 
-  const queryClient = useQueryClient();
-  const users = queryClient.getQueryData(["users"]);
+  const queryClient = useQueryClient()
+  const users = queryClient.getQueryData(["users"])
 
   const columns = [
     {
@@ -84,7 +84,7 @@ const AdminUserPage = () => {
       title: "Address",
       dataIndex: "address",
     },
-  ];
+  ]
 
   const dataTable =
     users?.data?.length > 0 &&
@@ -93,30 +93,26 @@ const AdminUserPage = () => {
         ...user,
         key: user._id,
         isAdmin: user.isAdmin ? "TRUE" : "FALSE",
-      };
-    });
+      }
+    })
 
   return (
     <div>
-      <WrapperHeader>USER</WrapperHeader>
-      {/* <div className='ItemPage'></div> */}
-      <div className="StylePage">
         <div style={{ marginTop: "80px" }}>
           <TableComponent
             columns={columns}
-            data={dataTable}
+            dataSource={dataTable}
             onRow={(record) => {
               return {
                 onClick: (event) => {
-                  setRowSelected(record._id);
+                  setRowSelected(record._id)
                 },
-              };
+              }
             }}
           />
         </div>
       </div>
-    </div>
-  );
-};
+  )
+}
 
-export default AdminUserPage;
+export default AdminUserPage

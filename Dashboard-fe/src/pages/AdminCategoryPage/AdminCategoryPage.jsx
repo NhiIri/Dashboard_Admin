@@ -1,107 +1,107 @@
-import { Button, Form } from "antd";
-import { PlusOutlined, DeleteOutlined, EditOutlined } from "@ant-design/icons";
-import React from "react";
-import { WrapperHeader } from "./style";
-import TableComponent from "../../components/TableComponent/TableComponent";
-import { useState } from "react";
-import InputComponent from "../../components/InputComponent/InputComponent";
-import * as CategoryService from "../../services/CategoryService";
-import { useMutationHooks } from "../../hooks/useMutationHook";
-import Loading from "../../components/LoadingComponent/Loading";
-import { useEffect } from "react";
-import * as message from "../../components/Message/Message";
-import { useQuery } from "@tanstack/react-query";
-import DrawerComponent from "../../components/DrawerComponent/DrawerComponent";
-import { useSelector } from "react-redux";
-import ModalComponent from "../../components/ModalComponent/ModalComponent";
+import { Button, Form } from "antd"
+import { PlusOutlined, DeleteOutlined, EditOutlined } from "@ant-design/icons"
+import React from "react"
+import { WrapperHeader } from "./style"
+import TableComponent from "../../components/TableComponent/TableComponent"
+import { useState } from "react"
+import InputComponent from "../../components/InputComponent/InputComponent"
+import * as CategoryService from "../../services/CategoryService"
+import { useMutationHooks } from "../../hooks/useMutationHook"
+import Loading from "../../components/LoadingComponent/Loading"
+import { useEffect } from "react"
+import * as message from "../../components/Message/Message"
+import { useQuery } from "@tanstack/react-query"
+import DrawerComponent from "../../components/DrawerComponent/DrawerComponent"
+import { useSelector } from "react-redux"
+import ModalComponent from "../../components/ModalComponent/ModalComponent"
 
 const AdminCategoryPage = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [rowSelected, setRowSelected] = useState("");
-  const [isOpenDrawer, setIsOpenDrawer] = useState(false);
-  const [isLoadingUpdate, setIsLoadingUpdate] = useState(false);
-  const [isModalOpenDelete, setIsModalOpenDelete] = useState(false);
-  const user = useSelector((state) => state?.user);
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [rowSelected, setRowSelected] = useState("")
+  const [isOpenDrawer, setIsOpenDrawer] = useState(false)
+  const [isLoadingUpdate, setIsLoadingUpdate] = useState(false)
+  const [isModalOpenDelete, setIsModalOpenDelete] = useState(false)
+  const user = useSelector((state) => state?.user)
   const inittial = () => ({
     name: "",
-  });
-  const [stateCategory, setStateCategory] = useState(inittial());
-  const [stateCategoryDetails, setStateCategoryDetails] = useState(inittial());
+  })
+  const [stateCategory, setStateCategory] = useState(inittial())
+  const [stateCategoryDetails, setStateCategoryDetails] = useState(inittial())
 
-  const [form] = Form.useForm();
+  const [form] = Form.useForm()
 
   const mutation = useMutationHooks((data) => {
-    const { name } = data;
+    const { name } = data
     const res = CategoryService.createCategory({
       name,
-    });
-    return res;
-  });
+    })
+    return res
+  })
   const mutationUpdate = useMutationHooks((data) => {
-    const { id, token, ...rests } = data;
-    const res = CategoryService.updatedCategory(id, token, { ...rests });
-    return res;
-  });
+    const { id, token, ...rests } = data
+    const res = CategoryService.updatedCategory(id, token, { ...rests })
+    return res
+  })
 
   const mutationDeleted = useMutationHooks((data) => {
-    const { id, token } = data;
-    const res = CategoryService.deleteCategory(id, token);
-    return res;
-  });
+    const { id, token } = data
+    const res = CategoryService.deleteCategory(id, token)
+    return res
+  })
 
   const getAllCategories = async () => {
-    const res = await CategoryService.getAllCategory();
-    return res;
-  };
+    const res = await CategoryService.getAllCategory()
+    return res
+  }
 
   const fetchGetDetailsCategory = async (rowSelected) => {
-    const res = await CategoryService.getDetailsCategory(rowSelected);
+    const res = await CategoryService.getDetailsCategory(rowSelected)
     if (res?.data) {
       setStateCategoryDetails({
         name: res?.data?.name,
-      });
+      })
     }
-    setIsLoadingUpdate(false);
-  };
+    setIsLoadingUpdate(false)
+  }
 
   useEffect(() => {
     if (!isModalOpen) {
-      form.setFieldsValue(stateCategoryDetails);
+      form.setFieldsValue(stateCategoryDetails)
     } else {
-      form.setFieldsValue(inittial());
+      form.setFieldsValue(inittial())
     }
-  }, [form, stateCategoryDetails, isModalOpen]);
+  }, [form, stateCategoryDetails, isModalOpen])
 
   useEffect(() => {
     if (rowSelected && isOpenDrawer) {
-      setIsLoadingUpdate(true);
-      fetchGetDetailsCategory(rowSelected);
+      setIsLoadingUpdate(true)
+      fetchGetDetailsCategory(rowSelected)
     }
-  }, [rowSelected, isOpenDrawer]);
+  }, [rowSelected, isOpenDrawer])
 
   const handleDetailsCategory = () => {
-    setIsOpenDrawer(true);
-  };
+    setIsOpenDrawer(true)
+  }
 
-  const { data, isLoading, isSuccess, isError } = mutation;
+  const { data, isLoading, isSuccess, isError } = mutation
   const {
     data: dataUpdated,
     isLoading: isLoadingUpdated,
     isSuccess: isSuccessUpdated,
     isError: isErrorUpdated,
-  } = mutationUpdate;
+  } = mutationUpdate
   const {
     data: dataDeleted,
     isLoading: isLoadingDeleted,
     isSuccess: isSuccessDelected,
     isError: isErrorDeleted,
-  } = mutationDeleted;
+  } = mutationDeleted
 
   const queryCategory = useQuery({
     queryKey: ["categories"],
     queryFn: getAllCategories,
-  });
-  const { isLoading: isLoadingCategories, data: categories } = queryCategory;
+  })
+  const { isLoading: isLoadingCategories, data: categories } = queryCategory
   const renderAction = () => {
     return (
       <div>
@@ -125,8 +125,8 @@ const AdminCategoryPage = () => {
           Delete
         </Button>
       </div>
-    );
-  };
+    )
+  }
 
   const columns = [
     {
@@ -138,112 +138,109 @@ const AdminCategoryPage = () => {
       dataIndex: "action",
       render: renderAction,
     },
-  ];
+  ]
   const dataTable =
     categories?.data?.length &&
     categories?.data?.map((category) => {
-      return { ...category, key: category._id };
-    });
+      return { ...category, key: category._id }
+    })
 
   useEffect(() => {
     if (isSuccess && data?.status === "OK") {
-      message.success();
-      handleCancel();
+      message.success()
+      handleCancel()
     } else if (isError) {
-      message.error();
+      message.error()
     }
-  }, [isSuccess]);
+  }, [isSuccess])
 
   useEffect(() => {
     if (isSuccessDelected && dataDeleted?.status === "OK") {
-      message.success();
-      handleCancelDelete();
+      message.success()
+      handleCancelDelete()
     } else if (isErrorDeleted) {
-      message.error();
+      message.error()
     }
-  }, [isSuccessDelected]);
+  }, [isSuccessDelected])
 
   const handleCloseDrawer = () => {
-    setIsOpenDrawer(false);
+    setIsOpenDrawer(false)
     setStateCategoryDetails({
       name: "",
-    });
-    form.resetFields();
-  };
+    })
+    form.resetFields()
+  }
 
   useEffect(() => {
     if (isSuccessUpdated && dataUpdated?.status === "OK") {
-      message.success();
-      handleCloseDrawer();
+      message.success()
+      handleCloseDrawer()
     } else if (isErrorUpdated) {
-      message.error();
+      message.error()
     }
-  }, [isSuccessUpdated]);
+  }, [isSuccessUpdated])
 
   const handleCancelDelete = () => {
-    setIsModalOpenDelete(false);
-  };
+    setIsModalOpenDelete(false)
+  }
 
   const handleDeleteCategory = () => {
     mutationDeleted.mutate(
       { id: rowSelected, token: user?.access_token },
       {
         onSettled: () => {
-          queryCategory.refetch();
+          queryCategory.refetch()
         },
       }
-    );
-  };
+    )
+  }
 
   const handleCancel = () => {
-    setIsModalOpen(false);
+    setIsModalOpen(false)
     setStateCategory({
       name: "",
-    });
-    form.resetFields();
-  };
+    })
+    form.resetFields()
+  }
 
   const onFinish = () => {
     const params = {
       name: stateCategory.name,
-    };
+    }
     mutation.mutate(params, {
       onSettled: () => {
-        queryCategory.refetch();
+        queryCategory.refetch()
       },
-    });
-  };
+    })
+  }
 
   const handleOnchange = (e) => {
     setStateCategory({
       ...stateCategory,
       [e.target.name]: e.target.value,
-    });
-  };
+    })
+  }
 
   const handleOnchangeDetails = (e) => {
     setStateCategoryDetails({
       ...stateCategoryDetails,
       [e.target.name]: e.target.value,
-    });
-  };
+    })
+  }
 
   const onUpdateCategory = () => {
     mutationUpdate.mutate(
       { id: rowSelected, token: user?.access_token, ...stateCategoryDetails },
       {
         onSettled: () => {
-          queryCategory.refetch();
+          queryCategory.refetch()
         },
       }
-    );
-  };
+    )
+  }
 
   return (
     <div>
-      <WrapperHeader>CATEGORY</WrapperHeader>
-      {/* <div className='ItemPage'></div> */}
-      <div className="StylePage">
         <div
           style={{
             marginTop: "80px",
@@ -273,13 +270,13 @@ const AdminCategoryPage = () => {
           <TableComponent
             columns={columns}
             isLoading={isLoadingCategories}
-            data={dataTable}
+            dataSource={dataTable}
             onRow={(record, rowIndex) => {
               return {
                 onClick: (event) => {
-                  setRowSelected(record._id);
+                  setRowSelected(record._id)
                 },
-              };
+              }
             }}
           />
         </div>
@@ -363,8 +360,7 @@ const AdminCategoryPage = () => {
           </Loading>
         </ModalComponent>
       </div>
-    </div>
-  );
-};
+  )
+}
 
-export default AdminCategoryPage;
+export default AdminCategoryPage

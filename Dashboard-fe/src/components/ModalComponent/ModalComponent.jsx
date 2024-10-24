@@ -8,7 +8,10 @@ const ModalComponent = ({
   ...rests
 }) => {
   return (
-    <Modal title={title} open={isOpen} {...rests}>
+    <Modal 
+    title={title} 
+    open={isOpen} 
+    {...rests}>
       {children}
     </Modal>
   );

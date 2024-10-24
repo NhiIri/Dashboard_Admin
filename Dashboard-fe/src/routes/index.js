@@ -10,35 +10,30 @@ export const routes = [
   {
     path: "/",
     page: AdminDashboard,
-    isShowSideMenu: true,
   },
-  {
-    path: "/login/oauth",
-    page: Login,
-  },
+  // {
+  //   path: "/login/oauth",
+  //   page: Login,
+  // },
 
   {
     path: "/admin-category",
     page: AdminCategoryPage,
-    isShowSideMenu: true,
   },
 
   {
     path: "/admin-product",
     page: AdminProductPage,
-    isShowSideMenu: true,
   },
 
   {
     path: "/admin-user",
     page: AdminUserPage,
-    isShowSideMenu: true,
   },
 
   {
     path: "/admin-account",
     page: AdminAccountPage,
-    isShowSideMenu: true,
   },
 
   {

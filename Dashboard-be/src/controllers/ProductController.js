@@ -85,18 +85,18 @@ const getAllProduct = async (req, res) => {
     }
 }
 
-const getProductsByCategory = async (req, res) => {
-    const categoryId = req.params.categoryId;
-    try {
-        const products = await productService.getProductsByCategoryId(categoryId);
-        if (products.length === 0) {
-            return res.status(404).json({ message: 'Không tìm thấy sản phẩm nào trong danh mục này' });
-        }
-        res.json(products);
-    } catch (err) {
-        res.status(500).json({ message: 'Lỗi server', error: err });
-    }
-};
+// const getProductsByCategory = async (req, res) => {
+//     const categoryId = req.params.categoryId;
+//     try {
+//         const products = await productService.getProductsByCategoryId(categoryId);
+//         if (products.length === 0) {
+//             return res.status(404).json({ message: 'Không tìm thấy sản phẩm nào trong danh mục này' });
+//         }
+//         res.json(products);
+//     } catch (err) {
+//         res.status(500).json({ message: 'Lỗi server', error: err });
+//     }
+// }
 
 
 module.exports = {
@@ -105,5 +105,5 @@ module.exports = {
     getDetailsProduct,
     deleteProduct,
     getAllProduct,
-    getProductsByCategory
+    // getProductsByCategory
 }

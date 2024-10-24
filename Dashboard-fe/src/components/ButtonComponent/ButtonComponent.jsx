@@ -1,5 +1,5 @@
-import { Button } from "antd";
-import React from "react";
+import { Button } from "antd"
+import React from "react"
 
 const ButtonComponent = ({
   size,
@@ -20,7 +20,7 @@ const ButtonComponent = ({
     >
       <span style={styleTextButton}>{textbutton}</span>
     </Button>
-  );
-};
+  )
+}
 
-export default ButtonComponent;
+export default ButtonComponent
