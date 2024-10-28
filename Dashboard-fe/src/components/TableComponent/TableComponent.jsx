@@ -27,7 +27,7 @@ const TableComponent = (props) => {
       className="custom-table"
       columns={columns}
       dataSource={dataSource}
-      scroll={{ x: 1300, y: 400 }}
+      scroll={{ x: 1300, y: 500 }}
       {...props}
     />
   )
