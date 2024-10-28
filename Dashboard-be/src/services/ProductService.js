@@ -61,6 +61,7 @@ const createProduct = (newProduct) => {
 //         }
 //     })
 // }
+
 const updateProduct = (id, data) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -237,7 +238,7 @@ const getAllProduct = (limit, page, sort, filter) => {
             return reject(e);
         }
     });
-};
+}
 
 
 // const getProductsByCategory = async (categoryId) => {

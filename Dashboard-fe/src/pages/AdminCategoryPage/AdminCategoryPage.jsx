@@ -1,7 +1,6 @@
 import { Button, Form } from "antd"
-import { PlusOutlined, DeleteOutlined, EditOutlined } from "@ant-design/icons"
+import { PlusOutlined } from "@ant-design/icons"
 import React from "react"
-import { WrapperHeader } from "./style"
 import TableComponent from "../../components/TableComponent/TableComponent"
 import { useState } from "react"
 import InputComponent from "../../components/InputComponent/InputComponent"
@@ -190,6 +189,7 @@ const AdminCategoryPage = () => {
       {
         onSettled: () => {
           queryCategory.refetch()
+          setRowSelected("")
         },
       }
     )
