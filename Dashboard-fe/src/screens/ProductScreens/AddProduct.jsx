@@ -1,19 +1,20 @@
-import { Button, Form, Select } from "antd"
-import React from "react"
-import { WrapperUploadFile } from "../../pages/AdminProductPage/style"
-import { useState } from "react"
-import InputComponent from "../../components/InputComponent/InputComponent"
-import { getBase64 } from "../../utils"
-import * as ProductService from "../../services/ProductService"
-import * as CategoryService from "../../services/CategoryService"
-import { useMutationHooks } from "../../hooks/useMutationHook"
-import * as message from "../../components/Message/Message"
-import { useQuery } from "@tanstack/react-query"
-import ModalComponent from "../../components/ModalComponent/ModalComponent"
-import ButtonComponent from "../../components/ButtonComponent/ButtonComponent"
+import { Button, Form, Select } from "antd";
+import React from "react";
+import { WrapperUploadFile } from "../../pages/AdminProductPage/style";
+import { useState } from "react";
+import InputComponent from "../../components/InputComponent/InputComponent";
+import { getBase64 } from "../../utils";
+import * as ProductService from "../../services/ProductService";
+import * as CategoryService from "../../services/CategoryService";
+import { useMutationHooks } from "../../hooks/useMutationHook";
+import * as message from "../../components/Message/Message";
+import { useQuery } from "@tanstack/react-query";
+import ModalComponent from "../../components/ModalComponent/ModalComponent";
+import ButtonComponent from "../../components/ButtonComponent/ButtonComponent";
+import { PlusOutlined } from "@ant-design/icons";
 
 const AddProduct = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   //Khởi tạo dữ liệu ban đầu cho state sản phẩm
   const inittial = () => ({
@@ -24,9 +25,9 @@ const AddProduct = () => {
     category: "",
     countInStock: "",
     discount: "",
-  })
-  const [stateProduct, setStateProduct] = useState(inittial())
-  const [form] = Form.useForm()
+  });
+  const [stateProduct, setStateProduct] = useState(inittial());
+  const [form] = Form.useForm();
 
   //Dùng useMutationHooks để tạo các hook thao tác với Api
   const mutation = useMutationHooks((data) => {
@@ -38,7 +39,7 @@ const AddProduct = () => {
       countInStock,
       discount,
       category,
-    } = data
+    } = data;
     const res = ProductService.createProduct({
       name,
       price,
@@ -47,28 +48,28 @@ const AddProduct = () => {
       image,
       countInStock,
       discount,
-    })
-    return res
-  })
+    });
+    return res;
+  });
 
   // async - gọi lấy danh sách sản phẩm
   const getAllProducts = async () => {
-    const res = await ProductService.getAllProduct()
-    return res
-  }
+    const res = await ProductService.getAllProduct();
+    return res;
+  };
 
   const queryProduct = useQuery({
     queryKey: ["products"],
     queryFn: getAllProducts,
-  })
+  });
 
   const { data: categories, isLoading: isLoadingCategories } = useQuery({
     queryKey: ["categories"],
     queryFn: CategoryService.getAllCategory,
-  })
+  });
 
   const handleCancel = () => {
-    setIsModalOpen(false)
+    setIsModalOpen(false);
     setStateProduct({
       name: "",
       price: "",
@@ -77,9 +78,9 @@ const AddProduct = () => {
       image: "",
       countInStock: "",
       discount: "",
-    })
-    form.resetFields()
-  }
+    });
+    form.resetFields();
+  };
 
   const onFinish = () => {
     const params = {
@@ -90,56 +91,70 @@ const AddProduct = () => {
       image: stateProduct.image,
       countInStock: stateProduct.countInStock,
       discount: stateProduct.discount,
-    }
+    };
 
     mutation.mutate(params, {
       onSettled: () => {
-        queryProduct.refetch()
+        queryProduct.refetch();
       },
       onSuccess: () => {
-        message.success("Product added successfully!")
-        queryProduct.refetch()
-        handleCancel()
+        message.success("Product added successfully!");
+        queryProduct.refetch();
+        handleCancel();
       },
       onError: () => {
-        message.error("Failed to add product. Please try again.")
+        message.error("Failed to add product. Please try again.");
       },
-    })
-  }
+    });
+  };
 
   const handleOnchange = (e) => {
     setStateProduct({
       ...stateProduct,
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
   //Chuyển đổi hình ảnh thành chuỗi Base64
   const handleOnchangeAvatar = async ({ fileList }) => {
-    const file = fileList[0]
+    const file = fileList[0];
     if (!file.url && !file.preview) {
-      file.preview = await getBase64(file.originFileObj)
+      file.preview = await getBase64(file.originFileObj);
     }
     setStateProduct({
       ...stateProduct,
       image: file.preview,
-    })
-  }
+    });
+  };
 
   return (
     <div>
+
       {/* Button Add Product */}
-      <ButtonComponent
-        onClick={() => setIsModalOpen(true)}
-        size={40}
-        styleButton={{
-          backgroundColor: "#1677ff",
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          alignItems: "center",
+          gap: "10px",
+          flexDirection: "row",
         }}
-        textbutton={"Add Product"}
-        styleTextButton={{
-          color: "#000000",
-        }}
-      ></ButtonComponent>
+      >
+        <div style={{ fontSize: "16px", fontWeight: "500" }}>
+          Create new product{" "}
+        </div>
+        <Button
+          style={{
+            height: "50px",
+            width: "50px",
+            borderRadius: "6px",
+            borderStyle: "dashed",
+          }}
+          onClick={() => setIsModalOpen(true)}
+        >
+          <PlusOutlined style={{ fontSize: "20px" }} />
+        </Button>
+      </div>
 
       {/* Modal Add Product */}
       <ModalComponent
@@ -279,7 +294,7 @@ const AddProduct = () => {
         </Form>
       </ModalComponent>
     </div>
-  )
-}
+  );
+};
 
-export default AddProduct
+export default AddProduct;
