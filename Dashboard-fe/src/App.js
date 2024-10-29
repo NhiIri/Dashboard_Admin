@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { routes } from "./routes"
 import { isJsonString } from "./utils"
@@ -11,24 +11,21 @@ import SignInPage from "./pages/SignInPage/SignInPage"
 import DefaultLayout from "./layout/DefaultLayout"
 
 function App() {
-  const dispatch = useDispatch() //Gửi các action đến Redux store
-  const [isLoading, setIsLoading] = useState(false) //Trạng thái Loading
-  const user = useSelector((state) => state.user) //Sử dụng useSelector lấy thông tin người dùng từ Redux store
+  const dispatch = useDispatch() 
+  const [isLoading, setIsLoading] = useState(false) 
+  const user = useSelector((state) => state.user)
 
   useEffect(() => {
     setIsLoading(true)
-    const { storageData, decoded } = handleDecoded() //Kiểm tra và giải mã token lưu trữ trên trình duyệt
+    const { storageData, decoded } = handleDecoded() 
     if (decoded?.id) {
-      //Kiểm tra id người dùng
-      handleGetDetailsUser(decoded?.id, storageData) //Id hợp lệ thì lấy thông tin người dùng
+      handleGetDetailsUser(decoded?.id, storageData)
     }
     setIsLoading(false)
   }, [])
 
   const handleDecoded = () => {
-    //Lấy và giải mã token từ LocalStorage
-    let storageData =
-      user?.access_token || localStorage.getItem("access_token")
+    let storageData = user?.access_token || localStorage.getItem("access_token")
     let decoded = {}
     if (storageData && isJsonString(storageData) && !user?.access_token) {
       storageData = JSON.parse(storageData)
@@ -75,25 +72,32 @@ function App() {
   return (
     <div style={{ height: "100%", width: "100%" }}>
       <BrowserRouter>
-        <DefaultLayout>
-          <Routes>
-            <Route path="sign-in" element={<SignInPage />} />
-            {routes.map((route) => {
-              const Page = route.page
-              return (
-                <Route
-                  key={route.path}
-                  path={route.path}
-                  element={
-                    <PrivateRoute>
-                      <Page />
-                    </PrivateRoute>
-                  }
-                />
-              )
-            })}
-          </Routes>
-        </DefaultLayout>
+        <Routes>
+          <Route path="sign-in" element={<SignInPage />} />
+          <Route
+            path="*"
+            element={
+              <DefaultLayout>
+                <Routes>
+                  {routes.map((route) => {
+                    const Page = route.page
+                    return (
+                      <Route
+                        key={route.path}
+                        path={route.path}
+                        element={
+                          <PrivateRoute>
+                            <Page />
+                          </PrivateRoute>
+                        }
+                      />
+                    )
+                  })}
+                </Routes>
+              </DefaultLayout>
+            }
+          />
+        </Routes>
       </BrowserRouter>
     </div>
   )

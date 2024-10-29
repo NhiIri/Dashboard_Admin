@@ -124,7 +124,7 @@ const SignInPage = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        background: "#000000",
+        background: "#e2e2e2",
         height: "100vh",
       }}
     >

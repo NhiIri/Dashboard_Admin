@@ -1,6 +1,5 @@
 import { Form } from "antd"
 import React from "react"
-import { WrapperHeader } from "./style"
 import TableComponent from "../../components/TableComponent/TableComponent"
 import { useEffect } from "react"
 import { useState } from "react"
