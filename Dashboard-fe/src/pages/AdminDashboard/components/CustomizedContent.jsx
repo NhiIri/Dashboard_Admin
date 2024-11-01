@@ -2,10 +2,10 @@ import {
   UserOutlined,
   ShoppingCartOutlined,
   AlignRightOutlined,
-} from "@ant-design/icons";
+} from "@ant-design/icons"
 
 const CustomizedContent = (props) => {
-  const { data, colors, setKeySelected } = props;
+  const { data, colors, setKeySelected } = props
   return (
     <div style={{ display: "flex", gap: "40px", justifyContent: "center" }}>
       {Object.keys(data) &&
@@ -54,10 +54,10 @@ const CustomizedContent = (props) => {
                 {data[item]}
               </span>
             </div>
-          );
+          )
         })}
     </div>
-  );
-};
+  )
+}
 
-export default CustomizedContent;
+export default CustomizedContent

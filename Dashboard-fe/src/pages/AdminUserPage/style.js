@@ -8,7 +8,6 @@ export const WrapperHeader = styled.h1`
   padding: 20px;
   position: fixed;
   z-index: 1000;
-  /* box-shadow: rgb(160 160 160) 5px 5px 15px; */
   background-color: #fff;
   border-radius: 0px 0px 0px 5px;
   width: 100%;

@@ -12,11 +12,11 @@ export const isJsonString = (data) => {
 //Sử dụng FileReader để đọc file
 export const getBase64 = (file) =>
     new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = (error) => reject(error);
-    });
+        const reader = new FileReader()
+        reader.readAsDataURL(file)
+        reader.onload = () => resolve(reader.result)
+        reader.onerror = (error) => reject(error)
+    })
 
 //Tạo đối tượng với các thuộc tính label,key,icon...cho việc hiển thị Menu, danh sách
 export function getItem(label, key, icon, children, type) {
@@ -26,7 +26,7 @@ export function getItem(label, key, icon, children, type) {
         children,
         label,
         type,
-    };
+    }
 }
 
 

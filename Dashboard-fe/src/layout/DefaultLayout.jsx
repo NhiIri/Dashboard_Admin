@@ -9,9 +9,7 @@ const { Header, Sider, Content } = Layout
 
 const DefaultLayout = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false)
-  const {
-    token: { colorBgContainer, borderRadiusLG }
-  } = theme.useToken()
+  const {token: { colorBgContainer, borderRadiusLG }} = theme.useToken()
 
   return (
     <Layout>
@@ -52,4 +50,3 @@ const DefaultLayout = ({ children }) => {
 }
 
 export default DefaultLayout
-

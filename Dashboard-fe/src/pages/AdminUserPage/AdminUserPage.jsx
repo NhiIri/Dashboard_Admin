@@ -1,55 +1,14 @@
-import { Form } from "antd"
 import React from "react"
 import TableComponent from "../../components/TableComponent/TableComponent"
-import { useEffect } from "react"
 import { useState } from "react"
-import * as UserService from "../../services/UserService"
 import { useQueryClient } from "@tanstack/react-query"
 
 const AdminUserPage = () => {
   const [rowSelected, setRowSelected] = useState("") //Lưu trữ ID người dùng
-  const [isOpenDrawer, setIsOpenDrawer] = useState(false) //Mở đóng Drawer
-
-  const [stateUserDetails, setStateUserDetails] = useState({
-    //Lưu trữ thông tin người dùng
-    name: "",
-    email: "",
-    phone: "",
-    isAdmin: false,
-    avatar: "",
-    address: "",
-  })
-
-  const [form] = Form.useForm()
-
-  const fetchGetDetailsUser = async (rowSelected) => {
-    const res = await UserService.getDetailsUser(rowSelected)
-
-    if (res?.data) {
-      setStateUserDetails({
-        name: res?.data?.name,
-        avatar: res?.data?.avatar,
-        email: res?.data?.email,
-        phone: res?.data?.phone,
-        isAdmin: res?.data?.isAdmin,
-        address: res?.data?.address,
-        avatar: res.data?.avatar,
-      })
-    }
-  }
-
-  useEffect(() => {
-    form.setFieldsValue(stateUserDetails)
-  }, [form, stateUserDetails])
-
-  useEffect(() => {
-    if (rowSelected && isOpenDrawer) {
-      fetchGetDetailsUser(rowSelected)
-    }
-  }, [rowSelected, isOpenDrawer])
 
   const queryClient = useQueryClient()
   const users = queryClient.getQueryData(["users"])
+  
 
   const columns = [
     {
@@ -85,9 +44,7 @@ const AdminUserPage = () => {
     },
   ]
 
-  const dataTable =
-    users?.data?.length > 0 &&
-    users?.data?.map((user) => {
+  const dataTable = users?.data?.length > 0 && users?.data?.map((user) => {
       return {
         ...user,
         key: user._id,
@@ -97,7 +54,7 @@ const AdminUserPage = () => {
 
   return (
     <div>
-        <div style={{ marginTop: "80px" }}>
+        <div>
           <TableComponent
             columns={columns}
             dataSource={dataTable}
@@ -115,3 +72,90 @@ const AdminUserPage = () => {
 }
 
 export default AdminUserPage
+
+// import React, { useState } from "react"
+// import TableComponent from "../../components/TableComponent/TableComponent"
+// import { useQuery } from "@tanstack/react-query"
+// import * as UserService from "../../services/UserService"
+
+// const AdminUserPage = () => {
+//   const [rowSelected, setRowSelected] = useState("") // Lưu trữ ID người dùng
+
+//   const getAllUsers = async () => {
+//     const res = await UserService.getAllUser()
+//     return res
+//   }
+
+//   const { data: users = [], isLoading, error } = useQuery({
+//     queryKey: ["users"],
+//     queryFn: getAllUsers,
+//   })
+
+//   const columns = [
+//     {
+//       title: "Name",
+//       dataIndex: "name",
+//     },
+//     {
+//       title: "Avatar",
+//       dataIndex: "avatar",
+//       render: (avatar) => (
+//         <img
+//           src={avatar}
+//           alt="Avatar"
+//           style={{
+//             height: "60px",
+//             width: "60px",
+//             borderRadius: "5px",
+//             objectFit: "cover",
+//           }}
+//         />
+//       ),
+//     },
+//     {
+//       title: "Email",
+//       dataIndex: "email",
+//     },
+//     {
+//       title: "Phone",
+//       dataIndex: "phone",
+//     },
+//     {
+//       title: "Address",
+//       dataIndex: "address",
+//     },
+//     {
+//       title: "Is Admin",
+//       dataIndex: "isAdmin",
+//       render: (isAdmin) => (isAdmin ? "TRUE" : "FALSE"),
+//     },
+//   ]
+
+//   // Tạo dữ liệu cho bảng
+//   const dataTable =
+//     users.length > 0
+//       ? users.map((user) => ({
+//           ...user,
+//           key: user._id,
+//         }))
+//       : []
+
+//   if (isLoading) return <p>Loading...</p>
+//   if (error) return <p>Error loading users</p>
+
+//   return (
+//     <div>
+//       <TableComponent
+//         columns={columns}
+//         dataSource={dataTable}
+//         onRow={(record) => ({
+//           onClick: () => {
+//             setRowSelected(record._id)
+//           },
+//         })}
+//       />
+//     </div>
+//   )
+// }
+
+// export default AdminUserPage

@@ -20,21 +20,15 @@ const AllCategory = () => {
   const [isLoadingUpdate, setIsLoadingUpdate] = useState(false)
   const [isModalOpenDelete, setIsModalOpenDelete] = useState(false)
   const user = useSelector((state) => state?.user)
+
   const inittial = () => ({
     name: "",
   })
-  const [stateCategory, setStateCategory] = useState(inittial())
+
   const [stateCategoryDetails, setStateCategoryDetails] = useState(inittial())
 
   const [form] = Form.useForm()
 
-  const mutation = useMutationHooks((data) => {
-    const { name } = data
-    const res = CategoryService.createCategory({
-      name,
-    })
-    return res
-  })
   const mutationUpdate = useMutationHooks((data) => {
     const { id, token, ...rests } = data
     const res = CategoryService.updatedCategory(id, token, { ...rests })
@@ -81,7 +75,6 @@ const AllCategory = () => {
     setIsOpenDrawer(true)
   }
 
-  const { data, isLoading, isSuccess, isError } = mutation
   const {
     data: dataUpdated,
     isLoading: isLoadingUpdated,
@@ -144,15 +137,6 @@ const AllCategory = () => {
     })
 
   useEffect(() => {
-    if (isSuccess && data?.status === "OK") {
-      message.success()
-      handleCancel()
-    } else if (isError) {
-      message.error()
-    }
-  }, [isSuccess])
-
-  useEffect(() => {
     if (isSuccessDelected && dataDeleted?.status === "OK") {
       message.success()
       handleCancelDelete()
@@ -194,32 +178,6 @@ const AllCategory = () => {
     )
   }
 
-  const handleCancel = () => {
-    setIsModalOpen(false)
-    setStateCategory({
-      name: "",
-    })
-    form.resetFields()
-  }
-
-//   const onFinish = () => {
-//     const params = {
-//       name: stateCategory.name,
-//     }
-//     mutation.mutate(params, {
-//       onSettled: () => {
-//         queryCategory.refetch()
-//       },
-//     })
-//   }
-
-//   const handleOnchange = (e) => {
-//     setStateCategory({
-//       ...stateCategory,
-//       [e.target.name]: e.target.value,
-//     })
-//   }
-
   const handleOnchangeDetails = (e) => {
     setStateCategoryDetails({
       ...stateCategoryDetails,
@@ -240,68 +198,66 @@ const AllCategory = () => {
 
   return (
     <div>
-
-        <div style={{ marginTop: "20px" }}>
-          <TableComponent
-            columns={columns}
-            isLoading={isLoadingCategories}
-            dataSource={dataTable}
-            onRow={(record, rowIndex) => {
-              return {
-                onClick: (event) => {
-                  setRowSelected(record._id)
-                },
-              }
-            }}
-          />
-        </div>
-
-        <DrawerComponent
-          title="Category Details"
-          isOpen={isOpenDrawer}
-          onClose={() => setIsOpenDrawer(false)}
-          width="90%"
-        >
-          <Loading isLoading={isLoadingUpdate || isLoadingUpdated}>
-            <Form
-              name="basic"
-              labelCol={{ span: 2 }}
-              wrapperCol={{ span: 22 }}
-              onFinish={onUpdateCategory}
-              autoComplete="on"
-              form={form}
-            >
-              <Form.Item
-                label="Name"
-                name="name"
-                rules={[{ required: true, message: "Please input name!" }]}
-              >
-                <InputComponent
-                  value={stateCategoryDetails["name"]}
-                  onChange={handleOnchangeDetails}
-                  name="name"
-                />
-              </Form.Item>
-              <Form.Item wrapperCol={{ offset: 20, span: 16 }}>
-                <Button type="primary" htmlType="submit">
-                  Apply
-                </Button>
-              </Form.Item>
-            </Form>
-          </Loading>
-        </DrawerComponent>
-
-        <ModalComponent
-          title="Delete Category"
-          open={isModalOpenDelete}
-          onCancel={handleCancelDelete}
-          onOk={handleDeleteCategory}
-        >
-          <Loading isLoading={isLoadingDeleted}>
-            <div>Do you want to delete category?</div>
-          </Loading>
-        </ModalComponent>
+      <div style={{ marginTop: "20px" }}>
+        <TableComponent
+          columns={columns}
+          isLoading={isLoadingCategories}
+          dataSource={dataTable}
+          onRow={(record, rowIndex) => {
+            return {
+              onClick: (event) => {
+                setRowSelected(record._id)
+              },
+            }
+          }}
+        />
       </div>
+      <DrawerComponent
+        title="Category Details"
+        isOpen={isOpenDrawer}
+        onClose={() => setIsOpenDrawer(false)}
+        width="0%"
+      >
+        <Loading isLoading={isLoadingUpdate || isLoadingUpdated}>
+          <Form
+            name="basic"
+            labelCol={{ span: 2 }}
+            wrapperCol={{ span: 22 }}
+            onFinish={onUpdateCategory}
+            autoComplete="on"
+            form={form}
+          >
+            <Form.Item
+              label="Name"
+              name="name"
+              rules={[{ required: true, message: "Please input name!" }]}
+            >
+              <InputComponent
+                value={stateCategoryDetails["name"]}
+                onChange={handleOnchangeDetails}
+                name="name"
+              />
+            </Form.Item>
+            <Form.Item wrapperCol={{ offset: 20, span: 16 }}>
+              <Button type="primary" htmlType="submit">
+                Apply
+              </Button>
+            </Form.Item>
+          </Form>
+        </Loading>
+      </DrawerComponent>
+
+      <ModalComponent
+        title="Delete Category"
+        open={isModalOpenDelete}
+        onCancel={handleCancelDelete}
+        onOk={handleDeleteCategory}
+      >
+        <Loading isLoading={isLoadingDeleted}>
+          <div>Do you want to delete category?</div>
+        </Loading>
+      </ModalComponent>
+    </div>
   )
 }
 

@@ -1,121 +1,84 @@
-import React, { useEffect, useState } from "react";
-import { EyeFilled, EyeInvisibleFilled } from "@ant-design/icons";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import jwt_decode from "jwt-decode";
-// import { GoogleLogin } from "@react-oauth/google";
-import ButtonComponent from "../../components/ButtonComponent/ButtonComponent";
-import InputForm from "../../components/InputForm/InputForm";
-import Loading from "../../components/LoadingComponent/Loading";
-import { WrapperContainer } from "./style";
-import * as UserService from "../../services/UserService";
-import { useMutationHooks } from "../../hooks/useMutationHook";
-import { updateUser } from "../../redux/slides/userSlide";
-import Home from "../../components/GoogleLoginComponent/Home";
+import React, { useEffect, useState } from "react"
+import { EyeFilled, EyeInvisibleFilled } from "@ant-design/icons"
+import { useLocation, useNavigate } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import jwt_decode from "jwt-decode"
+import ButtonComponent from "../../components/ButtonComponent/ButtonComponent"
+import InputForm from "../../components/InputForm/InputForm"
+import Loading from "../../components/LoadingComponent/Loading"
+import { WrapperContainer } from "./style"
+import * as UserService from "../../services/UserService"
+import { useMutationHooks } from "../../hooks/useMutationHook"
+import { updateUser } from "../../redux/slides/userSlide"
 
 const SignInPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [isShowPassword, setIsShowPassword] = useState(false);
-  const [loadingPage, setLoadingPage] = useState(true); // Thêm state để quản lý trạng thái load trang
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [isShowPassword, setIsShowPassword] = useState(false)
+  const [loadingPage, setLoadingPage] = useState(true)
+  const [errorMessage, setErrorMessage] = useState("")
 
-  const dispatch = useDispatch();
-  const location = useLocation();
-  const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const location = useLocation()
+  const navigate = useNavigate()
 
-  const mutation = useMutationHooks((data) => UserService.loginUser(data));
-  const { data, isLoading, isSuccess } = mutation;
+  const mutation = useMutationHooks((data) => UserService.loginUser(data))
+  const { data, isLoading, isSuccess, isError } = mutation
 
-  // Kiểm tra access token khi load trang
   useEffect(() => {
-    const accessToken = localStorage.getItem("access_token");
-
-    //   if (accessToken) {
-    //     const token = JSON.parse(accessToken);
-    //     const decoded = jwt_decode(token);
-
-    //     // Kiểm tra token có hết hạn hay không
-    //     if (decoded?.exp * 1000 > Date.now()) {
-    //       // Token còn hiệu lực, lấy thông tin người dùng
-    //       handleGetDetailsUser(decoded.id, token);
-    //     } else {
-    //       // Token hết hạn, cần login lại
-    //       localStorage.removeItem('access_token');
-    //       localStorage.removeItem('refresh_token');
-    //     }
-    //   }
-
-    //   setLoadingPage(false); // Đã kiểm tra xong, kết thúc trạng thái loading
-    // }, []);
+    const accessToken = localStorage.getItem("access_token")
     if (accessToken) {
       try {
-        // const token = JSON.parse(accessToken);
-        const decoded = jwt_decode(accessToken);
-
-        // Kiểm tra token có hết hạn hay không
+        const decoded = jwt_decode(accessToken)
         if (decoded?.exp * 1000 > Date.now()) {
-          handleGetDetailsUser(decoded.id, accessToken);
+          handleGetDetailsUser(decoded.id, accessToken)
         } else {
-          localStorage.removeItem("access_token");
-          localStorage.removeItem("refresh_token");
+          localStorage.removeItem("access_token")
+          localStorage.removeItem("refresh_token")
         }
       } catch (error) {
-        console.error("Lỗi khi parse accessToken:", error);
+        console.error("Error parsing accessToken:", error)
       }
     }
-
-    setLoadingPage(false);
-  }, []);
+    setLoadingPage(false)
+  }, [])
 
   useEffect(() => {
-    if (isSuccess) {
-      navigate(location?.state || "/");
+    if (isSuccess && data?.status === "OK") {
+      navigate(location?.state || "/")
 
-      // Lưu token vào localStorage
-      localStorage.setItem("access_token", JSON.stringify(data?.access_token));
-      localStorage.setItem(
-        "refresh_token",
-        JSON.stringify(data?.refresh_token)
-      );
+      localStorage.setItem("access_token", JSON.stringify(data?.access_token))
+      localStorage.setItem("refresh_token", JSON.stringify(data?.refresh_token))
 
       if (data?.access_token) {
-        const decoded = jwt_decode(data.access_token);
+        const decoded = jwt_decode(data.access_token)
         if (decoded?.id) {
-          handleGetDetailsUser(decoded.id, data.access_token);
+          handleGetDetailsUser(decoded.id, data.access_token)
         }
       }
+    } else if (isError || data?.status === "ERR") {
+      setErrorMessage(data?.message || "Login failed. Please try again.")
     }
-  }, [isSuccess, data, navigate, location]);
+  }, [isSuccess, isError, data, navigate, location])
 
-  // Lấy chi tiết người dùng
   const handleGetDetailsUser = async (id, token) => {
-    const refreshToken = JSON.parse(localStorage.getItem("refresh_token"));
-    const res = await UserService.getDetailsUser(id, token);
-    dispatch(updateUser({ ...res?.data, access_token: token, refreshToken }));
-  };
+    const refreshToken = JSON.parse(localStorage.getItem("refresh_token"))
+    const res = await UserService.getDetailsUser(id, token)
+    dispatch(updateUser({ ...res?.data, access_token: token, refreshToken }))
+  }
 
-  const handleOnChangeEmail = (value) => setEmail(value);
-  const handleOnChangePassword = (value) => setPassword(value);
+  const handleOnChangeEmail = (value) => setEmail(value)
+  const handleOnChangePassword = (value) => setPassword(value)
 
   const handleSignIn = () => {
+    setErrorMessage("")
     if (email && password) {
-      mutation.mutate({ email, password });
+      mutation.mutate({ email, password })
     }
-  };
-
-  // Xử lý khi đăng nhập với Google
-  // const handleGoogleLogin = (googleData) => {
-  //   const userData = jwt_decode(googleData);
-  //   console.log(userData);
-  // }
-
-  // const handleError = () => {
-  //   alert('Login failed');
-  // }
+  }
 
   if (loadingPage) {
-    // Hiển thị màn hình loading khi đang kiểm tra trạng thái đăng nhập
-    return <Loading isLoading={true} />;
+    return <Loading isLoading={true} />
   }
 
   return (
@@ -179,8 +142,8 @@ const SignInPage = () => {
             />
           </div>
 
-          {data?.status === "ERR" && (
-            <span style={{ color: "red" }}>{data?.message}</span>
+          {errorMessage && (
+            <span style={{ color: "red", marginTop: "10px" }}>{errorMessage}</span>
           )}
 
           <Loading isLoading={isLoading}>
@@ -204,18 +167,11 @@ const SignInPage = () => {
               }}
             />
           </Loading>
-
-          {/* <GoogleLogin
-            onSuccess={(credentialResponse) => handleGoogleLogin(credentialResponse.credential)}
-            onError={handleError}
-          /> */}
-
-          
-          <Home />
         </WrapperContainer>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SignInPage;
+export default SignInPage
+

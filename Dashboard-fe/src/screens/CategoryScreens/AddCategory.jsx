@@ -9,18 +9,18 @@ import Loading from "../../components/LoadingComponent/Loading"
 import { useEffect } from "react"
 import * as message from "../../components/Message/Message"
 import { useQuery } from "@tanstack/react-query"
-import { useSelector } from "react-redux"
 import ModalComponent from "../../components/ModalComponent/ModalComponent"
 
 const AddCategory = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [isModalOpenDelete, setIsModalOpenDelete] = useState(false)
-  const user = useSelector((state) => state?.user)
+
+  //Khởi tạo dữ liệu ban đầu cho state thể loại
   const inittial = () => ({
     name: "",
   })
-  const [stateCategory, setStateCategory] = useState(inittial())
 
+
+  const [stateCategory, setStateCategory] = useState(inittial())
   const [form] = Form.useForm()
 
   const mutation = useMutationHooks((data) => {
@@ -31,25 +31,12 @@ const AddCategory = () => {
     return res
   })
 
-  const mutationDeleted = useMutationHooks((data) => {
-    const { id, token } = data
-    const res = CategoryService.deleteCategory(id, token)
-    return res
-  })
-
   const getAllCategories = async () => {
     const res = await CategoryService.getAllCategory()
     return res
   }
 
   const { data, isLoading, isSuccess, isError } = mutation
-
-  const {
-    data: dataDeleted,
-    isLoading: isLoadingDeleted,
-    isSuccess: isSuccessDelected,
-    isError: isErrorDeleted,
-  } = mutationDeleted
 
   const queryCategory = useQuery({
     queryKey: ["categories"],
@@ -65,18 +52,6 @@ const AddCategory = () => {
     }
   }, [isSuccess])
 
-  useEffect(() => {
-    if (isSuccessDelected && dataDeleted?.status === "OK") {
-      message.success()
-      handleCancelDelete()
-    } else if (isErrorDeleted) {
-      message.error()
-    }
-  }, [isSuccessDelected])
-
-  const handleCancelDelete = () => {
-    setIsModalOpenDelete(false)
-  }
   const handleCancel = () => {
     setIsModalOpen(false)
     setStateCategory({
@@ -159,7 +134,7 @@ const AddCategory = () => {
               </Form.Item>
               <Form.Item wrapperCol={{ offset: 20, span: 16 }}>
                 <Button type="primary" htmlType="submit">
-                  Apply
+                   Submit
                 </Button>
               </Form.Item>
             </Form>

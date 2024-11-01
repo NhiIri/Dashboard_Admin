@@ -28,50 +28,25 @@ const AllProduct = () => {
   //Khởi tạo dữ liệu ban đầu cho state sản phẩm
   const inittial = () => ({
     name: "",
+    category: "",
     price: "",
     description: "",
     image: "",
-    category: "",
     countInStock: "",
     discount: "",
   })
-  const [stateProduct, setStateProduct] = useState(inittial())
+
   const [stateProductDetails, setStateProductDetails] = useState(inittial())
 
   const [form] = Form.useForm()
 
   //Dùng useMutationHooks để tạo các hook thao tác với Api
   //Gọi Api để cập nhật sản phẩm
-  const mutation = useMutationHooks((data) => {
-    const {
-      name,
-      price,
-      description,
-      image,
-      countInStock,
-      discount,
-      category,
-    } = data
-    const res = ProductService.createProduct({
-      name,
-      price,
-      category,
-      description,
-      image,
-      countInStock,
-      discount,
-    })
-    return res
-  })
-
-  //Gọi Api để cập nhật sản phẩm
   const mutationUpdate = useMutationHooks((data) => {
     const { id, token, ...rests } = data
     const res = ProductService.updateProduct(id, token, { ...rests })
     return res
   })
-
-  // debugger
 
   //Xóa sản phẩm
   const mutationDeleted = useMutationHooks((data) => {
@@ -123,7 +98,6 @@ const AllProduct = () => {
     setIsOpenDrawer(true)
   }
 
-  const { data, isLoading, isSuccess, isError } = mutation
   const {
     data: dataUpdated,
     isLoading: isLoadingUpdated,
@@ -178,6 +152,7 @@ const AllProduct = () => {
     )
   }
 
+  //Colums
   const columns = [
     {
       title: "Product Name",
@@ -240,20 +215,9 @@ const AllProduct = () => {
     },
   ]
 
-  const dataTable =
-    products?.data?.length &&
-    products?.data?.map((product) => {
+  const dataTable = products?.data?.length && products?.data?.map((product) => {
       return { ...product, key: product._id }
     })
-
-  useEffect(() => {
-    if (isSuccess && data?.status === "OK") {
-      message.success()
-      handleCancel()
-    } else if (isError) {
-      message.error()
-    }
-  }, [isSuccess])
 
   useEffect(() => {
     if (isSuccessDelected && dataDeleted?.status === "OK") {
@@ -268,8 +232,8 @@ const AllProduct = () => {
     setIsOpenDrawer(false)
     setStateProductDetails({
       name: "",
-      price: "",
       category: "",
+      price: "",
       description: "",
       rating: "",
       image: "",
@@ -287,6 +251,9 @@ const AllProduct = () => {
     }
   }, [isSuccessUpdated])
 
+
+//Delete
+
   const handleCancelDelete = () => {
     setIsModalOpenDelete(false)
   }
@@ -302,38 +269,6 @@ const AllProduct = () => {
     )
   }
 
-  const handleCancel = () => {
-    setIsModalOpen(false)
-    setStateProduct({
-      name: "",
-      price: "",
-      category: "",
-      description: "",
-      image: "",
-      countInStock: "",
-      discount: "",
-    })
-    form.resetFields()
-  }
-
-  const onFinish = () => {
-    const params = {
-      name: stateProduct.name,
-      price: stateProduct.price,
-      category: stateProduct.category,
-      description: stateProduct.description,
-      image: stateProduct.image,
-      countInStock: stateProduct.countInStock,
-      discount: stateProduct.discount,
-    }
-
-    mutation.mutate(params, {
-      onSettled: () => {
-        queryProduct.refetch()
-      },
-    })
-  }
-
   const handleOnchangeDetails = (e) => {
     setStateProductDetails({
       ...stateProductDetails,
@@ -342,17 +277,31 @@ const AllProduct = () => {
   }
 
   //Chuyển đổi hình ảnh thành chuỗi Base64
-  const handleOnchangeAvatarDetails = async ({ fileList }) => {
-    const file = fileList[0]
-    if (!file.url && !file.preview) {
-      file.preview = await getBase64(file.originFileObj)
-    }
+  // const handleOnchangeAvatarDetails = async ({ fileList }) => {
+  //   const file = fileList[0]
+  //   if (!file.url && !file.preview) {
+  //     file.preview = await getBase64(file.originFileObj)
+  //   }
 
-    setStateProductDetails({
-      ...stateProductDetails,
-      image: file.preview,
-    })
+  //   setStateProductDetails({
+  //     ...stateProductDetails,
+  //     image: file.preview,
+  //   })
+  // }
+
+  const handleOnchangeAvatarDetails = async ({ fileList }) => {
+    if (fileList.length === 0) return
+  
+    const file = fileList[0]
+    const preview = file.url || file.preview || await getBase64(file.originFileObj)
+  
+    setStateProductDetails((prevDetails) => ({
+      ...prevDetails,
+      image: preview,
+    }))
   }
+  
+  
   const onUpdateProduct = () => {
     mutationUpdate.mutate(
       { id: rowSelected, token: user?.access_token, ...stateProductDetails },
@@ -377,8 +326,6 @@ const AllProduct = () => {
             return {
               onClick: (event) => {
                 setRowSelected(record._id)
-                // setIsModalOpenDetails(true)
-                // fetchGetDetailsProduct(record._id)
               },
             }
           }}
@@ -440,7 +387,7 @@ const AllProduct = () => {
         onClose={() => setIsOpenDrawer(false)}
         width="80%"
       >
-        <Loading isLoading={isLoadingUpdate || isLoadingUpdated}>
+        {/* <Loading isLoading={isLoadingUpdate || isLoadingUpdated}> */}
           <Form
             name="basic"
             labelCol={{ span: 2 }}
@@ -579,7 +526,7 @@ const AllProduct = () => {
               </Button>
             </Form.Item>
           </Form>
-        </Loading>
+        {/* </Loading> */}
       </DrawerComponent>
 
       {/* Delete Product */}

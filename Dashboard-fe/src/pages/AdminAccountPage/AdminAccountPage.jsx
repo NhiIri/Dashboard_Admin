@@ -7,7 +7,6 @@ import InputForm from "../../components/InputForm/InputForm"
 import {
   WrapperContentProfile,
   WrapperContentProfile1,
-  WrapperHeader,
   WrapperInput,
   WrapperInput1,
   WrapperLabel,

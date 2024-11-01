@@ -1,11 +1,11 @@
-import React from "react";
-import { WrapperInputStyle } from "./style";
+import React from "react"
+import { WrapperInputStyle } from "./style"
 
 const InputForm = (props) => {
-  const { placeholder = "Nhập text", ...rests } = props;
+  const { placeholder = "Nhập text", ...rests } = props
   const handleOnchangeInput = (e) => {
-    props.onChange(e.target.value);
-  };
+    props.onChange(e.target.value)
+  }
   return (
     <WrapperInputStyle
       placeholder={placeholder}
@@ -13,7 +13,7 @@ const InputForm = (props) => {
       {...rests}
       onChange={handleOnchangeInput}
     />
-  );
-};
+  )
+}
 
-export default InputForm;
+export default InputForm
