@@ -1,4 +1,6 @@
 const CategoryService = require('../services/CategoryService')
+const ProductService = require('../services/ProductService')
+
 
 const createCategory = async (req, res) => {
     try {
@@ -86,11 +88,22 @@ const getAllCategory = async (req, res) => {
 }
 
 
+const getCategoryProductCount = async (req, res) => {
+    try {
+        const categories = await CategoryService.getCategoryProductCount()
+        res.json(categories)
+    } catch (error) {
+        res.status(500).json({ message: "ERR", error })
+    }
+}
+
+
+
 module.exports = {
     createCategory,
     updatedCategory,
     getDetailsCategory,
     deleteCategory, 
     getAllCategory,
-    
+    getCategoryProductCount   
 }

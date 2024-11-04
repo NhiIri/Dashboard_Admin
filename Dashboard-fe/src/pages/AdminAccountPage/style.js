@@ -1,20 +1,21 @@
 import { Upload } from "antd";
 import styled from "styled-components";
 
-export const WrapperHeader = styled.h1`
-    color: #00000099;
-    font-size: 20px;
-    font-weight:700;
-    padding: 20px;
-    position:fixed;
-    z-index:1000;
-    background-color:#fff;
-    border-radius:0px 0px 0px 5px ;
-    width:100%;
-    height: 70px;
-    margin-left:205px;
-`
+// export const WrapperHeader = styled.h1`
+//     color: #00000099;
+//     font-size: 20px;
+//     font-weight:700;
+//     padding: 20px;
+//     position:fixed;
+//     z-index:1000;
+//     background-color:#fff;
+//     border-radius:0px 0px 0px 5px ;
+//     width:100%;
+//     height: 70px;
+//     margin-left:205px;
+// `
 export const WrapperContentProfile = styled.div`
+    overflow-x: hidden;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -23,7 +24,7 @@ export const WrapperContentProfile = styled.div`
     background-color:#fff;
     width: 100%;
     margin:auto;
-    padding: 30px;
+    padding-left: 25px;
     border-radius: 10px;
 `
 export const WrapperContentProfile1 = styled.div`

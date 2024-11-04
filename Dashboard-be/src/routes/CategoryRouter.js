@@ -7,5 +7,5 @@ router.put('/update-category/:id', CategoryController.updatedCategory)
 router.get('/get-details-category/:id', CategoryController.getDetailsCategory)
 router.delete('/delete-category/:id', CategoryController.deleteCategory)
 router.get('/get-all-category', CategoryController.getAllCategory)
-
+router.get('/category-product-count', CategoryController.getCategoryProductCount )
 module.exports = router

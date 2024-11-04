@@ -6,7 +6,7 @@ import CustomizedContent from "./components/CustomizedContent"
 import { useSelector } from "react-redux"
 import { useQueries } from "@tanstack/react-query"
 import { useMemo } from "react"
-import { WrapperHeader } from "./style"
+import ChartComponent from "../../components/ChartComponent/ChartComponent"
 
 const AdminDashboardPage = () => {
   const user = useSelector((state) => state?.user)
@@ -69,7 +69,7 @@ const AdminDashboardPage = () => {
           style={{ display: "flex", overflowX: "hidden" }}
         >
           <div
-            style={{ flex: 1, padding: "15px 0 15px 15px", marginTop: "80px" }}
+            style={{ flex: 1, padding: "15px 0 15px 15px" }}
           >
             {!keySelected && (
               <CustomizedContent
@@ -80,6 +80,8 @@ const AdminDashboardPage = () => {
             )}
           </div>
         </div>
+        <ChartComponent/>
+
       </div>
     </>
   )

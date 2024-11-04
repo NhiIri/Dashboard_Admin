@@ -38,3 +38,8 @@ export const getAllCategory = async (search, limit) => {
     }
     return res.data
 }
+
+export const getCategoryProductCount = async() =>{
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/category/category-product-count`)
+    return res.data
+}

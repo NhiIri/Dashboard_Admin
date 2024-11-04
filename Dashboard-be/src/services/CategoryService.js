@@ -1,4 +1,5 @@
 const Category = require("../models/CategoryModel")
+const Product = require("../models/ProductModel")
 
 const createCategory = (newCategory) => {
     return new Promise(async (resolve, reject) => {
@@ -108,7 +109,7 @@ const getAllCategory = (limit, page, sort, filter) => {
             const totalCategory = await Category.count()
             let allCategory = []
             if (filter) {
-                const label = filter[0];
+                const label = filter[0]
                 const allObjectFilter = await Category.find({ [label]: { '$regex': filter[1] } }).limit(limit).skip(page * limit).sort({createdAt: -1, updatedAt: -1})
                 resolve({
                     status: 'OK',
@@ -151,10 +152,35 @@ const getAllCategory = (limit, page, sort, filter) => {
     })
 }
 
+
+const getCategoryProductCount = async () => {
+    return await Category.aggregate([
+        {
+            //$lookup join hai bảng dựa trên id thể loại
+            $lookup: {
+                from: "products",
+                localField: "_id",
+                foreignField: "category",
+                as: "products"
+            }
+        },
+        {
+            //$project lựa chọn các trường cần thiết
+            $project: { 
+                name: 1,
+                productCount: { $size: "$products" } //$size đếm số lượng sản phẩm trong mỗi thể loại khi nối bảng
+            }
+        }
+    ])
+}
+
+
+
 module.exports = {
     createCategory,
     updatedCategory,
     getDetailsCategory,
     deleteCategory,
     getAllCategory,
+    getCategoryProductCount
 }

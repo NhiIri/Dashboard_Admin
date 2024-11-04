@@ -24,6 +24,8 @@ const AllProduct = () => {
   const [isModalOpenDelete, setIsModalOpenDelete] = useState(false)
   const user = useSelector((state) => state?.user)
   const [isModalOpenDetails, setIsModalOpenDetails] = useState(false)
+  const [form] = Form.useForm()
+
 
   //Khởi tạo dữ liệu ban đầu cho state sản phẩm
   const inittial = () => ({
@@ -37,8 +39,6 @@ const AllProduct = () => {
   })
 
   const [stateProductDetails, setStateProductDetails] = useState(inittial())
-
-  const [form] = Form.useForm()
 
   //Dùng useMutationHooks để tạo các hook thao tác với Api
   //Gọi Api để cập nhật sản phẩm
@@ -337,7 +337,7 @@ const AllProduct = () => {
         title="Product Details"
         open={isModalOpenDetails}
         onCancel={() => setIsModalOpenDetails(false)}
-        footer={null} // Ẩn nút footer để chỉ hiển thị thông tin chi tiết
+        footer={null}
       >
         <Loading isLoading={isLoadingUpdate}>
           <div>
@@ -387,14 +387,13 @@ const AllProduct = () => {
         onClose={() => setIsOpenDrawer(false)}
         width="80%"
       >
-        {/* <Loading isLoading={isLoadingUpdate || isLoadingUpdated}> */}
           <Form
+            form={form}
             name="basic"
             labelCol={{ span: 2 }}
             wrapperCol={{ span: 22 }}
             onFinish={onUpdateProduct}
             autoComplete="on"
-            form={form}
           >
             {/* Name */}
             <Form.Item
@@ -526,7 +525,6 @@ const AllProduct = () => {
               </Button>
             </Form.Item>
           </Form>
-        {/* </Loading> */}
       </DrawerComponent>
 
       {/* Delete Product */}
