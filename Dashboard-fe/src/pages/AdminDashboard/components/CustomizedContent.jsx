@@ -5,9 +5,9 @@ import {
 } from "@ant-design/icons"
 
 const CustomizedContent = (props) => {
-  const { data, colors, setKeySelected } = props
+  const { data, colors } = props
   return (
-    <div style={{ display: "flex", gap: "40px", justifyContent: "center" }}>
+    <div style={{ display: "flex", gap: "20px" }}>
       {Object.keys(data) &&
         Object.keys(data)?.map((item) => {
           return (
@@ -18,15 +18,13 @@ const CustomizedContent = (props) => {
                 background: `linear-gradient(${
                   colors[item] && colors[item][0]
                 }, ${colors[item] && colors[item][1]})`,
-                height: 200,
+                height: 150,
                 display: "flex",
                 gap: 20,
                 justifyContent: "center",
                 alignItems: "center",
                 borderRadius: "10px",
-                // cursor: 'pointer'
               }}
-              // onClick={() => setKeySelected(item)}
             >
               <span style={{ color: "#fff", fontSize: 30 }}>
                 {item === "users" && <UserOutlined />}

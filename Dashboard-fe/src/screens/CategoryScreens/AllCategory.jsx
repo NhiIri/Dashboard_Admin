@@ -216,7 +216,7 @@ const AllCategory = () => {
         title="Category Details"
         isOpen={isOpenDrawer}
         onClose={() => setIsOpenDrawer(false)}
-        width="0%"
+        width="80%"
       >
         <Loading isLoading={isLoadingUpdate || isLoadingUpdated}>
           <Form

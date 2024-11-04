@@ -1,83 +1,40 @@
-// import React from 'react';
-// import { Bar } from 'react-chartjs-2';
-// import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
-
-
-// ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
-
-// const BarChartComponent = () => {
-//   const data = {
-//     labels: ['January', 'February', 'March'],
-//     datasets: [
-//       {
-//         label: 'Sales',
-//         data: [30, 45, 60],
-//         backgroundColor: 'rgba(100, 165, 230, 0.565)',
-//         borderColor: 'rgba(145, 191, 229, 0.467)',
-//         borderWidth: 2,
-//       },
-//     ],
-//   };
-
-//   const options = {
-//     scales: {
-//       y: {
-//         beginAtZero: true,
-//       },
-//     },
-//     responsive: true,
-//     plugins: {
-//       legend: {
-//         position: 'top',
-//       },
-//       title: {
-//         display: true,
-//         text: 'Monthly Sales Data',
-//       },
-//     },
-//   };
-
-//   return <Bar data={data} options={options} />;
-// };
-
-// export default BarChartComponent;
-
-
-import React, { useEffect, useState } from 'react';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
-import { getCategoryProductCount } from '../../services/CategoryService';
+import React, { useEffect, useState } from 'react'
+import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts'
+import { getCategoryProductCount } from '../../services/CategoryService'
 
 const CategoryProductChart = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getCategoryProductCount();
-        setData(data);
+        const data = await getCategoryProductCount()
+        setData(data)
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error("Error fetching data:", error)
       }
-    };
+    }
 
-    fetchData();
-  }, []);
+    fetchData()
+  }, [])
 
   return (
-    <div style={{ width: '100%', height: 400 }}>
-      <h2>Product Count by Category</h2>
+    <div style={{width:'70%', height: 370, background:'#e5f3ff77', borderRadius:'10px', marginTop:'20px'}}>
+      <div style={{ width: '100%', height: "90%" }}>
+      <div style={{ fontSize: "17px", fontWeight: "600", padding:'10px', color:'#00000099' }}>Product Count by Category</div>
       <ResponsiveContainer width="100%" height="100%">
-        <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+        <BarChart data={data} margin={{ top: 10, right: 10, left: 10, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <Bar dataKey="productCount" fill="#8884d8" />
+          <Bar dataKey="productCount" fill="#64a5e6cb" />
         </BarChart>
       </ResponsiveContainer>
     </div>
-  );
-};
+    </div>
+    
+  )
+}
 
-export default CategoryProductChart;
-
+export default CategoryProductChart
