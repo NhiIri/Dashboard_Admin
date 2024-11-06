@@ -1,5 +1,5 @@
-import { Drawer } from "antd";
-import React from "react";
+import { Drawer } from "antd"
+import React from "react"
 
 const DrawerComponent = ({
   title = "Drawer",
@@ -14,7 +14,7 @@ const DrawerComponent = ({
         {children}
       </Drawer>
     </>
-  );
-};
+  )
+}
 
-export default DrawerComponent;
+export default DrawerComponent

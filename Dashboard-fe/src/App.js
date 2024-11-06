@@ -15,6 +15,8 @@ function App() {
   const [isLoading, setIsLoading] = useState(false) 
   const user = useSelector((state) => state.user)
 
+
+//Kiểm tra người dùng đăng nhập
   useEffect(() => {
     setIsLoading(true)
     const { storageData, decoded } = handleDecoded() 
@@ -34,6 +36,8 @@ function App() {
     return { decoded, storageData }
   }
 
+
+//Cấu hình interceptors để refresh khi token hết hạn
   UserService.axiosJWT.interceptors.request.use(
     async (config) => {
       const currentTime = new Date()
@@ -56,6 +60,7 @@ function App() {
     }
   )
 
+  //Lấy chi tiết người dùng
   const handleGetDetailsUser = async (id, token) => {
     let storageRefreshToken = localStorage.getItem("refresh_token")
     const refreshToken = JSON.parse(storageRefreshToken)

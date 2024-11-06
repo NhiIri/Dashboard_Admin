@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts'
 import { getCategoryProductCount } from '../../services/CategoryService'
 
-const CategoryProductChart = () => {
+const Chart = () => {
   const [data, setData] = useState([])
 
   useEffect(() => {
@@ -37,4 +37,4 @@ const CategoryProductChart = () => {
   )
 }
 
-export default CategoryProductChart
+export default Chart

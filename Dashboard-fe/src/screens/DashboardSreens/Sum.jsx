@@ -6,7 +6,6 @@ import CustomizedContent from "./components/CustomizedContent"
 import { useSelector } from "react-redux"
 import { useQueries } from "@tanstack/react-query"
 import { useMemo } from "react"
-import ChartComponent from "../../components/ChartComponent/ChartComponent"
 
 const AdminDashboardPage = () => {
   const user = useSelector((state) => state?.user)
@@ -42,19 +41,40 @@ const AdminDashboardPage = () => {
       { queryKey: ["products"], queryFn: getAllProducts, staleTime: 1000 * 60 },
     ],
   })
+  // const memoCount = useMemo(() => {
+  //   const result = {}
+  //   try {
+  //     if (queries) {
+  //       queries.forEach((query) => {
+  //         result[query?.data?.key] = query?.data?.data?.length
+  //       })
+  //     }
+  //     return result
+  //   } catch (error) {
+  //     return result
+  //   }
+  // }, [queries])
+
   const memoCount = useMemo(() => {
     const result = {}
     try {
       if (queries) {
         queries.forEach((query) => {
-          result[query?.data?.key] = query?.data?.data?.length
+          if (query?.data?.key === "users" && user.isAdmin) {
+            result[query?.data?.key] = query?.data?.data?.length
+          } else if (query?.data?.key !== "users") {
+            result[query?.data?.key] = query?.data?.data?.length
+          }
         })
       }
       return result
     } catch (error) {
       return result
     }
-  }, [queries])
+  }, [queries, user.isAdmin])
+  
+
+  
   const COLORS = {
     users: ["#64a5e690", "#91bfe577"],
     products: ["#64a5e690", "#91bfe577"],
@@ -69,7 +89,7 @@ const AdminDashboardPage = () => {
           style={{ display: "flex", overflowX: "hidden" }}
         >
           <div
-            style={{ flex: 1, padding: "15px 0 15px 15px" }}
+            style={{ flex: 1 }}
           >
             {!keySelected && (
               <CustomizedContent
@@ -80,8 +100,6 @@ const AdminDashboardPage = () => {
             )}
           </div>
         </div>
-        <ChartComponent/>
-
       </div>
     </>
   )

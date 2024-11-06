@@ -1,8 +1,8 @@
 import { Menu } from 'antd'
-import {SettingOutlined, UserOutlined, ShoppingCartOutlined, AlignRightOutlined, AppstoreOutlined } from '@ant-design/icons';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import {SettingOutlined, UserOutlined, ShoppingCartOutlined, AlignRightOutlined, AppstoreOutlined } from '@ant-design/icons'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 
 const MenuComponent = () => {
     const location = useLocation()
@@ -11,7 +11,7 @@ const MenuComponent = () => {
     const isAdmin = user?.isAdmin
 
     useEffect(()=>{
-        const pathName = location.pathname;
+        const pathName = location.pathname
         setSelectedKeys(pathName)
     }, [location.pathname])
 
@@ -37,7 +37,7 @@ const MenuComponent = () => {
               key: "/admin-user",
               icon: <UserOutlined />,
             },
-            isAdmin && {
+            {
               label: "Category",
               key: "/admin-category",
               icon: <AlignRightOutlined />,

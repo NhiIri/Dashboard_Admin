@@ -1,6 +1,6 @@
 import AdminAccountPage from "../pages/AdminAccountPage/AdminAccountPage"
 import AdminCategoryPage from "../pages/AdminCategoryPage/AdminCategoryPage"
-import AdminDashboard from "../pages/AdminDashboard/AdminDashboardPage"
+import AdminDashboardPage from "../pages/AdminDashboardPage/AdminDashboardPage"
 import AdminProductPage from "../pages/AdminProductPage/AdminProductPage"
 import AdminUserPage from "../pages/AdminUserPage/AdminUserPage"
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage"
@@ -8,7 +8,7 @@ import NotFoundPage from "../pages/NotFoundPage/NotFoundPage"
 export const routes = [
   {
     path: "/",
-    page: AdminDashboard,
+    page: AdminDashboardPage,
   },
 
   {
